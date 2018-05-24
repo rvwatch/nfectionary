@@ -2,13 +2,12 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default class App extends React.Component {
-  constructor() {
+  constructor(){
     super();
     this.state = {
       response: ''
-    };
+    }
   }
-  
 
   componentDidMount() {
     this.callApi()
@@ -17,24 +16,17 @@ export default class App extends React.Component {
   }
 
   callApi = async () => {
-    console.log('in the call api');
-    
     const response = await fetch('http://localhost:5000/api/hello');
-    console.log(response);
-    
     const body = await response.json();
-    console.log(body);
-    
+
     if (response.status !== 200) throw Error(body.message);
 
     return body;
   };
   render() {
-    //console.log(this.state);
-    
     return (
       <View style={styles.container}>
-        <Text>TEST on your app!</Text>
+        <Text>Open up App.js to start working on your app!</Text>
         <Text>Changes you make will automatically reload.</Text>
         <Text>{this.state.response}</Text>
       </View>
