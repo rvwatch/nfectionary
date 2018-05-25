@@ -18,7 +18,7 @@ nightmare
       .map(element => element.innerText);
     let stateId = 1;
 
-    const influenzaData = case_counts.map(count => {
+    const ecoliData = case_counts.map(count => {
         return {
           state_id: stateId++,
           case_count: count,
@@ -26,7 +26,7 @@ nightmare
         }
       });
 
-    return influenzaData;
+    return ecoliData;
   })
   .end()
   .then(result => {

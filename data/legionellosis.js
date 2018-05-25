@@ -18,15 +18,15 @@ nightmare
       .map(element => element.innerText);
     let stateId = 1;
 
-    const influenzaData = case_counts.map(count => {
+    const legionellosisData = case_counts.map(count => {
         return {
           state_id: stateId++,
           case_count: count,
-          virus_id: 4
+          disease_id: 4
         }
       });
 
-    return influenzaData;
+    return legionellosisData;
   })
   .end()
   .then(result => {
