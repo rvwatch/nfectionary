@@ -25,7 +25,7 @@ exports.up = (knex, Promise) => {
       table.foreign('diseases_id').references('diseases.id');
       table.integer('states_id').unsigned();
       table.foreign('states_id').references('states.id');
-      table.integer('case_count');
+      table.string('case_count');
       table.timestamps(true, true);
     })
   ]);

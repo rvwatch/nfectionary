@@ -68,11 +68,11 @@ const createStates = (knex, state) => {
 const createIllness = (knex, disease, id) => {
   const { disease_id, state_id, case_count } = disease;
 
-  return knex('diseases').where('id', id).first()
-    .then(id => {
+  return knex('states').where('id', id).first()
+    .then((record) => {
         return knex('state_diseases').insert({
-          diseases_id: id.id,
-          // states_id: state_id,
+          diseases_id: record.id,
+          states_id: state_id,
           case_count
         });
     });
