@@ -3,13 +3,13 @@ exports.up = (knex, Promise) => {
     knex.schema.createTable('diseases', table => {
       table.increments('id').primary();
       table.string('name');
-      table.string('treatment');
-      table.string('signs_symptoms');
-      table.string('preventative_measures');
-      table.string('testing_procedures');
-      table.string('images');
-      table.string('transmission');
-      table.string('summary');
+      table.text('treatment');
+      table.text('signs_symptoms');
+      table.text('preventative_measures');
+      table.text('testing_procedures');
+      table.text('images');
+      table.text('transmission');
+      table.text('summary');
       table.timestamps(true, true);
     }),
 
