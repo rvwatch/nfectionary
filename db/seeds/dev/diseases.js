@@ -6,7 +6,8 @@ const legionella = require('../../../data/legionellosis-data.json');
 const states = require('../../../data/state-data.json')
 
 exports.seed = (knex, Promise) => {
-  return knex('state_diseases').del()
+  return knex('state_diseases')
+    .del()
     .then(() => {
       knex('diseases').del();
     })
@@ -30,14 +31,33 @@ exports.seed = (knex, Promise) => {
       return Promise.all(statePromises);
     })
     .then(() => {
-      const fluPromises = [];
+      const diseasePromises = [];
 
       influenza.forEach(flu => {
         let fluId = flu.disease_id;
 
-        fluPromises.push(createIllness(knex, flu, fluId));
+        diseasePromises.push(createIllness(knex, flu, fluId));
       });
-      return Promise.all(fluPromises);
+
+      salmonella.forEach(bacteria => {
+        let bacteriaId = bacteria.disease_id;
+
+        diseasePromises.push(createIllness(knex, bacteria, bacteriaId));
+      });
+
+      eColi.forEach(bacteria => {
+        let bacteriaId = bacteria.disease_id;
+
+        diseasePromises.push(createIllness(knex, bacteria, bacteriaId));
+      });
+
+      legionella.forEach(bacteria => {
+        let bacteriaId = bacteria.disease_id;
+
+        diseasePromises.push(createIllness(knex, bacteria, bacteriaId));
+      });
+
+      return Promise.all(diseasePromises);
     })
     .catch(error => {
       console.log(error);
@@ -68,7 +88,7 @@ const createStates = (knex, state) => {
 const createIllness = (knex, disease, id) => {
   const { disease_id, state_id, case_count } = disease;
 
-  return knex('states').where('id', id).first()
+  return knex('diseases').where('id', id).first()
     .then((record) => {
         return knex('state_diseases').insert({
           diseases_id: record.id,
