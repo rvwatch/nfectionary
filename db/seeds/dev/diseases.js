@@ -29,6 +29,16 @@ exports.seed = (knex, Promise) => {
       });
       return Promise.all(statePromises);
     })
+    .then(() => {
+      const fluPromises = [];
+
+      influenza.forEach(flu => {
+        let fluId = flu.disease_id;
+
+        fluPromises.push(createIllness(knex, flu, fluId));
+      });
+      return Promise.all(fluPromises);
+    })
     .catch(error => {
       console.log(error);
     });
@@ -53,4 +63,17 @@ const createStates = (knex, state) => {
   return knex('states').insert({
     name: state.name
   });
+}
+
+const createIllness = (knex, disease, id) => {
+  const { disease_id, state_id, case_count } = disease;
+
+  return knex('diseases').where('id', id).first()
+    .then(id => {
+        return knex('state_diseases').insert({
+          diseases_id: id.id,
+          // states_id: state_id,
+          case_count
+        });
+    });
 }
