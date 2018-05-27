@@ -8,12 +8,23 @@ const states = require('../../../data/state-data.json')
 exports.seed = (knex, Promise) => {
   return knex('diseases').del()
     .then(() => {
+      knex('states').del();
+    })
+    .then(() => {
       const diseasePromises = [];
 
       diseases.forEach(disease => {
         diseasePromises.push(createDiseases(knex, disease));
       });
       return Promise.all(diseasePromises);
+    })
+    .then(() => {
+      const statePromises = [];
+
+      states.forEach(state => {
+        statePromises.push(createStates(knex, state));
+      });
+      return Promise.all(statePromises);
     })
     .catch(error => {
       console.log(error);
@@ -32,5 +43,11 @@ const createDiseases = (knex, disease) => {
     images,
     transmission,
     summary
+  });
+}
+
+const createStates = (knex, state) => {
+  return knex('states').insert({
+    name: state.name
   });
 }
