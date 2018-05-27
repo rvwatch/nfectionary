@@ -6,7 +6,10 @@ const legionella = require('../../../data/legionellosis-data.json');
 const states = require('../../../data/state-data.json')
 
 exports.seed = (knex, Promise) => {
-  return knex('diseases').del()
+  return knex('state_diseases').del()
+    .then(() => {
+      knex('diseases').del();
+    })
     .then(() => {
       knex('states').del();
     })
