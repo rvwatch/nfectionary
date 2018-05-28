@@ -1,15 +1,15 @@
 const express = require('express');
 const app = express();
-
 const environment = process.env.NODE_ENV || 'development';
 const configuration = require('./knexfile')[environment];
 const database = require('knex')(configuration);
-
 const bodyParser = require('body-parser');
+const port = process.env.PORT || 5000;
+
 app.use(bodyParser.json());
 
-const port = process.env.PORT || 5000;
 app.set('port', port);
+
 app.locals.title = 'nfectionary';
 
 app.get('/api/v1/states', (req, res) => {
@@ -92,8 +92,8 @@ app.get('/api/v1/diseases/:id', (req, res) => {
     });
 });
 
-
-
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on ${app.get('port')}`); // eslint-disable-line
 });
+
+module.exports = { app, database };
