@@ -1,15 +1,15 @@
 const express = require('express');
 const app = express();
-
 const environment = process.env.NODE_ENV || 'development';
 const configuration = require('./knexfile')[environment];
 const database = require('knex')(configuration);
-
 const bodyParser = require('body-parser');
+const port = process.env.PORT || 5000;
+
 app.use(bodyParser.json());
 
-const port = process.env.PORT || 5000;
 app.set('port', port);
+
 app.locals.title = 'nfectionary';
 
 app.get('/api/v1/states', (req, res) => {
@@ -31,11 +31,11 @@ app.get('/api/v1/states/:state_id/diseases/:disease_id', (req, res) => {
       if (state.length) {
         return res.status(200).json(state);
       } else {
-        return res.status(404).json('Cannot find disease or state id');
+        return res.status(404).json({ message: 'Cannot find disease or state id' });
       }
     })
     .catch(err => {
-      return res.status(500).json({err});
+      return res.status(500).json({ err: err, message: 'Invalid Id' });
     });
 });
 
@@ -45,11 +45,11 @@ app.get('/api/v1/specific-disease/:id', (req, res) => {
       if (disease.length) {
         return res.status(200).json(disease);
       } else {
-        return res.status(404).json('Cannot find disease id');
+        return res.status(404).json({ message: 'Cannot find disease id' });
       }
     })
     .catch(err => {
-      return res.status(500).json({err});
+      return res.status(500).json({ err: err, message: 'Invalid Id' });
     });
 });
 
@@ -60,11 +60,11 @@ app.get('/api/v1/state-diseases/:id', (req, res) => {
       if (state.length) {
         return res.status(200).json(state);
       } else {
-        return res.status(404).json('Cannot find state id');
+        return res.status(404).json({ message: 'Cannot find state id' });
       }
     })
     .catch(err => {
-      return res.status(500).json({err});
+      return res.status(500).json({ err: err, message: 'Invalid Id'});
     });
 });
 
@@ -84,16 +84,16 @@ app.get('/api/v1/diseases/:id', (req, res) => {
       if (disease.length) {
         return res.status(200).json(disease[0]);
       } else {
-        return res.status(404).json('Cannot find disease id');
+        return res.status(404).json({ message: 'Cannot find disease id'});
       }
     })
     .catch(err => {
-      return res.status(500).json({err});
+      return res.status(500).json({err: err, message: 'Invalid Id'});
     });
 });
-
-
 
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on ${app.get('port')}`); // eslint-disable-line
 });
+
+module.exports = { app, database };
