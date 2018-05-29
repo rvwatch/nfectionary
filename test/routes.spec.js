@@ -78,7 +78,7 @@ describe('Api endpoints', () => {
     });
   });
 
-  describe('/api/v1/specific-disease/:id', () => {
+  describe('GET /api/v1/specific-disease/:id', () => {
     it('should return all of a specific disease', done => {
       chai
         .request(app)
@@ -120,7 +120,7 @@ describe('Api endpoints', () => {
     });
   });
 
-  describe('/api/v1/state-diseases/:id', () => {
+  describe('GET /api/v1/state-diseases/:id', () => {
     it('should return all of a specific states', done => {
       chai
         .request(app)
@@ -161,6 +161,79 @@ describe('Api endpoints', () => {
         });
     });
   });
+
+  describe('GET /api/v1/diseases', () => {
+    it('should return diseases', done => {
+      chai
+        .request(app)
+        .get('/api/v1/diseases')
+        .end((error, response) => {
+          response.should.be.json;
+          response.should.have.status(200);
+          response.body.should.be.an('array');
+          response.body[0].should.have.property('id');
+          response.body[0].should.have.property('treatment');
+          response.body[0].should.have.property('signs_symptoms');
+          response.body[0].should.have.property('preventative_measures');
+          response.body[0].should.have.property('testing_procedures');
+          response.body[0].should.have.property('images');
+          response.body[0].should.have.property('transmission');
+          response.body[0].should.have.property('summary');
+          done();
+        });
+    });
+  });
+
+  describe('GET /api/v1/diseases/:id', () => {
+    it('should return a specific disease', done => {
+      chai
+        .request(app)
+        .get('/api/v1/diseases/1')
+        .end((error, response) => {
+          response.should.be.json;
+          response.should.have.status(200);
+          response.body.should.be.an('object');
+          response.body.should.have.property('id');
+          response.body.should.have.property('treatment');
+          response.body.should.have.property('signs_symptoms');
+          response.body.should.have.property('preventative_measures');
+          response.body.should.have.property('testing_procedures');
+          response.body.should.have.property('images');
+          response.body.should.have.property('transmission');
+          response.body.should.have.property('summary');
+          done();
+        });
+    });
+
+    it('should return an error if state id does not exist', done => {
+      chai
+        .request(app)
+        .get('/api/v1/diseases/5')
+        .end((error, response) => {
+          response.should.be.json;
+          response.should.have.status(404);
+          response.body.should.have.property('message');
+          response.body.message.should.equal('Cannot find disease id');
+          done();
+        });
+    });
+
+    it('should return an error if id is invalid', done => {
+      chai
+        .request(app)
+        .get('/api/v1/diseases/hello')
+        .end((error, response) => {
+          response.should.be.json;
+          response.should.have.status(500);
+          response.body.should.have.property('message');
+          response.body.should.have.property('err');
+          response.body.message.should.equal('Invalid Id');
+          done();
+        });
+    });
+  });
+
+
 
 
 });

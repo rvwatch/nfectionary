@@ -84,11 +84,11 @@ app.get('/api/v1/diseases/:id', (req, res) => {
       if (disease.length) {
         return res.status(200).json(disease[0]);
       } else {
-        return res.status(404).json('Cannot find disease id');
+        return res.status(404).json({ message: 'Cannot find disease id'});
       }
     })
     .catch(err => {
-      return res.status(500).json({err});
+      return res.status(500).json({err: err, message: 'Invalid Id'});
     });
 });
 
