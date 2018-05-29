@@ -41,7 +41,6 @@ class HomeScreen extends Component {
         const response = await fetch('https://maps.googleapis.com/maps/api/geocode/json?address=' + latitude + ',' + longitude + '&key=' + apiKey)
         const location = await response.json()
         const { results } = location;
-        console.log(results);
         
         if (results[1]) {
 					for (var i = 0; i < results.length; i++) {

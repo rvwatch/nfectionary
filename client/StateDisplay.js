@@ -6,16 +6,37 @@ export default class StateDisplay extends Component {
   constructor(props){
     super(props);
     this.state = {
-      diseaseNames: [],
-      diseaseCount: []
+      buttonData: []
     }
   }
 
-  componentDidMount() {
-   this.getDiseaseNames();
-   this.getDiseaseCount();
+  async componentDidMount() {
    
+    const names = await this.getDiseaseNames();
+    const count = await this.getDiseaseCount();
+    const buttonData = this.getData(names, count)
   }
+
+  getData = (names, count) => {
+    
+    const buttonData = names.reduce((accu, name) => {
+      const newButton = count.filter( num => {
+        let newObject = {};
+        if(num.id === name.id){
+          newObject['disease'] = name.name;
+          newObject['count'] = num.count;
+        }
+        if(newObject.disease){
+          return accu.push(newObject)
+        }
+      })
+
+      return accu;
+    }, []);
+    this.setState({buttonData})
+    
+  }
+
 
   getDiseaseNames = async () => {
     try{
@@ -25,7 +46,7 @@ export default class StateDisplay extends Component {
       name: disease.name, 
       id: disease.id 
     }));
-    this.setState({ diseaseNames })
+    return diseaseNames
     }catch(err){
       this.setState({error: err.message})
     }
@@ -40,7 +61,7 @@ export default class StateDisplay extends Component {
       count: disease.case_count, 
       id: disease.diseases_id 
     }));
-    this.setState({diseaseCount})
+    return diseaseCount
     }catch(err){
       this.setState({error: err.message})
     }
@@ -48,12 +69,37 @@ export default class StateDisplay extends Component {
 
   render() {
     const state = this.props.navigation.getParam('state')
-    console.log(this.state);
     
+    const renderButton = this.state.buttonData.map(button => 
+      <TouchableOpacity 
+        style={styles.button} 
+        key={button.count}
+      >
+        <Text> {button.disease} </Text>
+        <Text> {button.count} </Text>
+      </TouchableOpacity>
+    )
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>{state}</Text>
+        {renderButton}
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
+    width: 100,
+    height: 50,
+    padding: 10
+  }
+});
