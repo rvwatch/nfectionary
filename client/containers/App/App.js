@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, Picker, Select, Button } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import ModalDropdown from 'react-native-modal-dropdown';
-import StateDisplay from './StateDisplay';
-import { apiKey } from './apiKey';
+import StateDisplay from '../StateDisplay/StateDisplay';
+import { apiKey } from '../../api/apiKey';
 
 
 class HomeScreen extends Component {
@@ -62,7 +62,7 @@ class HomeScreen extends Component {
     const { states } = this.state;
     return (
       <View style={styles.container}>
-        <Text>Welcome to NFectinoary</Text>
+        <Text>Welcome to NFectionary</Text>
         <Text>Select a state or use your location</Text>
         <TouchableOpacity 
           onPress={this.currentLocation}
