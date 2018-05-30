@@ -4,6 +4,7 @@ import { createStackNavigator } from 'react-navigation';
 import ModalDropdown from 'react-native-modal-dropdown';
 import StateDisplay from '../StateDisplay/StateDisplay';
 import { apiKey } from '../../api/apiKey';
+import { getStates } from '../../api/getStates';
 
 
 class HomeScreen extends Component {
@@ -18,21 +19,14 @@ class HomeScreen extends Component {
     }
   }
 
-  componentDidMount() {
-    this.callApi()
-      .then(states => this.setState({ states }))
-      .catch(err => console.log(err));
+  async componentDidMount() {
+    const states = await getStates();
+    this.setStatesData(states); 
   }
 
-  callApi = async () => {
-    try{
-    const response = await fetch('http://localhost:5000/api/v1/states');
-    const states = await response.json();
-    return states.map(state => state.name).sort();
-    }catch(err){
-      this.setState({error: err.message})
-    }
-  };
+  setStatesData(states) {
+    this.setState({states});
+  }
 
   currentLocation = async () => {
    const location = await navigator.geolocation.getCurrentPosition(
@@ -60,6 +54,7 @@ class HomeScreen extends Component {
 
   render() {
     const { states } = this.state;
+    const { navigation } = this.props;
     return (
       <View style={styles.container}>
         <Text>Welcome to NFectionary</Text>
@@ -71,7 +66,9 @@ class HomeScreen extends Component {
           accessibilityLabel="Use your current location"
           ><Text> Find Location </Text>
           </TouchableOpacity>
-          <ModalDropdown options={ states } onSelect={(event) => this.props.navigation.navigate('StateDisplay', {state: states[event], id: event})} />
+          <ModalDropdown 
+            options={ states } 
+            onSelect={(event) => navigation.navigate('StateDisplay', {state: states[event], id: event})} />
       </View>
     );
   }
