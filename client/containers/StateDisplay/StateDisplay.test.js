@@ -1,9 +1,9 @@
 import React from 'react';
-import DiseaseDisplay from './DiseaseDisplay';
+import StateDisplay from './StateDisplay';
 
 import renderer from 'react-test-renderer';
 
 it('renders correctly', () => {
-  const tree = renderer.create(<DiseaseDisplay />).toJSON();
+  const tree = renderer.create(<StateDisplay state={'Colorado'} id={6}/>).toJSON();
   expect(tree).toMatchSnapshot();
 });
