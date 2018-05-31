@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Image, Picker, Select, Button
 import { createStackNavigator } from 'react-navigation';
 import ModalDropdown from 'react-native-modal-dropdown';
 import StateDisplay from '../StateDisplay/StateDisplay';
+import DiseaseDisplay from '../DiseaseDisplay/DiseaseDisplay';
 import { apiKey } from '../../api/apiKey';
 import { getStates } from '../../api/getStates';
 
@@ -93,6 +94,7 @@ const RootStack = createStackNavigator(
   {
     Home: HomeScreen,
     StateDisplay: StateDisplay,
+    DiseaseDisplay: DiseaseDisplay
   },
   {
     initialRouteName: 'Home',
