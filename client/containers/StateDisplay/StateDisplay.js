@@ -29,16 +29,16 @@ export default class StateDisplay extends Component {
     const { buttonData } = this.state;
     const state = this.props.navigation.getParam('state');
     
-    const renderButton = buttonData.map(button => 
-      <TouchableOpacity 
-        style={styles.button} 
-        key={button.count}>
+    const renderButton = buttonData.map(button => (
+      <TouchableOpacity
+        style={styles.button}
+        key={button.count}
+        onPress={() => this.props.navigation.navigate('DiseaseDisplay', {disease_id: button.disease_id})}>
         <Text> {button.name} </Text>
         <Text> {button.count} </Text>
       </TouchableOpacity>
-    );
+    ));
     
-
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>{state}</Text>
