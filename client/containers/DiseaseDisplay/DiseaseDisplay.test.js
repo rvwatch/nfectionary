@@ -1,9 +1,11 @@
 import React from 'react';
 import DiseaseDisplay from './DiseaseDisplay';
-
+// import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
 
-it('renders correctly', () => {
-  const tree = renderer.create(<DiseaseDisplay />).toJSON();
-  expect(tree).toMatchSnapshot();
+describe('DiseaseDisplay', () => {
+  it('renders correctly', () => {
+    const tree = renderer.create(<diseaseDisplay />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
