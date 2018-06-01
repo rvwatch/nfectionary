@@ -9,7 +9,8 @@ export default class StateDisplay extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      buttonData: []
+      buttonData: [],
+      state: ''
     }
   }
 
@@ -22,13 +23,14 @@ export default class StateDisplay extends Component {
   }
 
   setButtonData(buttonData) {
-    this.setState({ buttonData });
+    const state = this.props.navigation.getParam('state');
+
+    this.setState({ buttonData, state });
   }
   
   render() {
-    const { buttonData } = this.state;
-    const state = this.props.navigation.getParam('state');
-    
+    const { buttonData, state } = this.state;
+
     const renderButton = buttonData.map(button => (
       <TouchableOpacity
         style={styles.button}

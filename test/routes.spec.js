@@ -32,6 +32,7 @@ describe('Api endpoints', () => {
           response.body[0].should.have.property('id');
           response.body[0].should.have.property('name');
           response.body[0].name.should.equal('Alabama');
+
           done();
         });
     });
