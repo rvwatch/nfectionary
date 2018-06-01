@@ -8,6 +8,6 @@ export const getDiseaseNames = async () => {
     }));
     return diseaseNames;
   } catch (err) {
-    throw new Error(err.message);
+    throw new Error(`Error fetching disease names: ${err.message}`);
   }
 };

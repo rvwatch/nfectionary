@@ -31,6 +31,7 @@ describe('Api endpoints', () => {
           response.body.should.be.an('array');
           response.body[0].should.have.property('id');
           response.body[0].should.have.property('name');
+          
           done();
         });
     });
@@ -232,8 +233,4 @@ describe('Api endpoints', () => {
         });
     });
   });
-
-
-
-
 });

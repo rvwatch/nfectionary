@@ -56,6 +56,7 @@ class HomeScreen extends Component {
   render() {
     const { states } = this.state;
     const { navigation } = this.props;
+
     return (
       <View style={styles.container}>
         <Text>Welcome to NFectionary</Text>
@@ -64,12 +65,12 @@ class HomeScreen extends Component {
           onPress={this.currentLocation}
           title="Current Location"
           style={styles.button}
-          accessibilityLabel="Use your current location"
-          ><Text> Find Location </Text>
-          </TouchableOpacity>
-          <ModalDropdown 
-            options={ states } 
-            onSelect={(event) => navigation.navigate('StateDisplay', {state: states[event], id: event})} />
+          accessibilityLabel="Use your current location">
+          <Text> Find Location </Text>
+        </TouchableOpacity>
+        <ModalDropdown 
+          options={ states } 
+          onSelect={(event) => navigation.navigate('StateDisplay', {state: states[event], id: event})} />
       </View>
     );
   }
