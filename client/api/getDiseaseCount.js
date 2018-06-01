@@ -8,6 +8,6 @@ export const getDiseaseCount = async (id) => {
     }));
     return diseaseCount
   } catch(err) {
-    throw new Error(err.message);
+    throw new Error(`Error fetching disease case count: ${err.message}`);
   }
 };
