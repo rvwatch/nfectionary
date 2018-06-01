@@ -86,14 +86,20 @@ export default class DiseaseDisplay extends Component {
     } = this.state.diseaseInfo;
 
     return (
-      <ScrollView>
+      <ScrollView contentContainerStyle={styles.container}>
         <VictoryChart
         resizeMode="contain" 
         style={styles.chart}
         theme={VictoryTheme.material}
         containerComponent={<VictoryZoomContainer zoomDomain={{x: [5, 15]}} allowZoom={false}/>}
       >
-          <VictoryBar data={data} x="state" y="cases" />
+          <VictoryBar
+          style={{ data: { fill: "#c43a31" } }}
+          alignment="start" 
+          barRatio={2.5}
+          data={data} 
+          x="state" 
+          y="cases" />
         </VictoryChart>
       <Text>{name}</Text>
       <Image resizeMode="contain" style={styles.image} source={{url: `${images}`}}></Image>
@@ -110,10 +116,8 @@ export default class DiseaseDisplay extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
+    padding: 10
   },
   chart: {
     position: 'relative',
