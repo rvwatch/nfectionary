@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, Picker, Select, Button } from 'react-native';
-import { createStackNavigator } from 'react-navigation';
 import { getDiseaseNames } from '../../api/getDiseaseNames';
 import { getDiseaseCount } from '../../api/getDiseaseCount';
 import { buttonCleaner } from '../../api/cleaners/buttonCleaner';
