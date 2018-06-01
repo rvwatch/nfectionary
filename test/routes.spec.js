@@ -31,7 +31,8 @@ describe('Api endpoints', () => {
           response.body.should.be.an('array');
           response.body[0].should.have.property('id');
           response.body[0].should.have.property('name');
-          
+          response.body[0].name.should.equal('Alabama');
+
           done();
         });
     });
@@ -80,7 +81,7 @@ describe('Api endpoints', () => {
   });
 
   describe('GET /api/v1/specific-disease/:id', () => {
-    it('should return all of a specific disease', done => {
+    it('should return all case counts at that specific disease', done => {
       chai
         .request(app)
         .get('/api/v1/specific-disease/1')
@@ -89,6 +90,8 @@ describe('Api endpoints', () => {
           response.should.have.status(200);
           response.body.should.be.an('array');
           response.body[0].should.have.property('id');
+          response.body[0].should.have.property('diseases_id');
+          response.body[0].should.have.property('states_id');
           done();
         });
     });
@@ -131,6 +134,9 @@ describe('Api endpoints', () => {
           response.should.have.status(200);
           response.body.should.be.an('array');
           response.body[0].should.have.property('id');
+          response.body[0].should.have.property('diseases_id');
+          response.body[0].should.have.property('states_id');
+          response.body[0].should.have.property('case_count');
           done();
         });
     });
@@ -173,6 +179,9 @@ describe('Api endpoints', () => {
           response.should.have.status(200);
           response.body.should.be.an('array');
           response.body[0].should.have.property('id');
+          response.body[0].id.should.equal(1);
+          response.body[0].should.have.property('name');
+          response.body[0].name.should.equal('Influenza');
           response.body[0].should.have.property('treatment');
           response.body[0].should.have.property('signs_symptoms');
           response.body[0].should.have.property('preventative_measures');
@@ -195,6 +204,8 @@ describe('Api endpoints', () => {
           response.should.have.status(200);
           response.body.should.be.an('object');
           response.body.should.have.property('id');
+          response.body.should.have.property('name');
+          response.body.name.should.equal('Influenza');
           response.body.should.have.property('treatment');
           response.body.should.have.property('signs_symptoms');
           response.body.should.have.property('preventative_measures');
