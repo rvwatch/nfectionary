@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, Picker, Select, Button } from 'react-native';
+import ModalDropdown from 'react-native-modal-dropdown';
 import { getDiseaseNames } from '../../api/getDiseaseNames';
 import { getDiseaseCount } from '../../api/getDiseaseCount';
 import { buttonCleaner } from '../../api/cleaners/buttonCleaner';
@@ -9,26 +10,33 @@ export default class StateDisplay extends Component {
     super(props);
     this.state = {
       buttonData: [],
-      state: ''
+      state: '',
+      statesList: []
     }
   }
 
   async componentDidMount() {
-    const id = Number(this.props.navigation.getParam('id')) + 1;
-    const names = await getDiseaseNames();
-    const count = await getDiseaseCount(id);
-    const buttonData = buttonCleaner(names, count);
-    this.setButtonData(buttonData);
+    const id = this.props.navigation.getParam('id');
+    await this.fetchAllData(id);
   }
 
-  setButtonData(buttonData) {
-    const state = this.props.navigation.getParam('state');
+  async fetchAllData(id) {
+    const diseaseId = Number(id) + 1;
+    const names = await getDiseaseNames();
+    const count = await getDiseaseCount(diseaseId);
+    const buttonData = buttonCleaner(names, count);
+    this.setButtonData(buttonData, id);
+  }
 
-    this.setState({ buttonData, state });
+  setButtonData(buttonData, id) {
+    const statesList = this.props.navigation.getParam('statesList');
+    const state = statesList[id]
+    
+    this.setState({ buttonData, state, statesList });
   }
   
   render() {
-    const { buttonData, state } = this.state;
+    const { buttonData, state, statesList } = this.state;
 
     const renderButton = buttonData.map(button => (
       <TouchableOpacity
@@ -41,8 +49,12 @@ export default class StateDisplay extends Component {
     ));
     
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>{state}</Text>
+      <View style={styles.container}>
+      <ModalDropdown 
+          defaultValue={state}
+          options={statesList} 
+          onSelect={(event) => this.fetchAllData(event)} 
+          />
         {renderButton}
       </View>
     );
