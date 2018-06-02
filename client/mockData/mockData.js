@@ -81,3 +81,21 @@ export const diseaseObject =   {
     "Influenza (flu) is a contagious respiratory illness caused by influenza viruses. It can cause mild to severe illness. Serious outcomes of flu infection can result in hospitalization or death. Some people, such as older people, young children, and people with certain health conditions, are at high risk of serious flu complications."
   }
 
+export const stateArray = [
+  {
+    "id": 1,
+    "name": "Alabama"
+  },
+  {
+    "id": 2,
+    "name": "Alaska"
+  },
+  {
+    "id": 3,
+    "name": "Arizona"
+  },
+  {
+    "id": 4,
+    "name": "Arkansas"
+  }
+]

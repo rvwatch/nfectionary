@@ -1,6 +1,6 @@
 import React from 'react';
 import StateDisplay from './StateDisplay';
-// import { shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
 
 describe ('StateDisplay', () => {

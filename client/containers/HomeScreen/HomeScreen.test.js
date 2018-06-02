@@ -1,6 +1,5 @@
 import React from 'react';
 import HomeScreen from './HomeScreen';
-// import { configure, } from 'enzyme';
 import Enzyme from 'enzyme';
 import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
@@ -23,17 +22,4 @@ describe('HomeScreen', () => {
     const wrapper = Enzyme.shallow(<HomeScreen />);
     expect(wrapper.state().error).toEqual(null);
   });
-
-  // it('should have a default state', () => {
-  //   const wrapper = Enzyme.shallow(<App />);
-  //   console.log('wrapper', wrapper.instance);
-
-  //   expect(wrapper.instance.state).toEqual({
-  //     response: '',
-  //     latitude: null,
-  //     longitude: null,
-  //     states: [],
-  //     error: null
-  //   });
-  // })
 });
