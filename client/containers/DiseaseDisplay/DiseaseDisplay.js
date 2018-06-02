@@ -42,9 +42,10 @@ export default class DiseaseDisplay extends Component {
       transmission,
       summary 
     } = this.state.diseaseInfo;
-
+    
     return (
       <ScrollView contentContainerStyle={styles.container}>
+      { this.state.graphData.length > 0 ? 
         <VictoryChart
         resizeMode="contain" 
         style={styles.chart}
@@ -57,8 +58,10 @@ export default class DiseaseDisplay extends Component {
           barRatio={2.5}
           data={this.state.graphData} 
           x="state" 
-          y="cases" />
-        </VictoryChart>
+          y="count" />
+        </VictoryChart> : 
+        <Text>Loading Chart Data</Text>
+      }
       <Text>{name}</Text>
       <Image resizeMode="contain" style={styles.image} source={{url: `${images}`}}></Image>
       <Text>{summary}</Text>

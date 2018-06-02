@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, Picker, Select, Button } from 'react-native';
+import ModalDropdown from 'react-native-modal-dropdown';
 import { getDiseaseNames } from '../../api/getDiseaseNames';
 import { getDiseaseCount } from '../../api/getDiseaseCount';
 import { buttonCleaner } from '../../api/cleaners/buttonCleaner';
@@ -23,7 +24,9 @@ export default class StateDisplay extends Component {
 
   setButtonData(buttonData) {
     const state = this.props.navigation.getParam('state');
-
+    const statesList = this.props.navigation;
+    console.log(statesList);
+    
     this.setState({ buttonData, state });
   }
   
@@ -39,9 +42,14 @@ export default class StateDisplay extends Component {
         <Text> {button.count} </Text>
       </TouchableOpacity>
     ));
+    //console.log(this.props.navigation.getParam('statesList'));
     
     return (
       <View style={styles.container}>
+      <ModalDropdown 
+          options={ this.props.navigation.getParam('statesList') } 
+          // onSelect={(event) => navigation.navigate('StateDisplay', {state: states[event], id: event})} 
+          />
         <Text>{state}</Text>
         {renderButton}
       </View>

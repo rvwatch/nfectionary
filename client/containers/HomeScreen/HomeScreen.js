@@ -65,11 +65,11 @@ export default class HomeScreen extends Component {
           title="Current Location"
           style={styles.button}
           accessibilityLabel="Use your current location">
-          <Text> Find Location </Text>
+          <Text> Get Started </Text>
         </TouchableOpacity>
         <ModalDropdown 
           options={ states } 
-          onSelect={(event) => navigation.navigate('StateDisplay', {state: states[event], id: event})} />
+          onSelect={(event) => navigation.navigate('StateDisplay', {state: states[event], id: event, statesList: states})} />
       </View>
     );
   }
