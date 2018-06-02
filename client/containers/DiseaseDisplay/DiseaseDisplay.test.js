@@ -1,6 +1,6 @@
 import React from 'react';
 import DiseaseDisplay from './DiseaseDisplay';
-// import { shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
 
 describe('DiseaseDisplay', () => {

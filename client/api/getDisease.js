@@ -6,6 +6,6 @@ export const getDisease = async id => {
     const disease = await response.json();
     return disease;
   } catch (err) {
-    throw new Error(err.message);
+    throw new Error(`Error fetching disease information: ${err.message}`);
   }
 };

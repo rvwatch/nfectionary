@@ -1,5 +1,17 @@
+export const diseaseNames = [
+  {
+    'id': 1,
+    "name": "Influenza"
+  },
+  {
+    "id": 2,
+    "name": "Salmonella"
+  }
+]
+
 export const diseaseArrayInfo = [
   {
+    'id': 1,
     "name": "Influenza",
     "treatment":
       "Bedrest and plenty of fluids. In some cases, doctors may prescribe an antiviral medication, such as Oseltamivir or Zanamivir.",
@@ -17,6 +29,7 @@ export const diseaseArrayInfo = [
       "Influenza (flu) is a contagious respiratory illness caused by influenza viruses. It can cause mild to severe illness. Serious outcomes of flu infection can result in hospitalization or death. Some people, such as older people, young children, and people with certain health conditions, are at high risk of serious flu complications."
   },
   {
+    "id": 2,
     "name": "Salmonella",
     "treatment":
       "Antibiotics. If your doctor suspects that salmonella bacteria have entered your bloodstream, or if you have a severe case or a compromised immune system, he or she may prescribe antibiotics to kill the bacteria. Antibiotics are not of benefit in uncomplicated cases. In fact, antibiotics may prolong the period in which you carry the bacteria and can infect others, and they can increase your risk of relapse.",
@@ -38,13 +51,13 @@ export const diseaseArrayInfo = [
 export const diseaseCount = [
   {
     id: 1,
-    disease_id: 1,
+    diseases_id: 1,
     state_id: 1,
     case_count: 40
   }, 
   {
     id: 2,
-    disease_id: 2,
+    diseases_id: 2,
     state_id: 2,
     case_count: 20
   }
@@ -68,3 +81,21 @@ export const diseaseObject =   {
     "Influenza (flu) is a contagious respiratory illness caused by influenza viruses. It can cause mild to severe illness. Serious outcomes of flu infection can result in hospitalization or death. Some people, such as older people, young children, and people with certain health conditions, are at high risk of serious flu complications."
   }
 
+export const stateArray = [
+  {
+    "id": 1,
+    "name": "Alabama"
+  },
+  {
+    "id": 2,
+    "name": "Alaska"
+  },
+  {
+    "id": 3,
+    "name": "Arizona"
+  },
+  {
+    "id": 4,
+    "name": "Arkansas"
+  }
+]
