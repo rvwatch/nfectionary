@@ -11,7 +11,8 @@ export default class StateDisplay extends Component {
     this.state = {
       buttonData: [],
       state: '',
-      statesList: []
+      statesList: [],
+      diseaseList: []
     }
   }
 
@@ -22,27 +23,27 @@ export default class StateDisplay extends Component {
 
   async fetchAllData(id) {
     const diseaseId = Number(id) + 1;
-    const names = await getDiseaseNames();
+    const diseaseList = await getDiseaseNames();
     const count = await getDiseaseCount(diseaseId);
-    const buttonData = buttonCleaner(names, count);
-    this.setButtonData(buttonData, id);
+    const buttonData = buttonCleaner(diseaseList, count);
+    this.setButtonData(buttonData, id, diseaseList);
   }
 
-  setButtonData(buttonData, id) {
+  setButtonData(buttonData, id, diseaseList) {
     const statesList = this.props.navigation.getParam('statesList');
     const state = statesList[id]
     
-    this.setState({ buttonData, state, statesList });
+    this.setState({ buttonData, state, statesList, diseaseList });
   }
   
   render() {
-    const { buttonData, state, statesList } = this.state;
+    const { buttonData, state, statesList, diseaseList } = this.state;
 
     const renderButton = buttonData.map(button => (
       <TouchableOpacity
         style={styles.button}
         key={button.count}
-        onPress={() => this.props.navigation.navigate('DiseaseDisplay', {disease_id: button.disease_id})}>
+        onPress={() => this.props.navigation.navigate('DiseaseDisplay', {disease_id: button.disease_id, diseaseList })}>
         <Text> {button.name} </Text>
         <Text> {button.count} </Text>
       </TouchableOpacity>

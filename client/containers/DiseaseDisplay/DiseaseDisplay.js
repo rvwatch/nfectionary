@@ -5,30 +5,37 @@ import {graphCleaner, shortNames} from '../../api/cleaners/graphCleaner';
 import { VictoryBar, VictoryChart, VictoryTheme, VictoryZoomContainer, VictoryLine } from "victory-native";
 import { getGraphCounts } from '../../api/getGraphCounts';
 import { getStates } from '../../api/getStates';
+import ModalDropdown from 'react-native-modal-dropdown';
 
 export default class DiseaseDisplay extends Component {
   constructor(props) {
     super(props);
     this.state = {
       diseaseInfo: {},
-      graphData: []
+      graphData: [],
+      diseaseList: []
     }
   }
 
   async componentDidMount() {
-    const id = this.props.navigation.getParam('disease_id')
-   
-    const disease = await getDisease(id);
-    const statesList = await getStates();
-    const rawData = await getGraphCounts(id)
-    
-    const graphData = graphCleaner(rawData, shortNames);
-    
-    this.setDiseaseInfo(disease, graphData);
+    const id = this.props.navigation.getParam('disease_id');
+
+    await this.fetchDiseaseData(Number(id) - 1);
   }
 
-  setDiseaseInfo(diseaseInfo, graphData) {
-    this.setState({ diseaseInfo, graphData });
+  async fetchDiseaseData(id) {
+    const diseaseId = Number(id) + 1;
+    const disease = await getDisease(diseaseId);
+    const statesList = await getStates();
+    const rawData = await getGraphCounts(diseaseId);
+    const graphData = graphCleaner(rawData, shortNames);
+    const diseaseList = this.props.navigation.getParam('diseaseList').map(disease => disease.name);
+    
+    this.setDiseaseInfo(disease, graphData, diseaseList);
+  }
+
+  setDiseaseInfo(diseaseInfo, graphData, diseaseList) {
+    this.setState({ diseaseInfo, graphData, diseaseList });
   }
 
   render() {
@@ -41,6 +48,8 @@ export default class DiseaseDisplay extends Component {
       transmission,
       summary 
     } = this.state.diseaseInfo;
+
+    const { diseaseList } = this.state;
     
     return (
       <ScrollView contentContainerStyle={styles.container}>
@@ -61,6 +70,11 @@ export default class DiseaseDisplay extends Component {
         </VictoryChart> : 
         <Text>Loading Chart Data</Text>
       }
+      <ModalDropdown 
+          defaultValue={name}
+          options={diseaseList} 
+          onSelect={(event) => this.fetchDiseaseData(event)} 
+          />
       <Text>{name}</Text>
       <Image resizeMode="contain" style={styles.image} source={{url: `${images}`}}></Image>
       <Text>{summary}</Text>
