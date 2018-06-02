@@ -11,12 +11,57 @@ exports[`StateDisplay renders correctly 1`] = `
     }
   }
 >
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
+  <View
+    animated={true}
+    defaultIndex={-1}
+    defaultValue=""
+    disabled={false}
+    keyboardShouldPersistTaps="never"
+    onSelect={[Function]}
+    options={Array []}
+    scrollEnabled={true}
+    showsVerticalScrollIndicator={true}
   >
-    
-  </Text>
+    <View
+      accessible={true}
+      isTVSelectable={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "fontSize": 12,
+              },
+              undefined,
+            ]
+          }
+        >
+          
+        </Text>
+      </View>
+    </View>
+  </View>
 </View>
 `;

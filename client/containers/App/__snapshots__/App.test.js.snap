@@ -121,13 +121,13 @@ exports[`App renders correctly 1`] = `
               allowFontScaling={true}
               ellipsizeMode="tail"
             >
-               Find Location 
+               Get Started 
             </Text>
           </View>
           <View
             animated={true}
             defaultIndex={-1}
-            defaultValue="Please select..."
+            defaultValue="Select State"
             disabled={false}
             keyboardShouldPersistTaps="never"
             onSelect={[Function]}
@@ -171,7 +171,7 @@ exports[`App renders correctly 1`] = `
                     ]
                   }
                 >
-                  Please select...
+                  Select State
                 </Text>
               </View>
             </View>
