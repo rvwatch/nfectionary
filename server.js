@@ -40,9 +40,11 @@ app.get('/api/v1/states/:state_id/diseases/:disease_id', (req, res) => {
 });
 
 app.get('/api/v1/specific-disease/:id', (req, res) => {
+  
   database('state_diseases').where('state_diseases.diseases_id', req.params.id).select()
     .then(disease => {
       if (disease.length) {
+        
         return res.status(200).json(disease);
       } else {
         return res.status(404).json({ message: 'Cannot find disease id' });

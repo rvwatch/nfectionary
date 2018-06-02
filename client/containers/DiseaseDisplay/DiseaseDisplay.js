@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, Picker, Select, Button, ScrollView } from 'react-native';
 import { getDisease } from '../../api/getDisease';
 import { VictoryBar, VictoryChart, VictoryTheme, VictoryZoomContainer, VictoryLine } from "victory-native";
+import { getGraphCounts } from '../../api/getGraphCounts';
+import { getStates } from '../../api/getStates';
+
 
   const data = [
   {state : 'AL', cases: 20},
@@ -60,18 +63,25 @@ export default class DiseaseDisplay extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      diseaseInfo: {}
+      diseaseInfo: {},
+      graphData: []
     }
   }
 
   async componentDidMount() {
     const id = this.props.navigation.getParam('disease_id')
+   
     const disease = await getDisease(id);
-    this.setDiseaseInfo(disease);
+    const statesList = await getStates();
+    const graphData = await getGraphCounts(id)
+    
+    console.log(statesList);
+    
+    this.setDiseaseInfo(disease, graphData);
   }
 
-  setDiseaseInfo(diseaseInfo) {
-    this.setState({ diseaseInfo });
+  setDiseaseInfo(diseaseInfo, graphData) {
+    this.setState({ diseaseInfo, graphData });
   }
 
   render() {
@@ -84,6 +94,7 @@ export default class DiseaseDisplay extends Component {
       transmission,
       summary 
     } = this.state.diseaseInfo;
+    
 
     return (
       <ScrollView contentContainerStyle={styles.container}>
