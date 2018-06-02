@@ -21,7 +21,6 @@ export default class DiseaseDisplay extends Component {
     const disease = await getDisease(id);
     const statesList = await getStates();
     const rawData = await getGraphCounts(id)
-    // console.log(rawData);
     
     const graphData = graphCleaner(rawData, shortNames);
     

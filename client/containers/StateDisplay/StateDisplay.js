@@ -10,28 +10,33 @@ export default class StateDisplay extends Component {
     super(props);
     this.state = {
       buttonData: [],
-      state: ''
+      state: '',
+      statesList: []
     }
   }
 
   async componentDidMount() {
-    const id = Number(this.props.navigation.getParam('id')) + 1;
-    const names = await getDiseaseNames();
-    const count = await getDiseaseCount(id);
-    const buttonData = buttonCleaner(names, count);
-    this.setButtonData(buttonData);
+    const id = this.props.navigation.getParam('id');
+    await this.fetchAllData(id);
   }
 
-  setButtonData(buttonData) {
-    const state = this.props.navigation.getParam('state');
-    const statesList = this.props.navigation;
-    console.log(statesList);
+  async fetchAllData(id) {
+    const diseaseId = Number(id) + 1;
+    const names = await getDiseaseNames();
+    const count = await getDiseaseCount(diseaseId);
+    const buttonData = buttonCleaner(names, count);
+    this.setButtonData(buttonData, id);
+  }
+
+  setButtonData(buttonData, id) {
+    const statesList = this.props.navigation.getParam('statesList');
+    const state = statesList[id]
     
-    this.setState({ buttonData, state });
+    this.setState({ buttonData, state, statesList });
   }
   
   render() {
-    const { buttonData, state } = this.state;
+    const { buttonData, state, statesList } = this.state;
 
     const renderButton = buttonData.map(button => (
       <TouchableOpacity
@@ -42,15 +47,14 @@ export default class StateDisplay extends Component {
         <Text> {button.count} </Text>
       </TouchableOpacity>
     ));
-    //console.log(this.props.navigation.getParam('statesList'));
     
     return (
       <View style={styles.container}>
       <ModalDropdown 
-          options={ this.props.navigation.getParam('statesList') } 
-          // onSelect={(event) => navigation.navigate('StateDisplay', {state: states[event], id: event})} 
+          defaultValue={state}
+          options={statesList} 
+          onSelect={(event) => this.fetchAllData(event)} 
           />
-        <Text>{state}</Text>
         {renderButton}
       </View>
     );

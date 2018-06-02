@@ -29,7 +29,8 @@ export default class HomeScreen extends Component {
   }
 
   currentLocation = async () => {
-   const location = await navigator.geolocation.getCurrentPosition(
+    const { states } = this.state
+    const location = await navigator.geolocation.getCurrentPosition(
       async (position) => {
         const {latitude, longitude} = position.coords;
         const response = await fetch('https://maps.googleapis.com/maps/api/geocode/json?address=' + latitude + ',' + longitude + '&key=' + apiKey)
@@ -41,7 +42,7 @@ export default class HomeScreen extends Component {
 						if (results[i].types[0] === "political" || results[i].types[0] === "locality") {
               const state = results[i].address_components[2].long_name;
               const id = this.state.states.indexOf(state);
-              this.props.navigation.navigate('StateDisplay', { state, id });
+              this.props.navigation.navigate('StateDisplay', { state, id, statesList: states });
               return;
 						}
 					}
@@ -67,8 +68,9 @@ export default class HomeScreen extends Component {
           accessibilityLabel="Use your current location">
           <Text> Get Started </Text>
         </TouchableOpacity>
-        <ModalDropdown 
-          options={ states } 
+        <ModalDropdown
+          defaultValue={'Select State'} 
+          options={states} 
           onSelect={(event) => navigation.navigate('StateDisplay', {state: states[event], id: event, statesList: states})} />
       </View>
     );
