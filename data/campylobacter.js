@@ -23,7 +23,7 @@ nightmare
       return {
         state_id: stateId++,
         case_count: count,
-        disease_id: 6
+        disease_id: 8
       };
     });
 

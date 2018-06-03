@@ -4,6 +4,7 @@ import ModalDropdown from 'react-native-modal-dropdown';
 import { getDiseaseNames } from '../../api/getDiseaseNames';
 import { getDiseaseCount } from '../../api/getDiseaseCount';
 import { buttonCleaner } from '../../api/cleaners/buttonCleaner';
+import { diseaseSort } from '../../api/cleaners/sortDiseaseData';
 
 export default class StateDisplay extends Component {
   constructor(props) {
@@ -24,8 +25,13 @@ export default class StateDisplay extends Component {
   async fetchAllData(id) {
     const diseaseId = Number(id) + 1;
     const diseaseList = await getDiseaseNames();
+    diseaseList.sort(diseaseSort);
+    console.log(diseaseList);
+    
+    
     const count = await getDiseaseCount(diseaseId);
     const buttonData = buttonCleaner(diseaseList, count);
+    
     this.setButtonData(buttonData, id, diseaseList);
   }
 
@@ -65,7 +71,7 @@ export default class StateDisplay extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#3E79CA',
     alignItems: 'center',
     justifyContent: 'center',
   },

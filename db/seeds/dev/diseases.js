@@ -43,49 +43,70 @@ exports.seed = (knex, Promise) => {
 
         diseasePromises.push(createIllness(knex, flu, fluId));
       });
-
+      return Promise.all(diseasePromises);
+    })
+    .then(() => {
+      const diseasePromises = [];
       salmonella.forEach(bacteria => {
         let bacteriaId = bacteria.disease_id;
 
         diseasePromises.push(createIllness(knex, bacteria, bacteriaId));
       });
-
+      return Promise.all(diseasePromises);
+    })
+    .then(() => {
+      const diseasePromises = [];
       eColi.forEach(bacteria => {
         let bacteriaId = bacteria.disease_id;
 
         diseasePromises.push(createIllness(knex, bacteria, bacteriaId));
       });
-
+      return Promise.all(diseasePromises);
+    })
+    .then(() => {
+      const diseasePromises = [];
       legionella.forEach(bacteria => {
         let bacteriaId = bacteria.disease_id;
 
         diseasePromises.push(createIllness(knex, bacteria, bacteriaId));
       });
-
-      campylobacter.forEach(bacteria => {
-        let bacteriaId = bacteria.disease_id;
-
-        diseasePromises.push(createIllness(knex, bacteria, bacteriaId));
-      });
-
+      return Promise.all(diseasePromises);
+    })
+    .then(() => {
+      const diseasePromises = [];
       giardia.forEach(parasite => {
         let parasiteId = parasite.disease_id;
 
         diseasePromises.push(createIllness(knex, parasite, parasiteId));
       });
+      return Promise.all(diseasePromises);
+    })
+    .then(() => {
+      const diseasePromises = [];
+      campylobacter.forEach(bacteria => {
+        let bacteriaId = bacteria.disease_id;
 
+        diseasePromises.push(createIllness(knex, bacteria, bacteriaId));
+      });
+      return Promise.all(diseasePromises);
+    })
+    .then(() => {
+      const diseasePromises = [];
       mumps.forEach(virus => {
         let virusId = virus.disease_id;
 
         diseasePromises.push(createIllness(knex, virus, virusId));
       });
-      
+      return Promise.all(diseasePromises);
+    })
+    .then(() => {
+      const diseasePromises = [];
       pertussis.forEach(bacteria => {
         let bacteriaId = bacteria.disease_id;
 
         diseasePromises.push(createIllness(knex, bacteria, bacteriaId));
-      }); 
 
+      }); 
       return Promise.all(diseasePromises);
     })
     .catch(error => {
