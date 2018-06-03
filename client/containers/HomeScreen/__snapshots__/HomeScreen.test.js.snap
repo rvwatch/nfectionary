@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HomeScreen renders correctly 1`] = `
-<View
+exports[`HomeScreen should match the snapshot 1`] = `
+<Component
   style={
     Object {
       "alignItems": "center",
@@ -25,24 +25,18 @@ exports[`HomeScreen renders correctly 1`] = `
   >
     Select a state or use your location
   </Text>
-  <View
+  <TouchableOpacity
     accessibilityLabel="Use your current location"
-    accessible={true}
-    isTVSelectable={true}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
+    activeOpacity={0.2}
+    onPress={[Function]}
     style={
       Object {
         "alignItems": "center",
         "backgroundColor": "#DDDDDD",
-        "opacity": 1,
         "padding": 10,
       }
     }
+    title="Current Location"
   >
     <Text
       accessible={true}
@@ -51,8 +45,8 @@ exports[`HomeScreen renders correctly 1`] = `
     >
        Get Started 
     </Text>
-  </View>
-  <View
+  </TouchableOpacity>
+  <ModalDropdown
     animated={true}
     defaultIndex={-1}
     defaultValue="Select State"
@@ -62,47 +56,6 @@ exports[`HomeScreen renders correctly 1`] = `
     options={Array []}
     scrollEnabled={true}
     showsVerticalScrollIndicator={true}
-  >
-    <View
-      accessible={true}
-      isTVSelectable={true}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "opacity": 1,
-        }
-      }
-    >
-      <View
-        style={
-          Object {
-            "justifyContent": "center",
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "fontSize": 12,
-              },
-              undefined,
-            ]
-          }
-        >
-          Select State
-        </Text>
-      </View>
-    </View>
-  </View>
-</View>
+  />
+</Component>
 `;
