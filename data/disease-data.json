@@ -64,5 +64,73 @@
       "Legionella is a type of bacterium found naturally in freshwater environments, like lakes and streams. It can become a health concern when it grows and spreads in human-made building water systems like: \tshower heads and sink faucets, cooling systems, hot tubs, drains, decorative fountains, water features, hot water tanks, heaters, plumbing systems.",
     "summary":
       "Legionnaires’ disease is a serious type of pneumonia (lung infection) caused by Legionella bacteria. Legionella can also cause a milder illness called Pontiac fever. People can get sick when they breathe in mist or accidentally swallow water into the lungs containing Legionella. Most people exposed to Legionella do not get sick. However, people 50 years or older, current or former smokers, and people with a weakened immune system or chronic disease are at increased risk."
+  },
+  {
+    "name": "Campylobacter",
+    "treatment":
+      "Most people with Campylobacter infection recover without specific treatment. Patients should drink extra fluids as long as diarrhea lasts. Antibiotics are needed only for patients who are very ill or at high risk for severe disease, such as people with severely weakened immune systems, such as people with the blood disorders thalassemia and hypogammaglobulinemia, AIDS, or people receiving chemotherapy.",
+    "signs_symptoms":
+      "People with Campylobacter infection usually have diarrhea (often bloody), fever, and abdominal cramps. The diarrhea may be accompanied by nausea and vomiting. These symptoms usually start within two to five days after exposure and last about a week. Some infected people do not have any symptoms. In people with weakened immune systems, such as people with the blood disorders thalassemia and hypogammaglobulinemia, AIDS, or people receiving some kinds of chemotherapy, Campylobacteroccasionally spreads to the bloodstream and causes a life-threatening infection.",
+    "preventative_measures":
+      "Pasteurization of milk, washing or scrubbing of fruits and vegetables, and disinfection of drinking water helps prevent illness.",
+    "testing_procedures":
+      "Campylobacter infection is diagnosed when a laboratory test detects Campylobacter bacteria in stool, body tissue, or fluids. The test could be a culture that isolates the bacteria or a rapid diagnostic test that detects genetic material of the bacteria.",
+    "images":
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKeU2CpeVwRS5p7y5dxr8oTSAzy2_9uSvdtSM0K54TfgWjpmTf",
+    "transmission":
+      "Most Campylobacter  infections are associated with eating raw or undercooked poultry or from contamination of other foods by these items. People can get infected when a cutting board that has been used to cut and prepare raw chicken isn’t washed before it is used to prepare foods that are served raw or lightly cooked, such as salad or fruit. People also can get infected through contact with the feces of dogs or cats. Campylobacter does not usually spread from one person to another. Milk can become contaminated when a cow has a Campylobacter infection in her udder or when milk is contaminated with manure. Other foods, such as fruits and vegetables, can be can become contaminated through contact with soil containing feces from cows, birds, or other animals. Animal feces can also contaminate lakes and streams.",
+    "summary":
+      "Campylobacter infection, or campylobacteriosis, is an infectious disease caused by Campylobacter bacteria. It is one of the most common causes of diarrheal illness in the United States. The Foodborne Diseases Active Surveillance Network (FoodNet) indicates that about 14 cases are diagnosed each year for every 100,000 people. Many more cases go undiagnosed or unreported. CDC estimates Campylobacter infection affects more than 1.3 million people every year. Most cases are not part of recognized outbreaks, and more cases occur in summer than in winter."
+  },
+  {
+    "name": "Giardia",
+    "treatment":
+      "Several drugs can be used to treat Giardia infection. Effective treatments include metronidazole, tinidazole, and nitazoxanide. Alternatives to these medications include paromomycin, quinacrine, and furazolidone . Some of these drugs may not be routinely available in the United States.\nDifferent factors may shape how effective a drug regimen will be, including medical history, nutritional status, and condition of the immune system. Therefore, it is important to discuss treatment options with a healthcare provider.",
+    "signs_symptoms":
+      "Giardiasis is the most frequently diagnosed intestinal parasitic disease in the United States and among travelers with chronic diarrhea. Signs and symptoms may vary and can last for 1 to 2 weeks or longer . In some cases, people infected with Giardia have no symptoms.\nAcute symptoms include: diarrhea, gas, greasy stools that tend to float, stomach or abdominal cramps, upset stomach or nausea/vomiting, dehydration (loss of fluids).\nOther, less common symptoms include itchy skin, hives, and swelling of the eye and joints. Sometimes, the symptoms of giardiasis might seem to resolve, only to come back again after several days or weeks. Giardiasis can cause weight loss and failure to absorb fat, lactose, vitamin A and vitamin B12.\nIn children, severe giardiasis might delay physical and mental growth, slow development, and cause malnutrition.",
+    "preventative_measures":
+      "Practice good hygiene, avoid water (drinking or recreational) that may be contaminated, avoid eating food that may be contaminated.",
+    "testing_procedures":
+      "Because Giardia cysts can be excreted intermittently, multiple stool collections (i.e., three stool specimens collected on separate days) increase test sensitivity. The use of concentration methods and trichrome staining might not be sufficient to identify Giardia because variability in the concentration of organisms in the stool can make this infection difficult to diagnose. For this reason, fecal immunoassays that are more sensitive and specific should be used.\nRapid immune-chromatographic cartridge assays also are available but should not take the place of routine ova and parasite examination. Only molecular testing (e.g., polymerase chain reaction) can be used to identify the subtypes of Giardia.",
+    "images":
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaMdtLo48ok1-v3cidsgXwZ_I6d27aDOkibHBuNTw5WbtAXKH8GA",
+    "transmission":
+      "While the parasite can be spread in different ways, water (drinking water and recreational water) is the most common mode of transmission.",
+    "summary":
+      "Giardiasis is a diarrheal disease caused by the microscopic parasite Giardia. A parasite is an organism that feeds off of another to survive. Once a person or animal (for example, cats, dogs, cattle, deer, and beavers) has been infected with Giardia, the parasite lives in the intestines and is passed in feces (poop). Once outside the body, Giardia can sometimes survive for weeks or months. Giardia can be found within every region of the U.S. and around the world."
+  },
+  {
+    "name": "Mumps",
+    "treatment":
+      "Mumps can be prevented with MMR vaccine. This protects against three diseases: measles, mumps, and rubella. CDC recommends children get two doses of MMR vaccine, starting with the first dose at 12 through 15 months of age, and the second dose at 4 through 6 years of age. Teens and adults also should also be up to date on their MMR vaccination. Before the U.S. mumps vaccination program started in 1967, mumps was a universal disease of childhood. Since the pre-vaccine era, there has been a more than 99% decrease in mumps cases in the United States. Mumps outbreaks can still occur in highly vaccinated U.S. communities, particularly in close-contact settings such as schools, colleges, and camps. However, high vaccination coverage helps to limit the size, duration, and spread of mumps outbreaks.",
+    "signs_symptoms":
+      "Mumps is best known for the puffy cheeks and swollen jaw that it causes. This is a result of swollen salivary glands.\nThe most common symptoms include: fever, headache, muscle aches, tiredness, loss of appetite, swollen and tender salivary glands under the ears on one or both sides (parotitis).\nSymptoms typically appear 16-18 days after infection, but this period can range from 12-25 days after infection.\nSome people who get mumps have very mild or no symptoms, and often they do not know they have the disease.\nMost people with mumps recover completely in a few weeks.",
+    "preventative_measures":
+      "Stay away from those coughing or sneezing and practice good hand hygiene.",
+    "testing_procedures":
+      "Standard serologic assays that detect mumps IgM are commercially available in both EIA and IFA formats. Viral detection methods include standard methods of culturing virus in appropriate cell lines and techniques, such as real time RT-PCR to detect mumps viral RNA. RT-PCR is available at many state public health laboratories",
+    "images":
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmPVryGPD5g7E7LUg6CW6mWAZVkaEBhPP-LB0ruYd2pmiUVWq2",
+    "transmission":
+      "Mumps is a contagious disease caused by a virus. It spreads through saliva or mucus from the mouth, nose, or throat. An infected person can spread the virus by: coughing, sneezing, or talking, sharing items, such as cups or eating utensils, with others, and touching objects or surfaces with unwashed hands that are then touched by others.\nMumps likely spreads before the salivary glands begin to swell and up to five days after the swelling begins.",
+    "summary":
+      "Mumps is a contagious disease caused by a virus. It typically starts with a few days of fever, headache, muscle aches, tiredness, and loss of appetite, followed by swollen salivary glands. You can protect yourself and your family against mumps with vaccination. Even though the vaccine has drastically reduced mumps cases, outbreaks continue to occur. Outbreaks have most commonly occurred in places where people have had prolonged, close contact with a person who has mumps, such as attending the same class, playing on the same sports team, or living in the same dormitory."
+  },
+  {
+    "name": "Pertussis",
+    "treatment":
+      "The recommended antimicrobial agents for treatment or chemoprophylaxis of pertussis are azithromycin*, clarithromycin, and erythromycin. Clinicians can also use Trimethoprim-sulfamethoxasole.",
+    "signs_symptoms":
+      "Early symptoms can last for 1 to 2 weeks and usually include: runny nose, low-grade fever (generally minimal throughout the course of the disease), mild, occasional cough, apnea – a pause in breathing (in babies)\nPertussis in its early stages appears to be nothing more than the common cold. Therefore, healthcare professionals often do not suspect or diagnose it until the more severe symptoms appear. After 1 to 2 weeks and as the disease progresses, the traditional symptoms of pertussis may appear and include: paroxysms (fits) of many, rapid coughs followed by a high-pitched “whoop” sound, vomiting (throwing up) during or after coughing fits, exhaustion (very tired) after coughing fits.\nIt is important to know that many babies with pertussis don’t cough at all. Instead it causes them to stop breathing and turn blue.\nPertussis can cause violent and rapid coughing, over and over, until the air is gone from your lungs. When there is no more air in the lungs, you are forced to inhale with a loud “whooping” sound. This extreme coughing can cause you to throw up and be very tired. Although you are often exhausted after a coughing fit, you usually appear fairly well in-between. Coughing fits generally become more common and bad as the illness continues, and can occur more often at night. The coughing fits can go on for up to 10 weeks or more. In China, pertussis is known as the “100 day cough.”\nThe “whoop” is often not there if you have milder (less serious) disease. The infection is generally milder in teens and adults, especially those who have gotten the pertussis vaccine.",
+    "preventative_measures":
+      "While pertussis vaccines are the most effective tool to prevent this disease, no vaccine is 100% effective. When pertussis circulates in the community, there is a chance that a fully vaccinated person, of any age, can catch this disease. If you have gotten the pertussis vaccine but still get sick, the infection is usually not as bad.",
+    "testing_procedures":
+      "Healthcare providers diagnose pertussis by considering if you have been exposed to pertussis and by doing a: History of typical signs and symptoms, physical examination, blood test, and a swab for culture, PCR or serology testing.",
+    "images":
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMeT58jJTQvMKYHCL80EYCeD-DzdXUHKZ42TBhVmw7PYAIpiZc",
+    "transmission":
+      "Pertussis is a very contagious disease only found in humans. Pertussis spreads from person to person. People with pertussis usually spread the disease to another person by coughing or sneezing or when spending a lot of time near one another where you share breathing space. Many babies who get pertussis are infected by older siblings, parents, or caregivers who might not even know they have the disease.\nInfected people are most contagious up to about 2 weeks after the cough begins. Antibiotics may shorten the amount of time someone is contagious.",
+    "summary":
+      "Pertussis, also known as whooping cough, is a highly contagious respiratory disease. It is caused by the bacterium Bordetella pertussis.  These bacteria attach to the cilia (tiny, hair-like extensions) that line part of the upper respiratory system. The bacteria release toxins (poisons), which damage the cilia and cause airways to swell.\nPertussis is known for uncontrollable, violent coughing which often makes it hard to breathe. After cough fits, someone with pertussis often needs to take deep breaths, which result in a “whooping” sound. Pertussis can affect people of all ages, but can be very serious, even deadly, for babies less than a year old."
   }
 ]
