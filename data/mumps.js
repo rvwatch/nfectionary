@@ -33,7 +33,7 @@ nightmare
   .then(result => {
     let data = JSON.stringify(result, null, 2);
 
-    fs.writeFile('./data/mumps.json', data, 'utf8', err => {
+    fs.writeFile('./data/mumps-data.json', data, 'utf8', err => {
       if (err) {
         return console.log(err);
       }

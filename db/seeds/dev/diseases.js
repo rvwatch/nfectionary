@@ -3,7 +3,12 @@ const influenza = require('../../../data/influenza-data.json');
 const salmonella = require('../../../data/salmonellosis-data.json');
 const eColi = require('../../../data/e-coli-data.json');
 const legionella = require('../../../data/legionellosis-data.json');
-const states = require('../../../data/state-data.json')
+const states = require('../../../data/state-data.json');
+const campylobacter = require('../../../data/campylobacter-data.json');
+const giardia = require('../../../data/giardia-data.json');
+const mumps = require('../../../data/mumps-data.json');
+const pertussis = require('../../../data/pertussis-data.json');
+
 
 exports.seed = (knex, Promise) => {
   return knex('state_diseases')
