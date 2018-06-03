@@ -50,6 +50,7 @@ export default class DiseaseDisplay extends Component {
     } = this.state.diseaseInfo;
 
     const { diseaseList } = this.state;
+    console.log(this.state.graphData);
     
     return (
       <ScrollView contentContainerStyle={styles.container}>
@@ -75,14 +76,14 @@ export default class DiseaseDisplay extends Component {
           options={diseaseList} 
           onSelect={(event) => this.fetchDiseaseData(event)} 
           />
-      <Text>{name}</Text>
+      <Text style={styles.textBlock}>{name}</Text>
       <Image resizeMode="contain" style={styles.image} source={{url: `${images}`}}></Image>
-      <Text>{summary}</Text>
-      <Text>Treatment: {treatment}</Text>
-      <Text>Preventative Measures: {preventative_measures}</Text>
-      <Text>Transmission: {transmission}</Text>
-      <Text>Testing Procedures: {testing_procedures}</Text>
-      <Text>Signs/ Symptoms: {signs_symptoms}</Text>
+      <Text style={styles.textBlock}>{summary}</Text>
+      <Text style={styles.textBlock}>Treatment: {treatment}</Text>
+      <Text style={styles.textBlock}>Preventative Measures: {preventative_measures}</Text>
+      <Text style={styles.textBlock}>Transmission: {transmission}</Text>
+      <Text style={styles.textBlock}>Testing Procedures: {testing_procedures}</Text>
+      <Text style={styles.textBlock}>Signs/ Symptoms: {signs_symptoms}</Text>
       </ScrollView>
     );
   }
@@ -90,7 +91,7 @@ export default class DiseaseDisplay extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: '#3E79CA',
     padding: 10
   },
   chart: {
@@ -108,5 +109,10 @@ const styles = StyleSheet.create({
       left: 0,
       bottom: 0,
       right: 0,
+  },
+  textBlock: {
+    color: '#ffffff',
+    marginTop: 10,
+    marginBottom: 10
   }
 });

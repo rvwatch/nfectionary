@@ -59,19 +59,26 @@ export default class HomeScreen extends Component {
 
     return (
       <View style={styles.container}>
-        <Text>Welcome to NFectionary</Text>
-        <Text>Select a state or use your location</Text>
+        <Text style={styles.mainTitle}>NFECTIONARY</Text>
         <TouchableOpacity 
           onPress={this.currentLocation}
           title="Current Location"
           style={styles.button}
           accessibilityLabel="Use your current location">
-          <Text> Get Started </Text>
+          <Text style={styles.blueFont}> Get Started </Text>
         </TouchableOpacity>
         <ModalDropdown
-          defaultValue={'Select State'} 
+          defaultValue={'Select a state'} 
           options={states} 
-          onSelect={(event) => navigation.navigate('StateDisplay', {state: states[event], id: event, statesList: states})} />
+          style={styles.dropDown}
+          textStyle={{ color: '#3E79CA' }}
+          onSelect={(event) => navigation.navigate('StateDisplay', {state: states[event], id: event, statesList: states})} 
+        />
+        <TouchableOpacity 
+          style={styles.button}
+          accessibilityLabel="What is it?">
+          <Text style={styles.blueFont}> What is it? </Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -80,13 +87,29 @@ export default class HomeScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#3E79CA',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    position: 'relative'
+  },
+  mainTitle:{
+    color: '#ffffff',
+    fontSize: 30,
+    textDecorationLine: 'underline',
+    fontFamily: "AmericanTypewriter"
   },
   button: {
     alignItems: 'center',
-    backgroundColor: '#DDDDDD',
-    padding: 10
+    backgroundColor: '#ffffff',
+    padding: 10,
+    borderRadius: 20,
+  },
+  blueFont: {
+    color: '#3E79CA'
+  },
+  dropDown: {
+    backgroundColor: '#ffffff',
+    padding: 10,
+    borderRadius: 5,
   }
 });
