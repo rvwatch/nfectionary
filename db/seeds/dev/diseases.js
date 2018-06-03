@@ -62,6 +62,30 @@ exports.seed = (knex, Promise) => {
         diseasePromises.push(createIllness(knex, bacteria, bacteriaId));
       });
 
+      campylobacter.forEach(bacteria => {
+        let bacteriaId = bacteria.disease_id;
+
+        diseasePromises.push(createIllness(knex, bacteria, bacteriaId));
+      });
+
+      giardia.forEach(parasite => {
+        let parasiteId = parasite.disease_id;
+
+        diseasePromises.push(createIllness(knex, parasite, parasiteId));
+      });
+
+      mumps.forEach(virus => {
+        let virusId = virus.disease_id;
+
+        diseasePromises.push(createIllness(knex, virus, virusId));
+      });
+      
+      pertussis.forEach(bacteria => {
+        let bacteriaId = bacteria.disease_id;
+
+        diseasePromises.push(createIllness(knex, bacteria, bacteriaId));
+      }); 
+
       return Promise.all(diseasePromises);
     })
     .catch(error => {
