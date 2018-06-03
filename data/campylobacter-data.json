@@ -1,0 +1,262 @@
+[
+  {
+    "case_count": "266",
+    "disease_id": 6,
+    "state_id": 1
+  },
+  {
+    "case_count": "39",
+    "disease_id": 6,
+    "state_id": 2
+  },
+  {
+    "case_count": "323",
+    "disease_id": 6,
+    "state_id": 3
+  },
+  {
+    "case_count": "94",
+    "disease_id": 6,
+    "state_id": 4
+  },
+  {
+    "case_count": "2,340",
+    "disease_id": 6,
+    "state_id": 5
+  },
+  {
+    "case_count": "377",
+    "disease_id": 6,
+    "state_id": 6
+  },
+  {
+    "case_count": "174",
+    "disease_id": 6,
+    "state_id": 7
+  },
+  {
+    "case_count": "5",
+    "disease_id": 6,
+    "state_id": 8
+  },
+  {
+    "case_count": "1,406",
+    "disease_id": 6,
+    "state_id": 9
+  },
+  {
+    "case_count": "353",
+    "disease_id": 6,
+    "state_id": 10
+  },
+  {
+    "case_count": "No Cases Reported",
+    "disease_id": 6,
+    "state_id": 11
+  },
+  {
+    "case_count": "188",
+    "disease_id": 6,
+    "state_id": 12
+  },
+  {
+    "case_count": "148",
+    "disease_id": 6,
+    "state_id": 13
+  },
+  {
+    "case_count": "588",
+    "disease_id": 6,
+    "state_id": 14
+  },
+  {
+    "case_count": "229",
+    "disease_id": 6,
+    "state_id": 15
+  },
+  {
+    "case_count": "479",
+    "disease_id": 6,
+    "state_id": 16
+  },
+  {
+    "case_count": "156",
+    "disease_id": 6,
+    "state_id": 17
+  },
+  {
+    "case_count": "21",
+    "disease_id": 6,
+    "state_id": 18
+  },
+  {
+    "case_count": "217",
+    "disease_id": 6,
+    "state_id": 19
+  },
+  {
+    "case_count": "57",
+    "disease_id": 6,
+    "state_id": 20
+  },
+  {
+    "case_count": "286",
+    "disease_id": 6,
+    "state_id": 21
+  },
+  {
+    "case_count": "No Cases Reported",
+    "disease_id": 6,
+    "state_id": 22
+  },
+  {
+    "case_count": "382",
+    "disease_id": 6,
+    "state_id": 23
+  },
+  {
+    "case_count": "No Cases Reported",
+    "disease_id": 6,
+    "state_id": 24
+  },
+  {
+    "case_count": "198",
+    "disease_id": 6,
+    "state_id": 25
+  },
+  {
+    "case_count": "452",
+    "disease_id": 6,
+    "state_id": 26
+  },
+  {
+    "case_count": "142",
+    "disease_id": 6,
+    "state_id": 27
+  },
+  {
+    "case_count": "161",
+    "disease_id": 6,
+    "state_id": 28
+  },
+  {
+    "case_count": "20",
+    "disease_id": 6,
+    "state_id": 29
+  },
+  {
+    "case_count": "75",
+    "disease_id": 6,
+    "state_id": 30
+  },
+  {
+    "case_count": "387",
+    "disease_id": 6,
+    "state_id": 31
+  },
+  {
+    "case_count": "121",
+    "disease_id": 6,
+    "state_id": 32
+  },
+  {
+    "case_count": "479",
+    "disease_id": 6,
+    "state_id": 33
+  },
+  {
+    "case_count": "410",
+    "disease_id": 6,
+    "state_id": 34
+  },
+  {
+    "case_count": "43",
+    "disease_id": 6,
+    "state_id": 35
+  },
+  {
+    "case_count": "623",
+    "disease_id": 6,
+    "state_id": 36
+  },
+  {
+    "case_count": "74",
+    "disease_id": 6,
+    "state_id": 37
+  },
+  {
+    "case_count": "293",
+    "disease_id": 6,
+    "state_id": 38
+  },
+  {
+    "case_count": "709",
+    "disease_id": 6,
+    "state_id": 39
+  },
+  {
+    "case_count": "No Cases Reported",
+    "disease_id": 6,
+    "state_id": 40
+  },
+  {
+    "case_count": "68",
+    "disease_id": 6,
+    "state_id": 41
+  },
+  {
+    "case_count": "148",
+    "disease_id": 6,
+    "state_id": 42
+  },
+  {
+    "case_count": "146",
+    "disease_id": 6,
+    "state_id": 43
+  },
+  {
+    "case_count": "245",
+    "disease_id": 6,
+    "state_id": 44
+  },
+  {
+    "case_count": "1,227",
+    "disease_id": 6,
+    "state_id": 45
+  },
+  {
+    "case_count": "170",
+    "disease_id": 6,
+    "state_id": 46
+  },
+  {
+    "case_count": "55",
+    "disease_id": 6,
+    "state_id": 47
+  },
+  {
+    "case_count": "453",
+    "disease_id": 6,
+    "state_id": 48
+  },
+  {
+    "case_count": "425",
+    "disease_id": 6,
+    "state_id": 49
+  },
+  {
+    "case_count": "20",
+    "disease_id": 6,
+    "state_id": 50
+  },
+  {
+    "case_count": "460",
+    "disease_id": 6,
+    "state_id": 51
+  },
+  {
+    "case_count": "83",
+    "disease_id": 6,
+    "state_id": 52
+  }
+]

@@ -3,7 +3,12 @@ const influenza = require('../../../data/influenza-data.json');
 const salmonella = require('../../../data/salmonellosis-data.json');
 const eColi = require('../../../data/e-coli-data.json');
 const legionella = require('../../../data/legionellosis-data.json');
-const states = require('../../../data/state-data.json')
+const states = require('../../../data/state-data.json');
+const campylobacter = require('../../../data/campylobacter-data.json');
+const giardia = require('../../../data/giardia-data.json');
+const mumps = require('../../../data/mumps-data.json');
+const pertussis = require('../../../data/pertussis-data.json');
+
 
 exports.seed = (knex, Promise) => {
   return knex('state_diseases')
@@ -56,6 +61,30 @@ exports.seed = (knex, Promise) => {
 
         diseasePromises.push(createIllness(knex, bacteria, bacteriaId));
       });
+
+      campylobacter.forEach(bacteria => {
+        let bacteriaId = bacteria.disease_id;
+
+        diseasePromises.push(createIllness(knex, bacteria, bacteriaId));
+      });
+
+      giardia.forEach(parasite => {
+        let parasiteId = parasite.disease_id;
+
+        diseasePromises.push(createIllness(knex, parasite, parasiteId));
+      });
+
+      mumps.forEach(virus => {
+        let virusId = virus.disease_id;
+
+        diseasePromises.push(createIllness(knex, virus, virusId));
+      });
+      
+      pertussis.forEach(bacteria => {
+        let bacteriaId = bacteria.disease_id;
+
+        diseasePromises.push(createIllness(knex, bacteria, bacteriaId));
+      }); 
 
       return Promise.all(diseasePromises);
     })
