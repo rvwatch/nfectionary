@@ -93,6 +93,64 @@ app.get('/api/v1/diseases/:id', (req, res) => {
     });
 });
 
+app.post('/api/v1/diseases', (req, res) => {
+  const disease = req.body;
+
+  if (!disease.name ||
+    !disease.treatment ||
+    !disease.signs_symptoms ||
+    !disease.preventative_measures ||
+    !disease.testing_procedures ||
+    !disease.images ||
+    !disease.transmission ||
+    !disease.summary) {
+    return res.status(422).json({
+      message: 'Invalid disease supplied, valid disease must have name, treatment, signs/symptoms, preventative measures, testing procedures, transmission, image, and a summary'
+    });
+  }
+
+  database('diseases').insert(disease, 'id')
+    .then(id => res.status(201).json({
+      id: id[0]
+    }))
+    .catch(error => res.status(500).json({
+      error: error,
+      message: 'Failed to POST disease'
+    }));
+});
+
+app.put('/api/v1/diseases/:id', (req, res) => {
+  database('diseases').where('id', req.params.id).update({ ...req.body
+    })
+    .then(() => {
+      res.status(200).json({
+        message: 'disease updated'
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        error: error,
+        message: 'Failed to update disease data'
+      });
+    });
+});
+
+app.delete('/api/v1/diseases', (req, res) => {
+  const { id } = req.body;
+
+  database('diseases').where('id', id).del()
+    .then((id) => {
+      if (id > 0) {
+        res.status(200).json({ message: 'Disease deleted' });
+      } else {
+        res.status(404).json({ message: 'Unable to delete disease' })
+      }
+    })
+    .catch((error) => {
+      res.status(500).json({ error: error });
+    });
+});
+
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on ${app.get('port')}`); // eslint-disable-line
 });
