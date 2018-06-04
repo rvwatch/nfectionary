@@ -53,27 +53,42 @@ export default class HomeScreen extends Component {
     );
   }
 
+  static navigationOptions = {
+    title: 'NFECTIONARY',
+    headerStyle: {
+      backgroundColor: '#3E79CA',
+      borderBottomColor: '#3E79CA'
+    },
+    headerTitleStyle: {
+      color: '#ffffff',
+      fontSize: 30,
+      textDecorationLine: 'underline',
+      fontFamily: "AmericanTypewriter"
+    },
+  };
+
   render() {
     const { states } = this.state;
     const { navigation } = this.props;
 
     return (
       <View style={styles.container}>
-        <Text style={styles.mainTitle}>NFECTIONARY</Text>
-        <TouchableOpacity 
-          onPress={this.currentLocation}
-          title="Current Location"
-          style={styles.button}
-          accessibilityLabel="Use your current location">
-          <Text style={styles.blueFont}> Get Started </Text>
-        </TouchableOpacity>
-        <ModalDropdown
-          defaultValue={'Select a state'} 
-          options={states} 
-          style={styles.dropDown}
-          textStyle={{ color: '#3E79CA' }}
-          onSelect={(event) => navigation.navigate('StateDisplay', {state: states[event], id: event, statesList: states})} 
-        />
+        <View>
+          <TouchableOpacity 
+            onPress={this.currentLocation}
+            title="Current Location"
+            style={styles.button}
+            accessibilityLabel="Use your current location">
+            <Text style={styles.blueFont}> Get Started </Text>
+          </TouchableOpacity>
+          <ModalDropdown
+            defaultValue={'Select a state'} 
+            options={states} 
+            style={styles.dropDown}
+            textStyle={{ color: '#3E79CA' }}
+            onSelect={(event) => navigation.navigate('StateDisplay', {state: states[event], id: event, statesList: states})} 
+          />
+        </View>
         <TouchableOpacity 
           style={styles.button}
           accessibilityLabel="What is it?">
@@ -93,16 +108,15 @@ const styles = StyleSheet.create({
     position: 'relative'
   },
   mainTitle:{
-    color: '#ffffff',
-    fontSize: 30,
-    textDecorationLine: 'underline',
-    fontFamily: "AmericanTypewriter"
+    
   },
   button: {
     alignItems: 'center',
     backgroundColor: '#ffffff',
     padding: 10,
     borderRadius: 20,
+    marginTop: 200,
+    marginBottom: 40
   },
   blueFont: {
     color: '#3E79CA'

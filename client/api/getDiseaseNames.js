@@ -3,7 +3,6 @@ export const getDiseaseNames = async () => {
     const response = await global.fetch('http://localhost:5000/api/v1/diseases');
     const diseases = await response.json();
     
-    
     const diseaseNames = diseases.map(disease => ({
       name: disease.name,
       id: disease.id

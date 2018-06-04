@@ -38,6 +38,21 @@ export default class StateDisplay extends Component {
     
     this.setState({ buttonData, state, statesList, diseaseList });
   }
+
+  static navigationOptions = {
+    title: ' ',
+    headerStyle: {
+      backgroundColor: '#3E79CA',
+      borderBottomColor: '#3E79CA'
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      color: '#ffffff',
+      fontSize: 30,
+      textDecorationLine: 'underline',
+      fontFamily: "AmericanTypewriter"
+    },
+  };
   
   render() {
     const { buttonData, state, statesList, diseaseList } = this.state;

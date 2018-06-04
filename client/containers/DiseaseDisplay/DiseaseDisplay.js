@@ -39,6 +39,22 @@ export default class DiseaseDisplay extends Component {
     this.setState({ diseaseInfo, graphData, diseaseList });
   }
 
+  static navigationOptions = {
+    title: 'NFECTIONARY',
+    headerStyle: {
+      backgroundColor: '#3E79CA',
+      borderBottomColor: '#3E79CA'
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      color: '#ffffff',
+      fontSize: 30,
+      textDecorationLine: 'underline',
+      fontFamily: "AmericanTypewriter"
+    },
+  };
+  
+
   render() {
     const {name, 
       treatment, 
@@ -96,6 +112,7 @@ const styles = StyleSheet.create({
   },
   chart: {
     position: 'relative',
+    color: '#ffffff',
     height: 300,
     top: 0,
     left: 0,
