@@ -106,11 +106,8 @@ describe('Api endpoints', () => {
       chai
         .request(app)
         .put('/api/v1/states/1/diseases/1')
-        .send({
-          "diseases_id": 1,
-          "states_id": 1,
-          "case_count": 20
-        })
+        .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZG9AdHVyaW5nLmlvIiwibmFtZSI6IkFsZG8iLCJpYXQiOjE1MjgxNDcyODUsImV4cCI6MTUyODMyMDA4NX0.VGyYC3UMMNY633T9_ZhiFs1rvEmd69x7g8mHefqoi3M')
+        .send({ diseases_id: 1, states_id: 1, case_count: 20 })
         .end((error, response) => {
           response.should.be.json;
           response.should.have.status(200);
@@ -125,15 +122,12 @@ describe('Api endpoints', () => {
       chai
         .request(app)
         .put('/api/v1/states/1/diseases/hello')
-        .send({
-          "diseases_id": 'invalid',
-          "states_id": 1,
-          "case_count": 20
-        })
+        .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZG9AdHVyaW5nLmlvIiwibmFtZSI6IkFsZG8iLCJpYXQiOjE1MjgxNDcyODUsImV4cCI6MTUyODMyMDA4NX0.VGyYC3UMMNY633T9_ZhiFs1rvEmd69x7g8mHefqoi3M')
+        .send({ diseases_id: 'invalid', states_id: 1, case_count: 20 })
         .end((error, response) => {
           response.should.be.json;
           response.should.have.status(500);
-          response.body.should.be.an('object')
+          response.body.should.be.an('object');
           response.body.should.have.property('message');
           response.body.should.have.property('error');
           response.body.message.should.equal('Failed to update case count data');
@@ -310,6 +304,7 @@ describe('Api endpoints', () => {
       chai
         .request(app)
         .post('/api/v1/diseases')
+        .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZG9AdHVyaW5nLmlvIiwibmFtZSI6IkFsZG8iLCJpYXQiOjE1MjgxNDcyODUsImV4cCI6MTUyODMyMDA4NX0.VGyYC3UMMNY633T9_ZhiFs1rvEmd69x7g8mHefqoi3M')
         .send({
           name: 'Malaria',
           treatment: 'Avoid mosquitos',
@@ -327,7 +322,7 @@ describe('Api endpoints', () => {
           response.body.should.be.an('object');
           response.body.should.have.property('id');
           response.body.id.should.equal(9);
-          done()
+          done();
         });
     });
 
@@ -335,6 +330,7 @@ describe('Api endpoints', () => {
       chai
         .request(app)
         .post('/api/v1/diseases')
+        .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZG9AdHVyaW5nLmlvIiwibmFtZSI6IkFsZG8iLCJpYXQiOjE1MjgxNDcyODUsImV4cCI6MTUyODMyMDA4NX0.VGyYC3UMMNY633T9_ZhiFs1rvEmd69x7g8mHefqoi3M')
         .send({
           treatment: 'Avoid mosquitos',
           images:
@@ -347,7 +343,7 @@ describe('Api endpoints', () => {
         })
         .end((error, response) => {
           response.should.be.json;
-          response.should.status(422)
+          response.should.status(422);
           response.body.should.be.an('object');
           response.body.should.have.property('message');
           response.body.message.should.equal('Invalid disease supplied, valid disease must have name, treatment, signs/symptoms, preventative measures, testing procedures, transmission, image, and a summary');
@@ -361,9 +357,8 @@ describe('Api endpoints', () => {
       chai
         .request(app)
         .put('/api/v1/diseases/1')
-        .send({
-          treatment: 'eat lots of ice cream' 
-        })
+        .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZG9AdHVyaW5nLmlvIiwibmFtZSI6IkFsZG8iLCJpYXQiOjE1MjgxNDcyODUsImV4cCI6MTUyODMyMDA4NX0.VGyYC3UMMNY633T9_ZhiFs1rvEmd69x7g8mHefqoi3M')
+        .send({ treatment: 'eat lots of ice cream' })
         .end((error, response) => {
           response.should.be.json;
           response.should.have.status(200);
@@ -378,13 +373,12 @@ describe('Api endpoints', () => {
       chai
         .request(app)
         .put('/api/v1/diseases/hello')
-        .send({
-          name: 'Aldo'
-        })
+        .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZG9AdHVyaW5nLmlvIiwibmFtZSI6IkFsZG8iLCJpYXQiOjE1MjgxNDcyODUsImV4cCI6MTUyODMyMDA4NX0.VGyYC3UMMNY633T9_ZhiFs1rvEmd69x7g8mHefqoi3M')
+        .send({ name: 'Aldo' })
         .end((error, response) => {
           response.should.be.json;
           response.should.have.status(500);
-          response.body.should.be.an('object')
+          response.body.should.be.an('object');
           response.body.should.have.property('message');
           response.body.should.have.property('error');
           response.body.message.should.equal('Failed to update disease data');
@@ -395,8 +389,10 @@ describe('Api endpoints', () => {
 
 describe('DELETE /api/v1/diseases/:id', () => {
     it('should delete a disease', (done) => {
-      chai.request(app)
+      chai
+        .request(app)
         .delete('/api/v1/diseases/1')
+        .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZG9AdHVyaW5nLmlvIiwibmFtZSI6IkFsZG8iLCJpYXQiOjE1MjgxNDcyODUsImV4cCI6MTUyODMyMDA4NX0.VGyYC3UMMNY633T9_ZhiFs1rvEmd69x7g8mHefqoi3M')
         .end((error, response) => {
           response.should.be.json;
           response.should.have.status(500);
@@ -407,8 +403,10 @@ describe('DELETE /api/v1/diseases/:id', () => {
     });
 
     it('should return an error if unable to delete disease', (done) => {
-      chai.request(app)
+      chai
+        .request(app)
         .delete('/api/v1/diseases/25')
+        .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZG9AdHVyaW5nLmlvIiwibmFtZSI6IkFsZG8iLCJpYXQiOjE1MjgxNDcyODUsImV4cCI6MTUyODMyMDA4NX0.VGyYC3UMMNY633T9_ZhiFs1rvEmd69x7g8mHefqoi3M')
         .end((error, response) => {
           response.should.be.json;
           response.should.have.status(404);
@@ -419,8 +417,10 @@ describe('DELETE /api/v1/diseases/:id', () => {
     });
 
     it('should return an error if invalid endpoint', (done) => {
-      chai.request(app)
+      chai
+        .request(app)
         .delete('/api/v1/diseases/nothing')
+        .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZG9AdHVyaW5nLmlvIiwibmFtZSI6IkFsZG8iLCJpYXQiOjE1MjgxNDcyODUsImV4cCI6MTUyODMyMDA4NX0.VGyYC3UMMNY633T9_ZhiFs1rvEmd69x7g8mHefqoi3M')
         .end((error, response) => {
           response.should.be.json;
           response.should.have.status(500);
