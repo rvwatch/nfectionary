@@ -49,18 +49,17 @@ export default class StateDisplay extends Component {
     headerTitleStyle: {
       color: '#ffffff',
       fontSize: 30,
-      textDecorationLine: 'underline',
-      fontFamily: "AmericanTypewriter"
+      textDecorationLine: 'underline'
     },
   };
   
   render() {
     const { buttonData, state, statesList, diseaseList } = this.state;
 
-    const renderButton = buttonData.map(button => (
+    const renderButton = buttonData.map((button, i) => (
       <TouchableOpacity
         style={styles.button}
-        key={button.count}
+        key={button.count + i}
         onPress={() => this.props.navigation.navigate('DiseaseDisplay', {disease_id: button.disease_id, diseaseList })}>
         <Text> {button.name} </Text>
         <Text> {button.count} </Text>

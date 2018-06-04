@@ -104,8 +104,7 @@ export default class DiseaseDisplay extends Component {
     headerTitleStyle: {
       color: '#ffffff',
       fontSize: 30,
-      textDecorationLine: 'underline',
-      fontFamily: "AmericanTypewriter"
+      textDecorationLine: 'underline'
     },
   };
 
