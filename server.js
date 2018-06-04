@@ -7,13 +7,51 @@ const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const port = process.env.PORT || 5000;
 
+require('dotenv').config();
+
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('port', port);
+app.set('secretKey', process.env.KEY);
 
 app.locals.title = 'nfectionary';
+
+const checkAdmin = (req, res, next) => {
+  const { token } = req.headers;
+  const key = app.get('secretKey');
+
+  if (!token) {
+    res.status(403).json({ message: 'You must be authorized to hit this endpoint'})
+  } else {
+    try {
+      const decoded = jwt.verify(token, key);
+      const turingEmail = decoded.email.includes('turing.io');
+
+      turingEmail ? next() : res.status(403).json({ message: 'Not authorized'})
+    } catch (error) {
+      res.status(403).json({ message: 'Invalid token' })
+    };
+  };
+};
+
+app.post('/authenticate', (req, res) => {
+  const { name, email } = req.body;
+  const key = app.get('secretKey');
+  const options = {
+    expiresIn: '48h'
+  };
+
+  if (email && name) {
+    const token = jwt.sign({ email, name }, key, options);
+
+    res.status(201).json({ token })
+  } else {
+    res.status(422).json({ message: 'Invalid request, must supply email and name' })
+  }
+});
+
 
 app.get('/api/v1/states', (req, res) => {
   database('states').select()
@@ -42,7 +80,7 @@ app.get('/api/v1/states/:state_id/diseases/:disease_id', (req, res) => {
     });
 });
 
-app.put('/api/v1/states/:state_id/diseases/:disease_id', (req, res) => {
+app.put('/api/v1/states/:state_id/diseases/:disease_id', checkAdmin, (req, res) => {
   database('state_diseases').where({
     states_id: req.params.state_id,
     diseases_id: req.params.disease_id
@@ -95,10 +133,10 @@ app.get('/api/v1/state-diseases/:id', (req, res) => {
 app.get('/api/v1/diseases', (req, res) => {
   database('diseases').select()
     .then(disease => {
-        return res.status(200).json(disease);
+      return res.status(200).json(disease);
     })
     .catch(err => {
-      return res.status(500).json({err});
+      return res.status(500).json({ err });
     });
 });
 
@@ -116,7 +154,7 @@ app.get('/api/v1/diseases/:id', (req, res) => {
     });
 });
 
-app.post('/api/v1/diseases', (req, res) => {
+app.post('/api/v1/diseases', checkAdmin, (req, res) => {
   const disease = req.body;
 
   if (!disease.name ||
@@ -142,7 +180,7 @@ app.post('/api/v1/diseases', (req, res) => {
     }));
 });
 
-app.put('/api/v1/diseases/:id', (req, res) => {
+app.put('/api/v1/diseases/:id', checkAdmin, (req, res) => {
   database('diseases').where('id', req.params.id).update({ ...req.body
     })
     .then(() => {
@@ -158,7 +196,7 @@ app.put('/api/v1/diseases/:id', (req, res) => {
     });
 });
 
-app.delete('/api/v1/diseases/:id', (req, res) => {
+app.delete('/api/v1/diseases/:id', checkAdmin, (req, res) => {
   const id = req.params.id;
 
   database('diseases').where('id', id).del()
