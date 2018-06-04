@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, Picker, Select, Button } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, Picker, Select, Button, Modal, TouchableHighlight } from 'react-native';
 import ModalDropdown from 'react-native-modal-dropdown';
 import StateDisplay from '../StateDisplay/StateDisplay';
 import DiseaseDisplay from '../DiseaseDisplay/DiseaseDisplay';
@@ -15,6 +15,7 @@ export default class HomeScreen extends Component {
       latitude: null,
       longitude: null,
       states: [],
+      modalVisible: false,
       error: null
     }
   }
@@ -62,10 +63,15 @@ export default class HomeScreen extends Component {
     headerTitleStyle: {
       color: '#ffffff',
       fontSize: 30,
+      fontWeight: "400",
       textDecorationLine: 'underline',
       fontFamily: "AmericanTypewriter"
     },
   };
+
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
 
   render() {
     const { states } = this.state;
@@ -73,6 +79,33 @@ export default class HomeScreen extends Component {
 
     return (
       <View style={styles.container}>
+        <Modal
+            animationType="slide"
+            transparent={false}
+            visible={this.state.modalVisible}
+            onRequestClose={() => {
+              alert('Modal has been closed.');
+            }}>
+            <View style={{marginTop: 22}}>
+              <View>
+                <Text>Find out about diseases
+                      in your state, their 
+                      reported case counts
+                      as well as information
+                      about each particular
+                      disease and ways to 
+                      prevent infection.
+                </Text>
+
+                <TouchableHighlight
+                  onPress={() => {
+                    this.setModalVisible(!this.state.modalVisible);
+                  }}>
+                  <Text>Hide Modal</Text>
+                </TouchableHighlight>
+              </View>
+            </View>
+          </Modal>
         <View>
           <TouchableOpacity 
             onPress={this.currentLocation}
@@ -82,17 +115,18 @@ export default class HomeScreen extends Component {
             <Text style={styles.blueFont}> Get Started </Text>
           </TouchableOpacity>
           <ModalDropdown
-            defaultValue={'Select a state'} 
+            defaultValue={'select a state'} 
             options={states} 
             style={styles.dropDown}
-            textStyle={{ color: '#3E79CA' }}
+            textStyle={{ color: '#3E79CA', fontSize: 20, textAlign: 'center' }}
+            dropdownTextStyle={ {color: '#3E79CA', fontSize: 16} }
             onSelect={(event) => navigation.navigate('StateDisplay', {state: states[event], id: event, statesList: states})} 
           />
         </View>
         <TouchableOpacity 
-          style={styles.button}
+          onPress={() => { this.setModalVisible(true); }}
           accessibilityLabel="What is it?">
-          <Text style={styles.blueFont}> What is it? </Text>
+          <Text style={styles.info}> What is it?</Text>
         </TouchableOpacity>
       </View>
     );
@@ -107,23 +141,29 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     position: 'relative'
   },
-  mainTitle:{
-    
-  },
   button: {
     alignItems: 'center',
     backgroundColor: '#ffffff',
-    padding: 10,
-    borderRadius: 20,
+    paddingTop: 10,
+    paddingRight: 20,
+    paddingBottom: 10,
+    paddingLeft: 20,
+    borderRadius: 25,
     marginTop: 200,
     marginBottom: 40
   },
   blueFont: {
-    color: '#3E79CA'
+    color: '#3E79CA',
+    fontSize: 25
   },
   dropDown: {
     backgroundColor: '#ffffff',
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 3
+  },
+  info: {
+    color: '#ffffff',
+    fontSize: 20,
+    marginBottom: 20
   }
 });
