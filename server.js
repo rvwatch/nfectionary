@@ -39,6 +39,26 @@ app.get('/api/v1/states/:state_id/diseases/:disease_id', (req, res) => {
     });
 });
 
+app.put('/api/v1/states/:state_id/diseases/:disease_id', (req, res) => {
+  database('state_diseases').where({
+    states_id: req.params.state_id,
+    diseases_id: req.params.disease_id
+  }).update({
+    ...req.body
+  })
+    .then(() => {
+      res.status(200).json({
+        message: 'state case count updated'
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        error: error,
+        message: 'Failed to update case count data'
+      });
+    });
+});
+
 app.get('/api/v1/specific-disease/:id', (req, res) => {
   
   database('state_diseases').where('state_diseases.diseases_id', req.params.id).select()
@@ -135,19 +155,23 @@ app.put('/api/v1/diseases/:id', (req, res) => {
     });
 });
 
-app.delete('/api/v1/diseases:id', (req, res) => {
+app.delete('/api/v1/diseases/:id', (req, res) => {
   const id = req.params.id;
 
   database('diseases').where('id', id).del()
     .then((disease) => {
       if (disease > 0) {
-        res.status(200).json({ message: 'Disease deleted' });
+        res.status(200).json({ message: 'Disease deleted successfully'});
       } else {
-        res.status(404).json({ message: 'Unable to delete disease'})
+        res.status(404).json({ message: 'Unable to find disease id'});
       }
     })
-    .catch(() => {
-      res.status(500).json({ error: error });
+    .catch((error) => {
+      if (error.code === '23503') {
+        res.status(500).json({ error: 'Please delete associated case count data first'})
+      } else {
+        res.status(500).json({ error: error });
+      }
     });
 });
 
