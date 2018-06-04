@@ -16,7 +16,8 @@ export default class HomeScreen extends Component {
       longitude: null,
       states: [],
       modalVisible: false,
-      error: null
+      error: null,
+      fontLoaded: false
     }
   }
 
@@ -61,11 +62,11 @@ export default class HomeScreen extends Component {
       borderBottomColor: '#3E79CA'
     },
     headerTitleStyle: {
+      marginTop:10,
       color: '#ffffff',
       fontSize: 30,
       fontWeight: "400",
-      textDecorationLine: 'underline',
-      fontFamily: "AmericanTypewriter"
+      textDecorationLine: 'underline'
     },
   };
 
@@ -80,21 +81,22 @@ export default class HomeScreen extends Component {
     return (
       <View style={styles.container}>
         <Modal
-            animationType="slide"
-            transparent={false}
-            visible={this.state.modalVisible}
-            onRequestClose={() => {
-              alert('Modal has been closed.');
-            }}>
-            <View style={{marginTop: 50}}>
+          animationType="slide"
+          transparent={false}
+          visible={this.state.modalVisible}
+          onRequestClose={() => {
+            alert('Modal has been closed.');
+          }}
+        >
+            <View style={styles.modalWindow}>
               <View>
                 <TouchableHighlight
                   onPress={() => {
                     this.setModalVisible(!this.state.modalVisible);
                   }}>
-                  <Text>Close</Text>
+                  <Text style={styles.closeModal}>Close</Text>
                 </TouchableHighlight>
-                <Text>
+                <Text style={styles.modalText}>
                   Find out about diseases
                   in your state, their 
                   reported case counts
@@ -164,6 +166,22 @@ const styles = StyleSheet.create({
   info: {
     color: '#ffffff',
     fontSize: 20,
+    marginBottom: 20
+  },
+  modalWindow: {
+    flex: 1,
+    alignItems: 'center',
+    marginTop: 50,
+    padding: 20
+  },
+  modalText: {
+    color: '#3E79CA',
+    fontSize: 18
+  },
+  closeModal: {
+    fontSize: 20,
+    textAlign: 'center',
+    textDecorationLine: 'underline',
     marginBottom: 20
   }
 });
