@@ -12,7 +12,7 @@ async function getToken(e) {
 }
 
 async function fetchToken(name, email) {
-  const url = 'http://localhost:5000/authenticate';
+  const url = '/authenticate';
   const options = {
     method: 'POST',
     body: JSON.stringify({name, email}),
