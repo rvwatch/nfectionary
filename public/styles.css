@@ -1,0 +1,116 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: #1E90FF;
+  color: #fff;
+  font-family: "AmericanTypewriter";
+}
+
+main {
+  padding-top: 20px;
+}
+
+h1 {
+  font-size: 5em;
+  margin-top: 0;
+  font-weight: lighter;
+  text-decoration: underline;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 3px #000000;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: auto;
+  height: 400px;
+  width: 50%;
+}
+
+h2 {
+  margin: 0;
+  font-size: 2.5em;
+  font-weight: lighter;
+  text-shadow: 1px 1px 3px #000000;
+}
+
+input,
+label,
+input::placeholder {
+  font-size: 32px;
+  padding-left: 5px;
+}
+
+label {
+  text-shadow: 1px 1px 3px #000000;
+}
+
+#submit {
+  border: 1px solid gray;
+  height: 50px;
+  color: gray;
+  font-size: 32px;
+  width: 50%;
+  margin: 5px auto 0 auto;
+  border-radius: 15px;
+}
+
+#submit:hover {
+  color: black;
+}
+
+p {
+  text-shadow: 1px 1px 3px #000000;
+}
+
+@media screen and (max-width: 950px) {
+  #submit {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  h1 {
+    font-size: 4em;
+  }
+
+  #submit {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  h2 {
+    font-size: 2em;
+  }
+
+  input,
+  label,
+  input::placeholder {
+    font-size: 24px;
+  }
+
+#submit {
+  min-width: 180px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  h1 {
+    font-size: 3em;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .form {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  h1 {
+    font-size: 2em;
+  }
+}
