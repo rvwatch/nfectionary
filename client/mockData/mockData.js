@@ -63,6 +63,17 @@ export const diseaseCount = [
   }
 ]
 
+export const returnedDiseaseCount = [
+  {
+    id: 1,
+    count: 40
+  }, 
+  {
+    id: 2,
+    count: 20
+  }
+]
+
 export const diseaseObject =   {
   "name": "Influenza",
   "treatment":
@@ -99,3 +110,19 @@ export const stateArray = [
     "name": "Arkansas"
   }
 ]
+
+export const stateNames = ["Alabama", "Alaska", "Arizona", "Arkansas"]
+
+export const returnedButtonData = [{ 
+  name: 'Influenza', 
+  count: 40, 
+  disease_id: 1 
+}, 
+{ 
+  name: 'Salmonella', 
+  count: 20, 
+  disease_id: 2 
+}
+];
+
+export const stringId = '1';

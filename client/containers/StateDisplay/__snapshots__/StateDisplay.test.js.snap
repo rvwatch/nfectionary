@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`StateDisplay renders correctly 1`] = `
-<View
+exports[`StateDisplay should match the snapshot 1`] = `
+<Component
   style={
     Object {
       "alignItems": "center",
@@ -11,7 +11,7 @@ exports[`StateDisplay renders correctly 1`] = `
     }
   }
 >
-  <View
+  <ModalDropdown
     animated={true}
     defaultIndex={-1}
     defaultValue=""
@@ -21,47 +21,6 @@ exports[`StateDisplay renders correctly 1`] = `
     options={Array []}
     scrollEnabled={true}
     showsVerticalScrollIndicator={true}
-  >
-    <View
-      accessible={true}
-      isTVSelectable={true}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "opacity": 1,
-        }
-      }
-    >
-      <View
-        style={
-          Object {
-            "justifyContent": "center",
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "fontSize": 12,
-              },
-              undefined,
-            ]
-          }
-        >
-          
-        </Text>
-      </View>
-    </View>
-  </View>
-</View>
+  />
+</Component>
 `;
