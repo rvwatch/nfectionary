@@ -1,22 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`StateDisplay renders correctly 1`] = `
-<View
+exports[`StateDisplay should match the snapshot 1`] = `
+<Component
   style={
     Object {
       "alignItems": "center",
-      "backgroundColor": "#fff",
+      "backgroundColor": "#3E79CA",
       "flex": 1,
       "justifyContent": "center",
     }
   }
 >
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
-  >
-    
-  </Text>
-</View>
+  <ModalDropdown
+    animated={true}
+    defaultIndex={-1}
+    defaultValue=""
+    disabled={false}
+    keyboardShouldPersistTaps="never"
+    onSelect={[Function]}
+    options={Array []}
+    scrollEnabled={true}
+    showsVerticalScrollIndicator={true}
+  />
+</Component>
 `;

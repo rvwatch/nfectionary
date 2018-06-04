@@ -1,3 +1,143 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DiseaseDisplay renders correctly 1`] = `<diseaseDisplay />`;
+exports[`DiseaseDisplay should match the snapshot 1`] = `
+<ScrollView
+  contentContainerStyle={
+    Object {
+      "backgroundColor": "#3E79CA",
+      "padding": 10,
+    }
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+  >
+    Loading Chart Data
+  </Text>
+  <ModalDropdown
+    animated={true}
+    defaultIndex={-1}
+    defaultValue="Please select..."
+    disabled={false}
+    keyboardShouldPersistTaps="never"
+    onSelect={[Function]}
+    options={Array []}
+    scrollEnabled={true}
+    showsVerticalScrollIndicator={true}
+  />
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#ffffff",
+        "marginBottom": 10,
+        "marginTop": 10,
+      }
+    }
+  />
+  <Image
+    resizeMode="contain"
+    source={
+      Object {
+        "url": "undefined",
+      }
+    }
+    style={
+      Object {
+        "bottom": 0,
+        "height": 200,
+        "left": 0,
+        "position": "relative",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  />
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#ffffff",
+        "marginBottom": 10,
+        "marginTop": 10,
+      }
+    }
+  />
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#ffffff",
+        "marginBottom": 10,
+        "marginTop": 10,
+      }
+    }
+  >
+    Treatment: 
+  </Text>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#ffffff",
+        "marginBottom": 10,
+        "marginTop": 10,
+      }
+    }
+  >
+    Preventative Measures: 
+  </Text>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#ffffff",
+        "marginBottom": 10,
+        "marginTop": 10,
+      }
+    }
+  >
+    Transmission: 
+  </Text>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#ffffff",
+        "marginBottom": 10,
+        "marginTop": 10,
+      }
+    }
+  >
+    Testing Procedures: 
+  </Text>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#ffffff",
+        "marginBottom": 10,
+        "marginTop": 10,
+      }
+    }
+  >
+    Signs/ Symptoms: 
+  </Text>
+</ScrollView>
+`;

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, Picker, Select, Button, ScrollView } from 'react-native';
 import { getDisease } from '../../api/getDisease';
-import {graphCleaner, shortNames} from '../../api/cleaners/graphCleaner';
+import { graphCleaner } from '../../api/cleaners/graphCleaner';
+import { shortNames } from '../../api/cleaners/shortNames';
 import { VictoryBar, VictoryChart, VictoryTheme, VictoryZoomContainer, VictoryLine } from "victory-native";
 import { getGraphCounts } from '../../api/getGraphCounts';
 import { getStates } from '../../api/getStates';
@@ -50,7 +51,6 @@ export default class DiseaseDisplay extends Component {
     } = this.state.diseaseInfo;
 
     const { diseaseList } = this.state;
-    console.log(this.state.graphData);
     
     return (
       <ScrollView contentContainerStyle={styles.container}>

@@ -52,14 +52,38 @@ export const diseaseCount = [
   {
     id: 1,
     diseases_id: 1,
-    state_id: 1,
+    states_id: 1,
     case_count: 40
   }, 
   {
     id: 2,
     diseases_id: 2,
-    state_id: 2,
+    states_id: 1,
     case_count: 20
+  }
+]
+
+export const returnedDiseaseCount = [
+  {
+    id: 1,
+    count: 40
+  }, 
+  {
+    id: 2,
+    count: 20
+  }
+]
+
+export const returnedGraphCounts = [
+  {
+    count: 40,
+    id: 1,
+    state: 1
+  },
+  {
+    count: 20,
+    id: 1,
+    state: 2
   }
 ]
 
@@ -97,5 +121,34 @@ export const stateArray = [
   {
     "id": 4,
     "name": "Arkansas"
+  }
+]
+
+export const stateNames = ["Alabama", "Alaska", "Arizona", "Arkansas"]
+
+export const returnedButtonData = [{ 
+  name: 'Influenza', 
+  count: 40, 
+  disease_id: 1 
+}, 
+{ 
+  name: 'Salmonella', 
+  count: 20, 
+  disease_id: 2 
+}
+];
+
+export const stringId = '1';
+
+export const diseases = ['Influenza', 'Salmonella']
+
+export const returnedGraphData = [
+  {
+    state: 'AL',
+    count: 40
+  },
+  {
+    state: 'AK',
+    count: 20
   }
 ]
