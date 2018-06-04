@@ -5,8 +5,8 @@ async function getToken(e) {
   const name = $('#name').val();
   const email = $('#email').val();
   const token = await fetchToken(name, email);
-  console.log('token', token);
-  $('.token-display').innerText(token);
+  
+  $('.token-display').text(token);
   $('#name').val('');
   $('#email').val('');
 }
@@ -24,12 +24,8 @@ async function fetchToken(name, email) {
   try {
     const response = await fetch(url, options);
     const body = await response.json();
-    console.log(body);
-    if (response.status === 200) {
-      return body.token
-    } else {
-      return body.message
-    }
+
+    return body.token
   } catch (error) {
     return error
   }

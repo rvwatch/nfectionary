@@ -61,8 +61,21 @@ label {
   color: black;
 }
 
-p {
-  text-shadow: 1px 1px 3px #000000;
+.token {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.token-display {
+  resize: none;
+  display: block;
+  margin: auto;
+  height: 100px;
+  width: 50%;
+  font-size: 16px;
 }
 
 @media screen and (max-width: 950px) {
