@@ -52,13 +52,13 @@ export const diseaseCount = [
   {
     id: 1,
     diseases_id: 1,
-    state_id: 1,
+    states_id: 1,
     case_count: 40
   }, 
   {
     id: 2,
     diseases_id: 2,
-    state_id: 1,
+    states_id: 1,
     case_count: 20
   }
 ]

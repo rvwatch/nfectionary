@@ -11,6 +11,6 @@ export const getGraphCounts = async (id) => {
     }));
     return diseaseCount
   } catch(err) {
-    throw new Error(err.message);
+    throw new Error(`Error fetching graph counts: ${err.message}`);
   }
 };
