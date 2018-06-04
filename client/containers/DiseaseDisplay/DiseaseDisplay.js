@@ -50,7 +50,6 @@ export default class DiseaseDisplay extends Component {
     } = this.state.diseaseInfo;
 
     const { diseaseList } = this.state;
-    console.log(this.state.graphData);
     
     return (
       <ScrollView contentContainerStyle={styles.container}>

@@ -58,7 +58,7 @@ export const diseaseCount = [
   {
     id: 2,
     diseases_id: 2,
-    state_id: 2,
+    state_id: 1,
     case_count: 20
   }
 ]
@@ -71,6 +71,19 @@ export const returnedDiseaseCount = [
   {
     id: 2,
     count: 20
+  }
+]
+
+export const returnedGraphCounts = [
+  {
+    count: 40,
+    id: 1,
+    state: 1
+  },
+  {
+    count: 20,
+    id: 1,
+    state: 2
   }
 ]
 
@@ -126,3 +139,5 @@ export const returnedButtonData = [{
 ];
 
 export const stringId = '1';
+
+export const diseaseName = ['Influenza', 'Salmonella']
