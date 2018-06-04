@@ -220,7 +220,7 @@ describe('Api endpoints', () => {
     it('should return an error if state id does not exist', done => {
       chai
         .request(app)
-        .get('/api/v1/diseases/5')
+        .get('/api/v1/diseases/15')
         .end((error, response) => {
           response.should.be.json;
           response.should.have.status(404);
@@ -240,6 +240,57 @@ describe('Api endpoints', () => {
           response.body.should.have.property('message');
           response.body.should.have.property('err');
           response.body.message.should.equal('Invalid Id');
+          done();
+        });
+    });
+  });
+
+  describe('POST /api/v1/diseases', () => {
+    it('should return an id if posting a disease is successful', (done) => {
+      chai
+        .request(app)
+        .post('/api/v1/diseases')
+        .send({
+          name: 'Malaria',
+          treatment: 'Avoid mosquitos',
+          images:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCEgmwK5csc-zS9mjR8qRREhaW_Z1jRaLP8_dkr6K5qjuCj31byA',
+          signs_symptoms: 'anemia',
+          preventative_measures: 'avoid mosquito infected areas',
+          testing_procedures: 'blood smear',
+          transmission: 'Anophiles Mosquito',
+          summary: 'Malaria is bad'
+        })
+        .end((error, response) => {
+          response.should.be.json;
+          response.should.have.status(201);
+          response.body.should.be.an('object');
+          response.body.should.have.property('id');
+          response.body.id.should.equal(9);
+          done()
+        });
+    });
+
+    it('should return an error if invalid body supplied when posting', (done) => {
+      chai
+        .request(app)
+        .post('/api/v1/diseases')
+        .send({
+          treatment: 'Avoid mosquitos',
+          images:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCEgmwK5csc-zS9mjR8qRREhaW_Z1jRaLP8_dkr6K5qjuCj31byA',
+          signs_symptoms: 'anemia',
+          preventative_measures: 'avoid mosquito infected areas',
+          testing_procedures: 'blood smear',
+          transmission: 'Anophiles Mosquito',
+          summary: 'Malaria is bad'
+        })
+        .end((error, response) => {
+          response.should.be.json;
+          response.should.status(422)
+          response.body.should.be.an('object');
+          response.body.should.have.property('message');
+          response.body.message.should.equal('Invalid disease supplied, valid disease must have name, treatment, signs/symptoms, preventative measures, testing procedures, transmission, image, and a summary');
           done();
         });
     });
