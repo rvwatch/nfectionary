@@ -140,4 +140,15 @@ export const returnedButtonData = [{
 
 export const stringId = '1';
 
-export const diseaseName = ['Influenza', 'Salmonella']
+export const diseases = ['Influenza', 'Salmonella']
+
+export const returnedGraphData = [
+  {
+    state: 'AL',
+    count: 40
+  },
+  {
+    state: 'AK',
+    count: 20
+  }
+]
