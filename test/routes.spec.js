@@ -5,6 +5,29 @@ const { app, database } = require('../server');
 
 chai.use(chaiHttp);
 
+describe('Client Routes', () => {
+  it('should return the home page', done => {
+    chai
+      .request(app)
+      .get('/')
+      .end((err, response) => {
+        response.should.have.status(200);
+        response.should.be.html;
+        done();
+      });
+  });
+
+  it('should return a 404 for a route that does not exist', done => {
+    chai
+      .request(app)
+      .get('/sad')
+      .end((err, response) => {
+        response.should.have.status(404);
+        done();
+      });
+  });
+});
+
 describe('Api endpoints', () => {
 
   beforeEach(done => {
