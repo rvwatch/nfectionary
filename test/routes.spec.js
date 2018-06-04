@@ -2,6 +2,7 @@ const chai = require('chai');
 const should = chai.should();
 const chaiHttp = require('chai-http');
 const { app, database } = require('../server');
+const jwt = require('jsonwebtoken');
 
 chai.use(chaiHttp);
 
@@ -29,7 +30,7 @@ describe('Client Routes', () => {
 });
 
 describe('Api endpoints', () => {
-
+  let token;
   beforeEach(done => {
     database.migrate.rollback()
       .then(() => {
@@ -41,6 +42,10 @@ describe('Api endpoints', () => {
               });
           });
       });
+      token = jwt.sign({
+        email: 'r@turing.io',
+        name: 'nfectionary'
+      }, app.get('secretKey'));
   });
 
   describe('GET /api/v1/states', () => {
@@ -106,7 +111,7 @@ describe('Api endpoints', () => {
       chai
         .request(app)
         .put('/api/v1/states/1/diseases/1')
-        .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZG9AdHVyaW5nLmlvIiwibmFtZSI6IkFsZG8iLCJpYXQiOjE1MjgxNDcyODUsImV4cCI6MTUyODMyMDA4NX0.VGyYC3UMMNY633T9_ZhiFs1rvEmd69x7g8mHefqoi3M')
+        .set('token', token)
         .send({ diseases_id: 1, states_id: 1, case_count: 20 })
         .end((error, response) => {
           response.should.be.json;
@@ -122,7 +127,7 @@ describe('Api endpoints', () => {
       chai
         .request(app)
         .put('/api/v1/states/1/diseases/hello')
-        .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZG9AdHVyaW5nLmlvIiwibmFtZSI6IkFsZG8iLCJpYXQiOjE1MjgxNDcyODUsImV4cCI6MTUyODMyMDA4NX0.VGyYC3UMMNY633T9_ZhiFs1rvEmd69x7g8mHefqoi3M')
+        .set('token', token)
         .send({ diseases_id: 'invalid', states_id: 1, case_count: 20 })
         .end((error, response) => {
           response.should.be.json;
@@ -304,7 +309,7 @@ describe('Api endpoints', () => {
       chai
         .request(app)
         .post('/api/v1/diseases')
-        .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZG9AdHVyaW5nLmlvIiwibmFtZSI6IkFsZG8iLCJpYXQiOjE1MjgxNDcyODUsImV4cCI6MTUyODMyMDA4NX0.VGyYC3UMMNY633T9_ZhiFs1rvEmd69x7g8mHefqoi3M')
+        .set('token', token)
         .send({
           name: 'Malaria',
           treatment: 'Avoid mosquitos',
@@ -330,7 +335,7 @@ describe('Api endpoints', () => {
       chai
         .request(app)
         .post('/api/v1/diseases')
-        .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZG9AdHVyaW5nLmlvIiwibmFtZSI6IkFsZG8iLCJpYXQiOjE1MjgxNDcyODUsImV4cCI6MTUyODMyMDA4NX0.VGyYC3UMMNY633T9_ZhiFs1rvEmd69x7g8mHefqoi3M')
+        .set('token', token)
         .send({
           treatment: 'Avoid mosquitos',
           images:
@@ -357,7 +362,7 @@ describe('Api endpoints', () => {
       chai
         .request(app)
         .put('/api/v1/diseases/1')
-        .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZG9AdHVyaW5nLmlvIiwibmFtZSI6IkFsZG8iLCJpYXQiOjE1MjgxNDcyODUsImV4cCI6MTUyODMyMDA4NX0.VGyYC3UMMNY633T9_ZhiFs1rvEmd69x7g8mHefqoi3M')
+        .set('token', token)
         .send({ treatment: 'eat lots of ice cream' })
         .end((error, response) => {
           response.should.be.json;
@@ -373,7 +378,7 @@ describe('Api endpoints', () => {
       chai
         .request(app)
         .put('/api/v1/diseases/hello')
-        .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZG9AdHVyaW5nLmlvIiwibmFtZSI6IkFsZG8iLCJpYXQiOjE1MjgxNDcyODUsImV4cCI6MTUyODMyMDA4NX0.VGyYC3UMMNY633T9_ZhiFs1rvEmd69x7g8mHefqoi3M')
+        .set('token', token)
         .send({ name: 'Aldo' })
         .end((error, response) => {
           response.should.be.json;
@@ -392,7 +397,7 @@ describe('DELETE /api/v1/diseases/:id', () => {
       chai
         .request(app)
         .delete('/api/v1/diseases/1')
-        .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZG9AdHVyaW5nLmlvIiwibmFtZSI6IkFsZG8iLCJpYXQiOjE1MjgxNDcyODUsImV4cCI6MTUyODMyMDA4NX0.VGyYC3UMMNY633T9_ZhiFs1rvEmd69x7g8mHefqoi3M')
+        .set('token', token)
         .end((error, response) => {
           response.should.be.json;
           response.should.have.status(500);
@@ -406,7 +411,7 @@ describe('DELETE /api/v1/diseases/:id', () => {
       chai
         .request(app)
         .delete('/api/v1/diseases/25')
-        .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZG9AdHVyaW5nLmlvIiwibmFtZSI6IkFsZG8iLCJpYXQiOjE1MjgxNDcyODUsImV4cCI6MTUyODMyMDA4NX0.VGyYC3UMMNY633T9_ZhiFs1rvEmd69x7g8mHefqoi3M')
+        .set('token', token)
         .end((error, response) => {
           response.should.be.json;
           response.should.have.status(404);
@@ -420,7 +425,7 @@ describe('DELETE /api/v1/diseases/:id', () => {
       chai
         .request(app)
         .delete('/api/v1/diseases/nothing')
-        .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZG9AdHVyaW5nLmlvIiwibmFtZSI6IkFsZG8iLCJpYXQiOjE1MjgxNDcyODUsImV4cCI6MTUyODMyMDA4NX0.VGyYC3UMMNY633T9_ZhiFs1rvEmd69x7g8mHefqoi3M')
+        .set('token', token)
         .end((error, response) => {
           response.should.be.json;
           response.should.have.status(500);
