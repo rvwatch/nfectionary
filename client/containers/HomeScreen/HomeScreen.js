@@ -86,23 +86,23 @@ export default class HomeScreen extends Component {
             onRequestClose={() => {
               alert('Modal has been closed.');
             }}>
-            <View style={{marginTop: 22}}>
+            <View style={{marginTop: 50}}>
               <View>
-                <Text>Find out about diseases
-                      in your state, their 
-                      reported case counts
-                      as well as information
-                      about each particular
-                      disease and ways to 
-                      prevent infection.
-                </Text>
-
                 <TouchableHighlight
                   onPress={() => {
                     this.setModalVisible(!this.state.modalVisible);
                   }}>
-                  <Text>Hide Modal</Text>
+                  <Text>Close</Text>
                 </TouchableHighlight>
+                <Text>
+                  Find out about diseases
+                  in your state, their 
+                  reported case counts
+                  as well as information
+                  about each particular
+                  disease and ways to 
+                  prevent infection.
+                </Text>
               </View>
             </View>
           </Modal>
