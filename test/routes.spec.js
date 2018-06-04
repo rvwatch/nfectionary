@@ -31,8 +31,6 @@ describe('Api endpoints', () => {
           response.body.should.be.an('array');
           response.body[0].should.have.property('id');
           response.body[0].should.have.property('name');
-          response.body[0].name.should.equal('Alabama');
-
           done();
         });
     });
@@ -179,7 +177,6 @@ describe('Api endpoints', () => {
           response.should.have.status(200);
           response.body.should.be.an('array');
           response.body[0].should.have.property('id');
-          response.body[0].id.should.equal(1);
           response.body[0].should.have.property('name');
           response.body[0].name.should.equal('Influenza');
           response.body[0].should.have.property('treatment');
@@ -295,4 +292,78 @@ describe('Api endpoints', () => {
         });
     });
   });
+
+  describe('PUT api/v1/diseases/:id', () => {
+    it('should update a disease', (done) => {
+      chai
+        .request(app)
+        .put('/api/v1/diseases/1')
+        .send({
+          treatment: 'eat lots of ice cream' 
+        })
+        .end((error, response) => {
+          response.should.be.json;
+          response.should.have.status(200);
+          response.body.should.be.an('object');
+          response.body.should.have.property('message');
+          response.body.message.should.equal('disease updated');
+          done();
+        });
+    });
+
+    it('should return an error if invalid id provided when updating diseases', (done) => {
+      chai
+        .request(app)
+        .put('/api/v1/diseases/hello')
+        .send({
+          name: 'Aldo'
+        })
+        .end((error, response) => {
+          response.should.be.json;
+          response.should.have.status(500);
+          response.body.should.be.an('object')
+          response.body.should.have.property('message');
+          response.body.should.have.property('error');
+          response.body.message.should.equal('Failed to update disease data');
+          done();
+        });
+    });
+  });
+
+// describe('DELETE /api/v1/diseases/:id', () => {
+//     it('should delete a disease', (done) => {
+//       chai.request(app)
+//         .delete('/api/v1/diseases/1')
+//         .end((error, response) => {
+//           response.should.be.json;
+//           response.should.have.status(200);
+//           response.body.should.have.property('message');
+//           response.body.message.should.equal('Disease deleted');
+//           done();
+//         });
+//     });
+
+//     it('should return an error if unable to delete disease', (done) => {
+//       chai.request(app)
+//         .delete('/api/v1/diseases/25')
+//         .end((error, response) => {
+//           response.should.be.json;
+//           response.should.have.status(404);
+//           response.body.should.have.property('message');
+//           response.body.message.should.equal('Unable to delete disease');
+//           done();
+//         });
+//     });
+
+//     it('should return an error if invalid endpoint', (done) => {
+//       chai.request(app)
+//         .delete('/api/v1/photos/nothing')
+//         .end((error, response) => {
+//           response.should.be.json;
+//           response.should.have.status(500);
+//           response.body.should.have.property('error');
+//           done();
+//         });
+//     });
+//  });
 });

@@ -135,18 +135,18 @@ app.put('/api/v1/diseases/:id', (req, res) => {
     });
 });
 
-app.delete('/api/v1/diseases', (req, res) => {
-  const { id } = req.body;
+app.delete('/api/v1/diseases:id', (req, res) => {
+  const id = req.params.id;
 
   database('diseases').where('id', id).del()
-    .then((id) => {
-      if (id > 0) {
+    .then((disease) => {
+      if (disease > 0) {
         res.status(200).json({ message: 'Disease deleted' });
       } else {
-        res.status(404).json({ message: 'Unable to delete disease' })
+        res.status(404).json({ message: 'Unable to delete disease'})
       }
     })
-    .catch((error) => {
+    .catch(() => {
       res.status(500).json({ error: error });
     });
 });
