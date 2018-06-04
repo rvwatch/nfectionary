@@ -31,8 +31,6 @@ describe('Api endpoints', () => {
           response.body.should.be.an('array');
           response.body[0].should.have.property('id');
           response.body[0].should.have.property('name');
-          response.body[0].name.should.equal('Alabama');
-
           done();
         });
     });
@@ -75,6 +73,47 @@ describe('Api endpoints', () => {
           response.body.should.have.property('message');
           response.body.should.have.property('err');
           response.body.message.should.equal('Invalid Id');
+          done();
+        });
+    });
+  });
+
+  describe('PUT /api/v1/states/:state_id/diseases/:disease_id', () => {
+    it('should update a case count', (done) => {
+      chai
+        .request(app)
+        .put('/api/v1/states/1/diseases/1')
+        .send({
+          "diseases_id": 1,
+          "states_id": 1,
+          "case_count": 20
+        })
+        .end((error, response) => {
+          response.should.be.json;
+          response.should.have.status(200);
+          response.body.should.be.an('object');
+          response.body.should.have.property('message');
+          response.body.message.should.equal('state case count updated');
+          done();
+        });
+    });
+
+    it('should return an error if invalid ids provided when updating case count', (done) => {
+      chai
+        .request(app)
+        .put('/api/v1/states/1/diseases/hello')
+        .send({
+          "diseases_id": 'invalid',
+          "states_id": 1,
+          "case_count": 20
+        })
+        .end((error, response) => {
+          response.should.be.json;
+          response.should.have.status(500);
+          response.body.should.be.an('object')
+          response.body.should.have.property('message');
+          response.body.should.have.property('error');
+          response.body.message.should.equal('Failed to update case count data');
           done();
         });
     });
@@ -179,9 +218,7 @@ describe('Api endpoints', () => {
           response.should.have.status(200);
           response.body.should.be.an('array');
           response.body[0].should.have.property('id');
-          response.body[0].id.should.equal(1);
           response.body[0].should.have.property('name');
-          response.body[0].name.should.equal('Influenza');
           response.body[0].should.have.property('treatment');
           response.body[0].should.have.property('signs_symptoms');
           response.body[0].should.have.property('preventative_measures');
@@ -220,7 +257,7 @@ describe('Api endpoints', () => {
     it('should return an error if state id does not exist', done => {
       chai
         .request(app)
-        .get('/api/v1/diseases/5')
+        .get('/api/v1/diseases/15')
         .end((error, response) => {
           response.should.be.json;
           response.should.have.status(404);
@@ -244,4 +281,129 @@ describe('Api endpoints', () => {
         });
     });
   });
+
+  describe('POST /api/v1/diseases', () => {
+    it('should return an id if posting a disease is successful', (done) => {
+      chai
+        .request(app)
+        .post('/api/v1/diseases')
+        .send({
+          name: 'Malaria',
+          treatment: 'Avoid mosquitos',
+          images:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCEgmwK5csc-zS9mjR8qRREhaW_Z1jRaLP8_dkr6K5qjuCj31byA',
+          signs_symptoms: 'anemia',
+          preventative_measures: 'avoid mosquito infected areas',
+          testing_procedures: 'blood smear',
+          transmission: 'Anophiles Mosquito',
+          summary: 'Malaria is bad'
+        })
+        .end((error, response) => {
+          response.should.be.json;
+          response.should.have.status(201);
+          response.body.should.be.an('object');
+          response.body.should.have.property('id');
+          response.body.id.should.equal(9);
+          done()
+        });
+    });
+
+    it('should return an error if invalid body supplied when posting', (done) => {
+      chai
+        .request(app)
+        .post('/api/v1/diseases')
+        .send({
+          treatment: 'Avoid mosquitos',
+          images:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCEgmwK5csc-zS9mjR8qRREhaW_Z1jRaLP8_dkr6K5qjuCj31byA',
+          signs_symptoms: 'anemia',
+          preventative_measures: 'avoid mosquito infected areas',
+          testing_procedures: 'blood smear',
+          transmission: 'Anophiles Mosquito',
+          summary: 'Malaria is bad'
+        })
+        .end((error, response) => {
+          response.should.be.json;
+          response.should.status(422)
+          response.body.should.be.an('object');
+          response.body.should.have.property('message');
+          response.body.message.should.equal('Invalid disease supplied, valid disease must have name, treatment, signs/symptoms, preventative measures, testing procedures, transmission, image, and a summary');
+          done();
+        });
+    });
+  });
+
+  describe('PUT api/v1/diseases/:id', () => {
+    it('should update a disease', (done) => {
+      chai
+        .request(app)
+        .put('/api/v1/diseases/1')
+        .send({
+          treatment: 'eat lots of ice cream' 
+        })
+        .end((error, response) => {
+          response.should.be.json;
+          response.should.have.status(200);
+          response.body.should.be.an('object');
+          response.body.should.have.property('message');
+          response.body.message.should.equal('disease updated');
+          done();
+        });
+    });
+
+    it('should return an error if invalid id provided when updating diseases', (done) => {
+      chai
+        .request(app)
+        .put('/api/v1/diseases/hello')
+        .send({
+          name: 'Aldo'
+        })
+        .end((error, response) => {
+          response.should.be.json;
+          response.should.have.status(500);
+          response.body.should.be.an('object')
+          response.body.should.have.property('message');
+          response.body.should.have.property('error');
+          response.body.message.should.equal('Failed to update disease data');
+          done();
+        });
+    });
+  });
+
+describe('DELETE /api/v1/diseases/:id', () => {
+    it('should delete a disease', (done) => {
+      chai.request(app)
+        .delete('/api/v1/diseases/1')
+        .end((error, response) => {
+          response.should.be.json;
+          response.should.have.status(500);
+          response.body.should.have.property('error');
+          response.body.error.should.equal('Please delete associated case count data first');
+          done();
+        });
+    });
+
+    it('should return an error if unable to delete disease', (done) => {
+      chai.request(app)
+        .delete('/api/v1/diseases/25')
+        .end((error, response) => {
+          response.should.be.json;
+          response.should.have.status(404);
+          response.body.should.have.property('message');
+          response.body.message.should.equal('Unable to find disease id');
+          done();
+        });
+    });
+
+    it('should return an error if invalid endpoint', (done) => {
+      chai.request(app)
+        .delete('/api/v1/diseases/nothing')
+        .end((error, response) => {
+          response.should.be.json;
+          response.should.have.status(500);
+          response.body.should.have.property('error');
+          done();
+        });
+    });
+ });
 });

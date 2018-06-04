@@ -39,6 +39,26 @@ app.get('/api/v1/states/:state_id/diseases/:disease_id', (req, res) => {
     });
 });
 
+app.put('/api/v1/states/:state_id/diseases/:disease_id', (req, res) => {
+  database('state_diseases').where({
+    states_id: req.params.state_id,
+    diseases_id: req.params.disease_id
+  }).update({
+    ...req.body
+  })
+    .then(() => {
+      res.status(200).json({
+        message: 'state case count updated'
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        error: error,
+        message: 'Failed to update case count data'
+      });
+    });
+});
+
 app.get('/api/v1/specific-disease/:id', (req, res) => {
   
   database('state_diseases').where('state_diseases.diseases_id', req.params.id).select()
@@ -90,6 +110,68 @@ app.get('/api/v1/diseases/:id', (req, res) => {
     })
     .catch(err => {
       return res.status(500).json({err: err, message: 'Invalid Id'});
+    });
+});
+
+app.post('/api/v1/diseases', (req, res) => {
+  const disease = req.body;
+
+  if (!disease.name ||
+    !disease.treatment ||
+    !disease.signs_symptoms ||
+    !disease.preventative_measures ||
+    !disease.testing_procedures ||
+    !disease.images ||
+    !disease.transmission ||
+    !disease.summary) {
+    return res.status(422).json({
+      message: 'Invalid disease supplied, valid disease must have name, treatment, signs/symptoms, preventative measures, testing procedures, transmission, image, and a summary'
+    });
+  }
+
+  database('diseases').insert(disease, 'id')
+    .then(id => res.status(201).json({
+      id: id[0]
+    }))
+    .catch(error => res.status(500).json({
+      error: error,
+      message: 'Failed to POST disease'
+    }));
+});
+
+app.put('/api/v1/diseases/:id', (req, res) => {
+  database('diseases').where('id', req.params.id).update({ ...req.body
+    })
+    .then(() => {
+      res.status(200).json({
+        message: 'disease updated'
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        error: error,
+        message: 'Failed to update disease data'
+      });
+    });
+});
+
+app.delete('/api/v1/diseases/:id', (req, res) => {
+  const id = req.params.id;
+
+  database('diseases').where('id', id).del()
+    .then((disease) => {
+      if (disease > 0) {
+        res.status(200).json({ message: 'Disease deleted successfully'});
+      } else {
+        res.status(404).json({ message: 'Unable to find disease id'});
+      }
+    })
+    .catch((error) => {
+      if (error.code === '23503') {
+        res.status(500).json({ error: 'Please delete associated case count data first'})
+      } else {
+        res.status(500).json({ error: error });
+      }
     });
 });
 
