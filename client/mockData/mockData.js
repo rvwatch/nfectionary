@@ -151,4 +151,37 @@ export const returnedGraphData = [
     state: 'AK',
     count: 20
   }
+];
+
+export const diseaseList = [
+{ name: "Influenza", id: 1 },
+{ name: "Salmonella", id: 2 },
+{ name: "E. coli", id: 3 },
+{ name: "Legionella", id: 4 },
+{ name: "Campylobacter", id: 5 },
+{ name: "Mumps", id: 6 },
+{ name: "Giardia", id: 7 },
+{ name: "Pertussis", id: 8 }
+];
+
+export const count = [
+{ count: "25", id: 1 },
+{ count: "437", id: 2 },
+{ count: "No Cases Reported", id: 3 },
+{ count: "71", id: 4 },
+{ count: "783", id: 5 },
+{ count: "576", id: 6 },
+{ count: "26", id: 7 },
+{ count: "2,340", id: 8 }
+]
+
+export const buttonData = [
+{ name: "Influenza", count: "25", disease_id: 1 },
+{ name: "Salmonella", count: "437", disease_id: 2 },
+{ name: "E. coli", count: "No Cases Reported", disease_id: 3 },
+{ name: "Legionella", count: "71", disease_id: 4 },
+{ name: "Campylobacter", count: "783", disease_id: 5 },
+{ name: "Mumps", count: "576", disease_id: 6 },
+{ name: "Giardia", count: "26", disease_id: 7 },
+{ name: "Pertussis", count: "2,340", disease_id: 8 }
 ]

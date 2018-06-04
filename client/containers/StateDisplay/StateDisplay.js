@@ -26,9 +26,11 @@ export default class StateDisplay extends Component {
     const diseaseId = Number(id) + 1;
     const diseaseList = await getDiseaseNames();
     diseaseList.sort(diseaseSort);
+    console.log('diseaselist', diseaseList);
     const count = await getDiseaseCount(diseaseId);
+    console.log('count', count);
     const buttonData = buttonCleaner(diseaseList, count);
-    
+    console.log('buttonData', buttonData);
     this.setButtonData(buttonData, id, diseaseList);
   }
 
