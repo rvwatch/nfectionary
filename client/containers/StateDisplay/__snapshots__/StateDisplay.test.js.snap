@@ -5,7 +5,7 @@ exports[`StateDisplay should match the snapshot 1`] = `
   style={
     Object {
       "alignItems": "center",
-      "backgroundColor": "#fff",
+      "backgroundColor": "#3E79CA",
       "flex": 1,
       "justifyContent": "center",
     }

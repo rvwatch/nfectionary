@@ -1,7 +1,6 @@
 export const getDiseaseNames = async () => {
   try {
     const response = await global.fetch('http://localhost:5000/api/v1/diseases');
-    console.log(response);
     const diseases = await response.json();
     
     
