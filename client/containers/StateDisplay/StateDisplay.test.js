@@ -36,6 +36,15 @@ describe ('StateDisplay', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('should have a default state', () => {
+    expect(wrapper.state()).toEqual({
+      buttonData: [],
+      state: '',
+      statesList: [],
+      diseaseList: []
+    });
+  });
+
   it('should call fetchAllData on componentDidMount', async () => {
     instance.fetchAllData = jest.fn();
     await instance.componentDidMount();
