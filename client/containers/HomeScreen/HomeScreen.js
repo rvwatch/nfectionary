@@ -18,7 +18,7 @@ export default class HomeScreen extends Component {
       modalVisible: false,
       error: null,
       fontLoaded: false
-    }
+    };
   }
 
   async componentDidMount() {
@@ -31,24 +31,24 @@ export default class HomeScreen extends Component {
   }
 
   currentLocation = async () => {
-    const { states } = this.state
+    const { states } = this.state;
     const location = await navigator.geolocation.getCurrentPosition(
       async (position) => {
         const {latitude, longitude} = position.coords;
-        const response = await fetch('https://maps.googleapis.com/maps/api/geocode/json?address=' + latitude + ',' + longitude + '&key=' + apiKey)
-        const location = await response.json()
+        const response = await fetch('https://maps.googleapis.com/maps/api/geocode/json?address=' + latitude + ',' + longitude + '&key=' + apiKey);
+        const location = await response.json();
         const { results } = location;
         
         if (results[1]) {
-					for (var i = 0; i < results.length; i++) {
-						if (results[i].types[0] === "political" || results[i].types[0] === "locality") {
+          for (var i = 0; i < results.length; i++) {
+            if (results[i].types[0] === "political" || results[i].types[0] === "locality") {
               const state = results[i].address_components[2].long_name;
               const id = this.state.states.indexOf(state);
               this.props.navigation.navigate('StateDisplay', { state, id, statesList: states });
               return;
-						}
-					}
-				}
+            }
+          }
+        }
       },
       (error) => this.setState({ error: error.message }),
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
@@ -67,7 +67,7 @@ export default class HomeScreen extends Component {
       fontSize: 30,
       fontWeight: "400",
       textDecorationLine: 'underline'
-    },
+    }
   };
 
   setModalVisible(visible) {
@@ -88,15 +88,15 @@ export default class HomeScreen extends Component {
             alert('Modal has been closed.');
           }}
         >
-            <View style={styles.modalWindow}>
-              <View>
-                <TouchableHighlight
-                  onPress={() => {
-                    this.setModalVisible(!this.state.modalVisible);
-                  }}>
-                  <Text style={styles.closeModal}>Close</Text>
-                </TouchableHighlight>
-                <Text style={styles.modalText}>
+          <View style={styles.modalWindow}>
+            <View>
+              <TouchableHighlight
+                onPress={() => {
+                  this.setModalVisible(!this.state.modalVisible);
+                }}>
+                <Text style={styles.closeModal}>Close</Text>
+              </TouchableHighlight>
+              <Text style={styles.modalText}>
                   Find out about diseases
                   in your state, their 
                   reported case counts
@@ -104,10 +104,10 @@ export default class HomeScreen extends Component {
                   about each particular
                   disease and ways to 
                   prevent infection.
-                </Text>
-              </View>
+              </Text>
             </View>
-          </Modal>
+          </View>
+        </Modal>
         <View>
           <TouchableOpacity 
             onPress={this.currentLocation}

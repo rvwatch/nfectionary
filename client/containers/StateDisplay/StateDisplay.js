@@ -14,7 +14,7 @@ export default class StateDisplay extends Component {
       state: '',
       statesList: [],
       diseaseList: []
-    }
+    };
   }
 
   async componentDidMount() {
@@ -35,7 +35,7 @@ export default class StateDisplay extends Component {
 
   setButtonData(buttonData, id, diseaseList) {
     const statesList = this.props.navigation.getParam('statesList');
-    const state = statesList[id]
+    const state = statesList[id];
     
     this.setState({ buttonData, state, statesList, diseaseList });
   }
@@ -51,7 +51,7 @@ export default class StateDisplay extends Component {
       color: '#ffffff',
       fontSize: 30,
       textDecorationLine: 'underline'
-    },
+    }
   };
   
   render() {
@@ -69,11 +69,11 @@ export default class StateDisplay extends Component {
     
     return (
       <View style={styles.container}>
-      <ModalDropdown 
+        <ModalDropdown 
           defaultValue={state}
           options={statesList} 
           onSelect={(event) => this.fetchAllData(event)} 
-          />
+        />
         {renderButton}
       </View>
     );
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#3E79CA',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   button: {
     alignItems: 'center',

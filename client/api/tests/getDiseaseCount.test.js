@@ -27,7 +27,7 @@ describe('fetch case count info', () => {
         id: 2,
         count: 20
       }
-    ]
+    ];
 
     await expect(getDiseaseCount()).resolves.toEqual(expected);
   });
@@ -36,7 +36,7 @@ describe('fetch case count info', () => {
     const expected = Error(`Error fetching disease case count: Error`);
 
     global.fetch = jest.fn().mockImplementation(() => {
-      return Promise.reject ({
+      return Promise.reject({
         message: 'Error'
       });
     });

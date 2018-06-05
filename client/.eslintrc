@@ -1,0 +1,45 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "mocha": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": [ 
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2017,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "eqeqeq": ["error", "always"],
+    "getter-return": ["error", { "allowImplicit": true }],
+    "indent": ["warn", 2],
+    "no-template-curly-in-string": "error",
+    "semi": ["error", "always"],
+    "array-bracket-spacing": ["error", "never"],
+    "block-spacing": ["error", "always"],
+    "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
+    "comma-dangle": ["error", "never"],
+    "comma-spacing": ["error", { "before": false, "after": true }],
+    "comma-style": ["error", "last"],
+    "computed-property-spacing": ["error", "never"],
+    "func-call-spacing": ["error", "never"],
+    "keyword-spacing": ["error", { "before": true, "after": true }],
+    "max-len": ["warn", 80],
+    "no-duplicate-imports": "error",
+    "id-length": "error",
+    "max-depth": ["warn", 4]
+  },
+  "globals": {
+    "expect": true
+  }
+}

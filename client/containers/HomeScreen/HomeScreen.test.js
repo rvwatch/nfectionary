@@ -1,7 +1,6 @@
 import React from 'react';
 import HomeScreen from './HomeScreen';
-import Enzyme from 'enzyme';
-import { shallow } from 'enzyme';
+import Enzyme, { shallow } from 'enzyme';
 import { getStates } from '../../api/getStates';
 import * as mock from '../../mockData/mockData';
 import Adapter from 'enzyme-adapter-react-16';
@@ -10,6 +9,8 @@ Enzyme.configure({ adapter: new Adapter() });
 jest.mock('../../api/getStates');
 
 describe('HomeScreen', () => {
+  let wrapper;
+  let instance;
 
   beforeEach(() => {
     wrapper = shallow(<HomeScreen />);
@@ -28,13 +29,12 @@ describe('HomeScreen', () => {
       states: [],
       error: null,
       modalVisible: false,
-      error: null,
       fontLoaded: false
     });
   });
 
   it('should call getStates on componentDidMount', () => {
-    expect(getStates).toHaveBeenCalled()
+    expect(getStates).toHaveBeenCalled();
   });
 
   it('should call setStatesData on componentDidMount', async () => {

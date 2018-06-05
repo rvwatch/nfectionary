@@ -27,7 +27,7 @@ describe('fetch disease info', () => {
     const expected = Error(`Error fetching disease information: Error`);
 
     global.fetch = jest.fn().mockImplementation(() => {
-      return Promise.reject ({
+      return Promise.reject({
         message: 'Error'
       });
     });

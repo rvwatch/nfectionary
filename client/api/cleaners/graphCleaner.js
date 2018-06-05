@@ -2,7 +2,7 @@ export const graphCleaner = (rawData, shortNames) => {
 
   const graphData = shortNames.reduce((accu, state) => {
 
-    const newData = rawData.filter(num => {
+    rawData.filter(num => {
       
       let newObject = {};
       if (num.state === state.id) {

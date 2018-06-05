@@ -27,11 +27,11 @@ describe('fetch disease names', () => {
     const expected = Error('Error fetching disease names: Error');
 
     global.fetch = jest.fn().mockImplementation(() => {
-      return Promise.reject ({
+      return Promise.reject({
         message: 'Error'
       });
     });
     await expect(getDiseaseNames()).rejects.toEqual(expected);
   });
-})
+});
 

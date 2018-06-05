@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import DiseaseDisplay from './DiseaseDisplay';
 import Enzyme, { shallow } from 'enzyme';
@@ -25,7 +26,8 @@ describe('DiseaseDisplay', () => {
 
   beforeEach(() => {
     wrapper = shallow(<DiseaseDisplay navigation={{ getParam: jest.fn().mockImplementation(()=> {
-      return mock.diseaseNames }) 
+      return mock.diseaseNames; 
+    }) 
     }} />);
     instance = wrapper.instance();
     id = '1';
@@ -66,7 +68,7 @@ describe('DiseaseDisplay', () => {
   });
 
   it('should call getGraphCounts on fetchDiseaseData with correct params', async () => {
-    const expected = 2
+    const expected = 2;
     await instance.fetchDiseaseData(id);
     expect(getGraphCounts).toHaveBeenCalledWith(expected);
   });

@@ -17,7 +17,7 @@ describe('fetch disease info', () => {
   });
 
   it('should return fetched data', async () => {
-    const expected = ['Alabama', 'Alaska', 'Arizona','Arkansas'];
+    const expected = ['Alabama', 'Alaska', 'Arizona', 'Arkansas'];
 
     await expect(getStates()).resolves.toEqual(expected);
   });
