@@ -12,82 +12,132 @@ exports[`HomeScreen should match the snapshot 1`] = `
     }
   }
 >
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
-    style={
-      Object {
-        "color": "#ffffff",
-        "fontFamily": "AmericanTypewriter",
-        "fontSize": 30,
-        "textDecorationLine": "underline",
-      }
-    }
+  <Component
+    animationType="slide"
+    hardwareAccelerated={false}
+    onRequestClose={[Function]}
+    transparent={false}
+    visible={false}
   >
-    NFECTIONARY
-  </Text>
-  <TouchableOpacity
-    accessibilityLabel="Use your current location"
-    activeOpacity={0.2}
-    onPress={[Function]}
-    style={
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "#ffffff",
-        "borderRadius": 20,
-        "padding": 10,
-      }
-    }
-    title="Current Location"
-  >
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
+    <Component
       style={
         Object {
-          "color": "#3E79CA",
+          "alignItems": "center",
+          "flex": 1,
+          "marginTop": 50,
+          "padding": 20,
         }
       }
     >
-       Get Started 
-    </Text>
-  </TouchableOpacity>
-  <ModalDropdown
-    animated={true}
-    defaultIndex={-1}
-    defaultValue="Select a state"
-    disabled={false}
-    keyboardShouldPersistTaps="never"
-    onSelect={[Function]}
-    options={Array []}
-    scrollEnabled={true}
-    showsVerticalScrollIndicator={true}
-    style={
-      Object {
-        "backgroundColor": "#ffffff",
-        "borderRadius": 5,
-        "padding": 10,
+      <Component>
+        <TouchableHighlight
+          activeOpacity={0.85}
+          delayPressOut={100}
+          onPress={[Function]}
+          underlayColor="black"
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "fontSize": 20,
+                "marginBottom": 20,
+                "textAlign": "center",
+                "textDecorationLine": "underline",
+              }
+            }
+          >
+            Close
+          </Text>
+        </TouchableHighlight>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#3E79CA",
+              "fontSize": 18,
+            }
+          }
+        >
+          Find out about diseases in your state, their reported case counts as well as information about each particular disease and ways to prevent infection.
+        </Text>
+      </Component>
+    </Component>
+  </Component>
+  <Component>
+    <TouchableOpacity
+      accessibilityLabel="Use your current location"
+      activeOpacity={0.2}
+      onPress={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderRadius": 25,
+          "marginBottom": 40,
+          "marginTop": 200,
+          "paddingBottom": 10,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 10,
+        }
       }
-    }
-    textStyle={
-      Object {
-        "color": "#3E79CA",
+      title="Current Location"
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#3E79CA",
+            "fontSize": 25,
+          }
+        }
+      >
+         Get Started 
+      </Text>
+    </TouchableOpacity>
+    <ModalDropdown
+      animated={true}
+      defaultIndex={-1}
+      defaultValue="select a state"
+      disabled={false}
+      dropdownTextStyle={
+        Object {
+          "color": "#3E79CA",
+          "fontSize": 16,
+        }
       }
-    }
-  />
+      keyboardShouldPersistTaps="never"
+      onSelect={[Function]}
+      options={Array []}
+      scrollEnabled={true}
+      showsVerticalScrollIndicator={true}
+      style={
+        Object {
+          "backgroundColor": "#ffffff",
+          "borderRadius": 3,
+          "padding": 10,
+        }
+      }
+      textStyle={
+        Object {
+          "color": "#3E79CA",
+          "fontSize": 20,
+          "textAlign": "center",
+        }
+      }
+    />
+  </Component>
   <TouchableOpacity
     accessibilityLabel="What is it?"
     activeOpacity={0.2}
-    style={
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "#ffffff",
-        "borderRadius": 20,
-        "padding": 10,
-      }
-    }
+    onPress={[Function]}
   >
     <Text
       accessible={true}
@@ -95,11 +145,13 @@ exports[`HomeScreen should match the snapshot 1`] = `
       ellipsizeMode="tail"
       style={
         Object {
-          "color": "#3E79CA",
+          "color": "#ffffff",
+          "fontSize": 20,
+          "marginBottom": 20,
         }
       }
     >
-       What is it? 
+       What is it?
     </Text>
   </TouchableOpacity>
 </Component>

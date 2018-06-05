@@ -26,7 +26,10 @@ describe('HomeScreen', () => {
       latitude: null,
       longitude: null,
       states: [],
-      error: null
+      error: null,
+      modalVisible: false,
+      error: null,
+      fontLoaded: false
     });
   });
 
