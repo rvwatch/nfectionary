@@ -14,6 +14,7 @@ import {
   VictoryBar,
   VictoryChart,
   VictoryTheme,
+  VictoryAxis,
   createContainer
 } from "victory-native";
 import { getGraphCounts } from '../../api/getGraphCounts';
@@ -51,6 +52,7 @@ export default class DiseaseDisplay extends Component {
   }
 
   setDiseaseInfo(diseaseInfo, graphData, diseaseList) {
+    
     this.setState({
       diseaseInfo,
       graphData,
@@ -72,23 +74,27 @@ export default class DiseaseDisplay extends Component {
 
   _renderHeader(section, i, isActive) {
     return ( 
-      <View style = {[
-        styles.header, 
-        isActive ? styles.active : styles.inactive
-      ]}>
+      <Animatable.View
+        duration={500}
+        style={[styles.header, isActive ? styles.active : styles.inactive]}
+        transition="backgroundColor"
+      >
         <Text style = {styles.headerText}> { section.title }</Text> 
-      </View>
+      </Animatable.View>
     );
   }
 
   _renderContent(section, i, isActive) {
     return ( 
-      <Text style = {[
-        styles.content, 
-        isActive ? styles.active : styles.inactive
-      ]}> 
+      <Animatable.View
+        duration={400}
+        style={[styles.content, isActive ? styles.active : styles.inactive]}
+        transition="backgroundColor"
+      >
+      <Animatable.Text style={{color: '#ffffff'}} animation={isActive ? 'slideInDown' : undefined}>
         {section.content} 
-      </Text>
+        </Animatable.Text>
+      </Animatable.View>
     );
   }
 
@@ -106,7 +112,12 @@ export default class DiseaseDisplay extends Component {
       textDecorationLine: 'underline'
     }
   };
-
+ tickStyle = {
+    axis: { stroke: "white" },
+    axisLabel: { fontSize: 20, fill: "white" },
+    ticks: { stroke: "white", size: 1, },
+    tickLabels: { fontSize: 15, padding: 10, fill: "white" }
+  }
   render() {
     const {
       name,
@@ -118,15 +129,15 @@ export default class DiseaseDisplay extends Component {
       transmission,
       summary
     } = this.state.diseaseInfo;
-    const { diseaseList } = this.state;
+    const { diseaseList, state } = this.state;
 
     const diseaseContent = [
-      { title: 'Description', content: summary },
+      { title: 'Description:', content: summary },
       { title: 'Treatment:', content: treatment },
-      { title: 'Preventative Measures', content: preventative_measures },
-      { title: 'Transmission', content: transmission },
-      { title: 'Testing Procedures', content: testing_procedures },
-      { title: 'Signs/ Symptoms', content: signs_symptoms }
+      { title: 'Preventative Measures:', content: preventative_measures },
+      { title: 'Transmission:', content: transmission },
+      { title: 'Testing Procedures:', content: testing_procedures },
+      { title: 'Signs/ Symptoms:', content: signs_symptoms }
     ];
   
     const VictoryZoomVoronoiContainer = createContainer("zoom", "voronoi");
@@ -159,6 +170,9 @@ export default class DiseaseDisplay extends Component {
                 />
               }
           >
+          
+          <VictoryAxis standalone={false} style={this.tickStyle} />
+          <VictoryAxis dependentAxis style={this.tickStyle} />
             <VictoryBar
               style = {{data: {fill: "#c43a31", stroke: "black", strokeWidth: 1 }}}
               alignment = "start"
@@ -167,16 +181,17 @@ export default class DiseaseDisplay extends Component {
               x = "state"
               y = "count" 
             />
+            
             </VictoryChart> : <Text> Loading Chart Data </Text>
           } 
         <Image
-          resizeMode="contain"
           style = { styles.image }
           source = { {url: `${images}`} }>
         </Image> 
 
         <Accordion
           activeSection = { this.state.activeSection }
+          duration={800}
           sections = { diseaseContent }
           touchableComponent = { TouchableOpacity }
           renderHeader = { this._renderHeader }
@@ -195,8 +210,7 @@ export default class DiseaseDisplay extends Component {
       backgroundColor: '#3E79CA',
       alignItems: 'center',
       justifyContent: 'space-between',
-      paddingTop: 20,
-      paddingBottom: 20
+      paddingTop: 20
     },
     dropDownWrap: {
       alignItems:'center', 
@@ -222,7 +236,7 @@ export default class DiseaseDisplay extends Component {
     },
     chart: {
       color: '#ffffff',
-      height: 320,
+      height: 300,
       width: 320,
       top: 0,
       left: 0,
@@ -232,14 +246,14 @@ export default class DiseaseDisplay extends Component {
     chartTitle: {
       color: '#ffffff',
       fontSize: 20,
+      marginBottom: -40,
       textAlign: 'center'
     },
     image: {
       position: 'relative',
-      top: 0,
-      left: 0,
-      bottom: 0,
-      right: 0,
+      width: 300,
+      height: 200,
+      marginBottom: 30
     },
     textBlock: {
       color: '#ffffff',
@@ -253,22 +267,30 @@ export default class DiseaseDisplay extends Component {
       marginBottom: 20
     },
     header: {
-      backgroundColor: '#F5FCFF',
-      padding: 10
+      backgroundColor: 'rgba(255,255,255,.3)',
+      padding: 10,
+      borderBottomWidth: 0,
+      borderLeftWidth: 0,
+      borderRightWidth: 0,
+      borderWidth: 1,
+      borderColor: '#ffffff'
     },
     headerText: {
       textAlign: 'left',
       fontSize: 16,
-      fontWeight: '500'
+      fontWeight: '500',
+      color: '#ffffff'
     },
     content: {
-      padding: 20,
-      backgroundColor: 'rgba(255,255,255,1)'
+      padding: 20
     },
     active: {
-      backgroundColor: 'rgba(255,255,255,1)'
+      backgroundColor: '#678ABD'
     },
     inactive: {
-      backgroundColor: 'rgba(245,252,255,1)'
+      backgroundColor: '#678ABD'
     }
   });
+
+
+ 
