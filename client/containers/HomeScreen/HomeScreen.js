@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     borderWidth: 1,
     borderColor: '#ffffff',
-    shadowOffset:{  width: 1,  height: 1,  },
+    shadowOffset:{  width: 1,  height: 1  },
     shadowColor: 'black',
     shadowOpacity: .5
   },
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
     padding: 10,
     width: 190,
     borderRadius: 3,
-    shadowOffset:{  width: 1,  height: 1,  },
+    shadowOffset:{  width: 1,  height: 1  },
     shadowColor: 'black',
     shadowOpacity: .5
   },

@@ -80,11 +80,19 @@ export default class StateDisplay extends Component {
             defaultValue={state}
             style={styles.dropDown}
             options={statesList} 
-            textStyle={{ color: '#3E79CA', fontSize: 20, textAlign: 'left', width: 160 }}
-            dropdownTextStyle={ {color: '#3E79CA', fontSize: 16} }
+            textStyle={{ 
+              color: '#3E79CA', 
+              fontSize: 20, 
+              textAlign: 'left', 
+              width: 160 }}
+            dropdownTextStyle={ {
+              color: '#3E79CA', 
+              fontSize: 16} }
             onSelect={(event) => this.fetchAllData(event)} 
           />
-          <View style={styles.arrWrap}><Text style={styles.arrColor}>▼</Text></View>
+          <View style={styles.arrWrap}>
+            <Text style={styles.arrColor}>▼</Text>
+          </View>
         </View>
       
         <View style={styles.buttonWrap}>
@@ -112,7 +120,7 @@ const styles = StyleSheet.create({
     padding: 10,
     width: 190,
     borderRadius: 3,
-    shadowOffset:{  width: 1,  height: 1,  },
+    shadowOffset:{  width: 1,  height: 1  },
     shadowColor: 'black',
     shadowOpacity: .5
   },
@@ -127,7 +135,7 @@ const styles = StyleSheet.create({
   buttonWrap: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   button: {
     backgroundColor: 'rgba(255,255,255,.3)',
@@ -140,7 +148,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderWidth: 1,
     borderColor: '#ffffff',
-    shadowOffset:{  width: 1,  height: 1,  },
+    shadowOffset:{  width: 1,  height: 1  },
     shadowColor: 'black',
     shadowOpacity: .5
   },
@@ -151,7 +159,7 @@ const styles = StyleSheet.create({
   buttonCount: {
     fontSize: 18,
     color: '#225293',
-    alignItems: 'center',
+    alignItems: 'center'
   }
 });
 

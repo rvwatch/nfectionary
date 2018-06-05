@@ -11,16 +11,85 @@ exports[`StateDisplay should match the snapshot 1`] = `
     }
   }
 >
-  <ModalDropdown
-    animated={true}
-    defaultIndex={-1}
-    defaultValue=""
-    disabled={false}
-    keyboardShouldPersistTaps="never"
-    onSelect={[Function]}
-    options={Array []}
-    scrollEnabled={true}
-    showsVerticalScrollIndicator={true}
+  <Component
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <ModalDropdown
+      animated={true}
+      defaultIndex={-1}
+      defaultValue=""
+      disabled={false}
+      dropdownTextStyle={
+        Object {
+          "color": "#3E79CA",
+          "fontSize": 16,
+        }
+      }
+      keyboardShouldPersistTaps="never"
+      onSelect={[Function]}
+      options={Array []}
+      scrollEnabled={true}
+      showsVerticalScrollIndicator={true}
+      style={
+        Object {
+          "backgroundColor": "#ffffff",
+          "borderRadius": 3,
+          "marginBottom": 20,
+          "padding": 10,
+          "shadowColor": "black",
+          "shadowOffset": Object {
+            "height": 1,
+            "width": 1,
+          },
+          "shadowOpacity": 0.5,
+          "width": 190,
+        }
+      }
+      textStyle={
+        Object {
+          "color": "#3E79CA",
+          "fontSize": 20,
+          "textAlign": "left",
+          "width": 160,
+        }
+      }
+    />
+    <Component
+      style={
+        Object {
+          "position": "absolute",
+          "right": 15,
+          "top": 15,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#3E79CA",
+          }
+        }
+      >
+        ▼
+      </Text>
+    </Component>
+  </Component>
+  <Component
+    style={
+      Object {
+        "flexDirection": "row",
+        "flexWrap": "wrap",
+        "justifyContent": "center",
+      }
+    }
   />
 </Component>
 `;
