@@ -76,14 +76,22 @@ exports[`HomeScreen should match the snapshot 1`] = `
       style={
         Object {
           "alignItems": "center",
-          "backgroundColor": "#ffffff",
+          "backgroundColor": "rgba(255,255,255,.3)",
+          "borderColor": "#ffffff",
           "borderRadius": 25,
+          "borderWidth": 1,
           "marginBottom": 40,
           "marginTop": 200,
           "paddingBottom": 10,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 10,
+          "shadowColor": "black",
+          "shadowOffset": Object {
+            "height": 1,
+            "width": 1,
+          },
+          "shadowOpacity": 0.5,
         }
       }
       title="Current Location"
@@ -94,7 +102,7 @@ exports[`HomeScreen should match the snapshot 1`] = `
         ellipsizeMode="tail"
         style={
           Object {
-            "color": "#3E79CA",
+            "color": "#ffffff",
             "fontSize": 25,
           }
         }
@@ -102,37 +110,76 @@ exports[`HomeScreen should match the snapshot 1`] = `
          Get Started 
       </Text>
     </TouchableOpacity>
-    <ModalDropdown
-      animated={true}
-      defaultIndex={-1}
-      defaultValue="select a state"
-      disabled={false}
-      dropdownTextStyle={
-        Object {
-          "color": "#3E79CA",
-          "fontSize": 16,
-        }
-      }
-      keyboardShouldPersistTaps="never"
-      onSelect={[Function]}
-      options={Array []}
-      scrollEnabled={true}
-      showsVerticalScrollIndicator={true}
+    <Component
       style={
         Object {
-          "backgroundColor": "#ffffff",
-          "borderRadius": 3,
-          "padding": 10,
+          "alignItems": "center",
+          "flexDirection": "row",
         }
       }
-      textStyle={
-        Object {
-          "color": "#3E79CA",
-          "fontSize": 20,
-          "textAlign": "center",
+    >
+      <ModalDropdown
+        animated={true}
+        defaultIndex={-1}
+        defaultValue="select a state"
+        disabled={false}
+        dropdownTextStyle={
+          Object {
+            "color": "#3E79CA",
+            "fontSize": 16,
+          }
         }
-      }
-    />
+        keyboardShouldPersistTaps="never"
+        onSelect={[Function]}
+        options={Array []}
+        scrollEnabled={true}
+        showsVerticalScrollIndicator={true}
+        style={
+          Object {
+            "backgroundColor": "#ffffff",
+            "borderRadius": 3,
+            "padding": 10,
+            "shadowColor": "black",
+            "shadowOffset": Object {
+              "height": 1,
+              "width": 1,
+            },
+            "shadowOpacity": 0.5,
+            "width": 190,
+          }
+        }
+        textStyle={
+          Object {
+            "color": "#3E79CA",
+            "fontSize": 20,
+            "textAlign": "left",
+            "width": 160,
+          }
+        }
+      />
+      <Component
+        style={
+          Object {
+            "position": "absolute",
+            "right": 15,
+            "top": 15,
+          }
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#3E79CA",
+            }
+          }
+        >
+          ▼
+        </Text>
+      </Component>
+    </Component>
   </Component>
   <TouchableOpacity
     accessibilityLabel="What is it?"

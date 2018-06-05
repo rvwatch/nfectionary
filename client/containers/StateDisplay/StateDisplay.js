@@ -68,19 +68,36 @@ export default class StateDisplay extends Component {
         key={button.count + index}
         onPress={() => this.props.navigation.navigate('DiseaseDisplay', 
           {disease_id: button.disease_id, diseaseList })}>
-        <Text> {button.name} </Text>
-        <Text> {button.count} </Text>
+        <Text style={styles.buttonName}> {button.name} </Text>
+        <Text style={styles.buttonCount}> {button.count} </Text>
       </TouchableOpacity>
     ));
     
     return (
       <View style={styles.container}>
-        <ModalDropdown 
-          defaultValue={state}
-          options={statesList} 
-          onSelect={(event) => this.fetchAllData(event)} 
-        />
-        {renderButton}
+        <View style = {styles.dropDownWrap}>
+          <ModalDropdown 
+            defaultValue={state}
+            style={styles.dropDown}
+            options={statesList} 
+            textStyle={{ 
+              color: '#3E79CA', 
+              fontSize: 20, 
+              textAlign: 'left', 
+              width: 160 }}
+            dropdownTextStyle={ {
+              color: '#3E79CA', 
+              fontSize: 16} }
+            onSelect={(event) => this.fetchAllData(event)} 
+          />
+          <View style={styles.arrWrap}>
+            <Text style={styles.arrColor}>▼</Text>
+          </View>
+        </View>
+      
+        <View style={styles.buttonWrap}>
+          {renderButton}
+        </View>
       </View>
     );
   }
@@ -93,12 +110,56 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+  dropDownWrap: {
+    alignItems:'center', 
+    flexDirection:'row'
+  },
+  dropDown: {
+    backgroundColor: '#ffffff',
+    marginBottom: 20,
+    padding: 10,
+    width: 190,
+    borderRadius: 3,
+    shadowOffset:{  width: 1,  height: 1  },
+    shadowColor: 'black',
+    shadowOpacity: .5
+  },
+  arrWrap: {
+    position: "absolute", 
+    right: 15, 
+    top: 15
+  },
+  arrColor: {
+    color: '#3E79CA'
+  },
+  buttonWrap: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center'
+  },
   button: {
+    backgroundColor: 'rgba(255,255,255,.3)',
+    margin: 10,
+    width: 160,
+    height: 75,
+    padding: 10,
+    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#DDDDDD',
-    width: 100,
-    height: 50,
-    padding: 10
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#ffffff',
+    shadowOffset:{  width: 1,  height: 1  },
+    shadowColor: 'black',
+    shadowOpacity: .5
+  },
+  buttonName: {
+    fontSize: 20,
+    color: '#ffffff'
+  },
+  buttonCount: {
+    fontSize: 18,
+    color: '#225293',
+    alignItems: 'center'
   }
 });
 
