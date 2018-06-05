@@ -1,7 +1,7 @@
+/* eslint-disable max-len */
 import React from 'react';
 import StateDisplay from './StateDisplay';
-import Enzyme from 'enzyme';
-import { shallow } from 'enzyme';
+import Enzyme, { shallow } from 'enzyme';
 import { getDiseaseNames } from '../../api/getDiseaseNames';
 import { getDiseaseCount } from '../../api/getDiseaseCount';
 import { buttonCleaner } from '../../api/cleaners/buttonCleaner';
@@ -13,7 +13,7 @@ jest.mock('../../api/getDiseaseNames');
 jest.mock('../../api/getDiseaseCount');
 jest.mock('../../api/cleaners/buttonCleaner');
 
-describe ('StateDisplay', () => {
+describe('StateDisplay', () => {
   let wrapper;
   let instance;
   let buttonData;
@@ -23,7 +23,8 @@ describe ('StateDisplay', () => {
 
   beforeEach(() => {
     wrapper = shallow(<StateDisplay navigation={{ getParam: jest.fn().mockImplementation(()=> {
-      return mock.stateNames }) 
+      return mock.stateNames; 
+    }) 
     }} />);
     instance = wrapper.instance();
     buttonData = mock.returnedButtonData;

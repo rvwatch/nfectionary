@@ -17,7 +17,10 @@ describe('fetch graph count info', () => {
   });
 
   it('should return fetched data', async () => {
-    const expected = [{ count: 40, id: 1, state: 1 }, { count: 20, id: 2, state: 1 }];
+    const expected = [
+      { count: 40, id: 1, state: 1 }, 
+      { count: 20, id: 2, state: 1 }
+    ];
 
     await expect(getGraphCounts()).resolves.toEqual(expected);
   });

@@ -5,9 +5,6 @@ import {
   View,
   TouchableOpacity,
   Image,
-  Picker,
-  Select,
-  Button,
   ScrollView
 } from 'react-native';
 import { getDisease } from '../../api/getDisease';
@@ -17,17 +14,12 @@ import {
   VictoryBar,
   VictoryChart,
   VictoryTheme,
-  VictoryZoomContainer,
-  VictoryLine,
-  VictoryVoronoiContainer,
   createContainer
 } from "victory-native";
 import { getGraphCounts } from '../../api/getGraphCounts';
-import { getStates } from '../../api/getStates';
-import * as Animatable from 'react-native-animatable';
-import Collapsible from 'react-native-collapsible';
 import Accordion from 'react-native-collapsible/Accordion';
 import ModalDropdown from 'react-native-modal-dropdown';
+import PropTypes from 'prop-types';
 
 export default class DiseaseDisplay extends Component {
   constructor(props) {
@@ -38,7 +30,7 @@ export default class DiseaseDisplay extends Component {
       diseaseList: [],
       activeSection: false,
       collapsed: true
-    }
+    };
   }
 
   async componentDidMount() {
@@ -50,10 +42,10 @@ export default class DiseaseDisplay extends Component {
   async fetchDiseaseData(id) {
     const diseaseId = Number(id) + 1;
     const disease = await getDisease(diseaseId);
-    const statesList = await getStates();
     const rawData = await getGraphCounts(diseaseId);
     const graphData = graphCleaner(rawData, shortNames);
-    const diseaseList = this.props.navigation.getParam('diseaseList').map(disease => disease.name);
+    const diseaseList = this.props.navigation.getParam('diseaseList')
+      .map(disease => disease.name);
 
     this.setDiseaseInfo(disease, graphData, diseaseList);
   }
@@ -66,11 +58,11 @@ export default class DiseaseDisplay extends Component {
     });
   }
 
-  _toggleExpanded = () => {
+  _toggleExpanded() {
     this.setState({
       collapsed: !this.state.collapsed
     });
-  };
+  }
 
   _setSection(section) {
     this.setState({
@@ -80,7 +72,10 @@ export default class DiseaseDisplay extends Component {
 
   _renderHeader(section, i, isActive) {
     return ( 
-      <View style = {[styles.header, isActive ? styles.active : styles.inactive]}>
+      <View style = {[
+        styles.header, 
+        isActive ? styles.active : styles.inactive
+      ]}>
         <Text style = {styles.headerText}> { section.title }</Text> 
       </View>
     );
@@ -88,12 +83,16 @@ export default class DiseaseDisplay extends Component {
 
   _renderContent(section, i, isActive) {
     return ( 
-      <Text style = {[styles.content, isActive ? styles.active : styles.inactive]}> 
+      <Text style = {[
+        styles.content, 
+        isActive ? styles.active : styles.inactive
+      ]}> 
         {section.content} 
       </Text>
     );
   }
 
+  // eslint-disable-next-line
   static navigationOptions = {
     title: ' ',
     headerStyle: {
@@ -105,7 +104,7 @@ export default class DiseaseDisplay extends Component {
       color: '#ffffff',
       fontSize: 30,
       textDecorationLine: 'underline'
-    },
+    }
   };
 
   render() {
@@ -139,14 +138,14 @@ export default class DiseaseDisplay extends Component {
           style = {styles.dropDown}
           options = { diseaseList}
           onSelect = {(event) => this.fetchDiseaseData(event)}
-      /> 
-      <Text> Reported Cases - YTD </Text> {
-        this.state.graphData.length > 0 ?
-          <VictoryChart
-            resizeMode = "contain"
-            style = {styles.chart}
-            theme = {VictoryTheme.material}
-            containerComponent = {
+        /> 
+        <Text> Reported Cases - YTD </Text> {
+          this.state.graphData.length > 0 ?
+            <VictoryChart
+              resizeMode = "contain"
+              style = {styles.chart}
+              theme = {VictoryTheme.material}
+              containerComponent = {
                 <VictoryZoomVoronoiContainer 
                   voronoiDimension = "x"
                   labels = {(d) => `cases: ${d.y}`}
@@ -154,17 +153,17 @@ export default class DiseaseDisplay extends Component {
                   allowZoom = {false}
                 />
               }
-          >
-            <VictoryBar
-              style = {{data: {fill: "#c43a31"}}}
-              alignment = "start"
-              barRatio = {2.5}
-              data = {this.state.graphData}
-              x = "state"
-              y = "count" 
-            />
+            >
+              <VictoryBar
+                style = {{data: {fill: "#c43a31"}}}
+                alignment = "start"
+                barRatio = {2.5}
+                data = {this.state.graphData}
+                x = "state"
+                y = "count" 
+              />
             </VictoryChart> : <Text> Loading Chart Data </Text>
-          } 
+        } 
           
         <Image resizeMode = "contain"
           style = { styles.image }
@@ -178,66 +177,70 @@ export default class DiseaseDisplay extends Component {
           renderContent = { this._renderContent }
           onChange = { this._setSection.bind(this) }
         /> 
-       </ScrollView>
-      );
-    }
+      </ScrollView>
+    );
   }
+}
   
-  const styles = StyleSheet.create({
-    container: {
-      backgroundColor: '#3E79CA',
-      padding: 10
-    },
-    dropDown: {
-      backgroundColor: '#ffffff',
-      padding: 10,
-      borderRadius: 5,
-    },
-    chart: {
-      position: 'relative',
-      color: '#ffffff',
-      width: 300,
-      top: 0,
-      left: 0,
-      bottom: 0,
-      right: 0,
-    },
-    image: {
-      position: 'relative',
-      height: 300,
-      top: 0,
-      left: 0,
-      bottom: 0,
-      right: 0,
-    },
-    textBlock: {
-      color: '#ffffff',
-      marginTop: 10,
-      marginBottom: 10
-    },
-    title: {
-      textAlign: 'left',
-      fontSize: 22,
-      fontWeight: '300',
-      marginBottom: 20
-    },
-    header: {
-      backgroundColor: '#F5FCFF',
-      padding: 10
-    },
-    headerText: {
-      textAlign: 'left',
-      fontSize: 16,
-      fontWeight: '500'
-    },
-    content: {
-      padding: 20,
-      backgroundColor: 'rgba(255,255,255,1)'
-    },
-    active: {
-      backgroundColor: 'rgba(255,255,255,1)'
-    },
-    inactive: {
-      backgroundColor: 'rgba(245,252,255,1)'
-    }
-  });
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#3E79CA',
+    padding: 10
+  },
+  dropDown: {
+    backgroundColor: '#ffffff',
+    padding: 10,
+    borderRadius: 5
+  },
+  chart: {
+    position: 'relative',
+    color: '#ffffff',
+    width: 300,
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0
+  },
+  image: {
+    position: 'relative',
+    height: 300,
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0
+  },
+  textBlock: {
+    color: '#ffffff',
+    marginTop: 10,
+    marginBottom: 10
+  },
+  title: {
+    textAlign: 'left',
+    fontSize: 22,
+    fontWeight: '300',
+    marginBottom: 20
+  },
+  header: {
+    backgroundColor: '#F5FCFF',
+    padding: 10
+  },
+  headerText: {
+    textAlign: 'left',
+    fontSize: 16,
+    fontWeight: '500'
+  },
+  content: {
+    padding: 20,
+    backgroundColor: 'rgba(255,255,255,1)'
+  },
+  active: {
+    backgroundColor: 'rgba(255,255,255,1)'
+  },
+  inactive: {
+    backgroundColor: 'rgba(245,252,255,1)'
+  }
+});
+
+DiseaseDisplay.propTypes = {
+  navigation: PropTypes.object
+};

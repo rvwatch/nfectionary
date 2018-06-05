@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, Picker, Select, Button } from 'react-native';
+import { 
+  StyleSheet, 
+  Text, 
+  View, 
+  TouchableOpacity
+} from 'react-native';
 import ModalDropdown from 'react-native-modal-dropdown';
 import { getDiseaseNames } from '../../api/getDiseaseNames';
 import { getDiseaseCount } from '../../api/getDiseaseCount';
 import { buttonCleaner } from '../../api/cleaners/buttonCleaner';
 import { diseaseSort } from '../../api/cleaners/sortDiseaseData';
-
+import PropTypes from 'prop-types';
 export default class StateDisplay extends Component {
   constructor(props) {
     super(props);
@@ -14,7 +19,7 @@ export default class StateDisplay extends Component {
       state: '',
       statesList: [],
       diseaseList: []
-    }
+    };
   }
 
   async componentDidMount() {
@@ -35,7 +40,7 @@ export default class StateDisplay extends Component {
 
   setButtonData(buttonData, id, diseaseList) {
     const statesList = this.props.navigation.getParam('statesList');
-    const state = statesList[id]
+    const state = statesList[id];
     
     this.setState({ buttonData, state, statesList, diseaseList });
   }
@@ -51,17 +56,18 @@ export default class StateDisplay extends Component {
       color: '#ffffff',
       fontSize: 30,
       textDecorationLine: 'underline'
-    },
+    }
   };
   
   render() {
     const { buttonData, state, statesList, diseaseList } = this.state;
 
-    const renderButton = buttonData.map((button, i) => (
+    const renderButton = buttonData.map((button, index) => (
       <TouchableOpacity
         style={styles.button}
-        key={button.count + i}
-        onPress={() => this.props.navigation.navigate('DiseaseDisplay', {disease_id: button.disease_id, diseaseList })}>
+        key={button.count + index}
+        onPress={() => this.props.navigation.navigate('DiseaseDisplay', 
+          {disease_id: button.disease_id, diseaseList })}>
         <Text> {button.name} </Text>
         <Text> {button.count} </Text>
       </TouchableOpacity>
@@ -69,11 +75,11 @@ export default class StateDisplay extends Component {
     
     return (
       <View style={styles.container}>
-      <ModalDropdown 
+        <ModalDropdown 
           defaultValue={state}
           options={statesList} 
           onSelect={(event) => this.fetchAllData(event)} 
-          />
+        />
         {renderButton}
       </View>
     );
@@ -85,7 +91,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#3E79CA',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   button: {
     alignItems: 'center',
@@ -95,3 +101,7 @@ const styles = StyleSheet.create({
     padding: 10
   }
 });
+
+StateDisplay.propTypes = {
+  navigation: PropTypes.object
+};

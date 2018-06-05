@@ -11,7 +11,7 @@ const RootStack = createStackNavigator(
     DiseaseDisplay: DiseaseDisplay
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Home'
   }
 );
 
