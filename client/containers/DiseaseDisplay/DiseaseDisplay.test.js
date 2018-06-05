@@ -3,7 +3,6 @@ import React from 'react';
 import DiseaseDisplay from './DiseaseDisplay';
 import Enzyme, { shallow } from 'enzyme';
 import { getDisease } from '../../api/getDisease';
-import { getStates } from '../../api/getStates';
 import { getGraphCounts } from '../../api/getGraphCounts';
 import { shortNames } from '../../api/cleaners/shortNames';
 import { graphCleaner } from '../../api/cleaners/graphCleaner';
@@ -12,7 +11,6 @@ import Adapter from 'enzyme-adapter-react-16';
 Enzyme.configure({ adapter: new Adapter() });
 
 jest.mock('../../api/getDisease');
-jest.mock('../../api/getStates');
 jest.mock('../../api/getGraphCounts');
 jest.mock('../../api/cleaners/graphCleaner');
 
@@ -60,11 +58,6 @@ describe('DiseaseDisplay', () => {
     const expected = 2;
     await instance.fetchDiseaseData(id);
     expect(getDisease).toHaveBeenCalledWith(expected);
-  });
-
-  it('should call getStates on fetchDiseaseData', async () => {
-    await instance.fetchDiseaseData(id);
-    expect(getStates).toHaveBeenCalled();
   });
 
   it('should call getGraphCounts on fetchDiseaseData with correct params', async () => {

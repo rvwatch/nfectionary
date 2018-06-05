@@ -36,7 +36,6 @@
     "keyword-spacing": ["error", { "before": true, "after": true }],
     "max-len": ["warn", 80],
     "no-duplicate-imports": "error",
-    "id-length": "error",
     "max-depth": ["warn", 4]
   },
   "globals": {

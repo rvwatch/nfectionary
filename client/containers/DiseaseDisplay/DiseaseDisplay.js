@@ -14,17 +14,12 @@ import {
   VictoryBar,
   VictoryChart,
   VictoryTheme,
-  VictoryZoomContainer,
-  VictoryLine,
-  VictoryVoronoiContainer,
   createContainer
 } from "victory-native";
 import { getGraphCounts } from '../../api/getGraphCounts';
-import { getStates } from '../../api/getStates';
-import * as Animatable from 'react-native-animatable';
-import Collapsible from 'react-native-collapsible';
 import Accordion from 'react-native-collapsible/Accordion';
 import ModalDropdown from 'react-native-modal-dropdown';
+import PropTypes from 'prop-types';
 
 export default class DiseaseDisplay extends Component {
   constructor(props) {
@@ -47,10 +42,10 @@ export default class DiseaseDisplay extends Component {
   async fetchDiseaseData(id) {
     const diseaseId = Number(id) + 1;
     const disease = await getDisease(diseaseId);
-    const statesList = await getStates();
     const rawData = await getGraphCounts(diseaseId);
     const graphData = graphCleaner(rawData, shortNames);
-    const diseaseList = this.props.navigation.getParam('diseaseList').map(disease => disease.name);
+    const diseaseList = this.props.navigation.getParam('diseaseList')
+      .map(disease => disease.name);
 
     this.setDiseaseInfo(disease, graphData, diseaseList);
   }
@@ -77,7 +72,10 @@ export default class DiseaseDisplay extends Component {
 
   _renderHeader(section, i, isActive) {
     return ( 
-      <View style = {[styles.header, isActive ? styles.active : styles.inactive]}>
+      <View style = {[
+        styles.header, 
+        isActive ? styles.active : styles.inactive
+      ]}>
         <Text style = {styles.headerText}> { section.title }</Text> 
       </View>
     );
@@ -85,7 +83,10 @@ export default class DiseaseDisplay extends Component {
 
   _renderContent(section, i, isActive) {
     return ( 
-      <Text style = {[styles.content, isActive ? styles.active : styles.inactive]}> 
+      <Text style = {[
+        styles.content, 
+        isActive ? styles.active : styles.inactive
+      ]}> 
         {section.content} 
       </Text>
     );
@@ -239,3 +240,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(245,252,255,1)'
   }
 });
+
+DiseaseDisplay.propTypes = {
+  navigation: PropTypes.object
+};

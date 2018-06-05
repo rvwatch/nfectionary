@@ -4,6 +4,7 @@ import Enzyme, { shallow } from 'enzyme';
 import { getStates } from '../../api/getStates';
 import * as mock from '../../mockData/mockData';
 import Adapter from 'enzyme-adapter-react-16';
+
 Enzyme.configure({ adapter: new Adapter() });
 
 jest.mock('../../api/getStates');

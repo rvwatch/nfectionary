@@ -1,11 +1,17 @@
+/* eslint-disable max-len*/
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, Picker, Select, Button, Modal, TouchableHighlight } from 'react-native';
+import { 
+  StyleSheet, 
+  Text, 
+  View, 
+  TouchableOpacity, 
+  Modal, 
+  TouchableHighlight 
+} from 'react-native';
 import ModalDropdown from 'react-native-modal-dropdown';
-import StateDisplay from '../StateDisplay/StateDisplay';
-import DiseaseDisplay from '../DiseaseDisplay/DiseaseDisplay';
 import { apiKey } from '../../api/apiKey';
 import { getStates } from '../../api/getStates';
-
+import PropTypes from 'prop-types';
 
 export default class HomeScreen extends Component {
   constructor(props){
@@ -32,7 +38,8 @@ export default class HomeScreen extends Component {
 
   currentLocation = async () => {
     const { states } = this.state;
-    const location = await navigator.geolocation.getCurrentPosition(
+    
+    await navigator.geolocation.getCurrentPosition(
       async (position) => {
         const {latitude, longitude} = position.coords;
         const response = await fetch('https://maps.googleapis.com/maps/api/geocode/json?address=' + latitude + ',' + longitude + '&key=' + apiKey);
@@ -40,11 +47,12 @@ export default class HomeScreen extends Component {
         const { results } = location;
         
         if (results[1]) {
-          for (var i = 0; i < results.length; i++) {
+          for (let i = 0; i < results.length; i++) {
             if (results[i].types[0] === "political" || results[i].types[0] === "locality") {
               const state = results[i].address_components[2].long_name;
               const id = this.state.states.indexOf(state);
-              this.props.navigation.navigate('StateDisplay', { state, id, statesList: states });
+              this.props.navigation.navigate('StateDisplay', 
+                { state, id, statesList: states });
               return;
             }
           }
@@ -185,3 +193,7 @@ const styles = StyleSheet.create({
     marginBottom: 20
   }
 });
+
+HomeScreen.propTypes = {
+  navigation: PropTypes.object
+};
