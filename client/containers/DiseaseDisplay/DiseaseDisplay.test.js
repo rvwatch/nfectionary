@@ -42,7 +42,9 @@ describe('DiseaseDisplay', () => {
     expect(wrapper.state()).toEqual({
       diseaseInfo: {},
       graphData: [],
-      diseaseList: []
+      diseaseList: [],
+      activeSection: false,
+      collapsed: true
     });
   });
 

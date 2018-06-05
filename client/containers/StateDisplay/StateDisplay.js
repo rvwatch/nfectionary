@@ -25,6 +25,7 @@ export default class StateDisplay extends Component {
   async fetchAllData(id) {
     const diseaseId = Number(id) + 1;
     const diseaseList = await getDiseaseNames();
+
     diseaseList.sort(diseaseSort);
     const count = await getDiseaseCount(diseaseId);
     const buttonData = buttonCleaner(diseaseList, count);

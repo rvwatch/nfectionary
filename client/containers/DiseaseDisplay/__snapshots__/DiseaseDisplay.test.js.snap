@@ -9,13 +9,6 @@ exports[`DiseaseDisplay should match the snapshot 1`] = `
     }
   }
 >
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
-  >
-    Loading Chart Data
-  </Text>
   <ModalDropdown
     animated={true}
     defaultIndex={-1}
@@ -26,19 +19,29 @@ exports[`DiseaseDisplay should match the snapshot 1`] = `
     options={Array []}
     scrollEnabled={true}
     showsVerticalScrollIndicator={true}
+    style={
+      Object {
+        "backgroundColor": "#ffffff",
+        "borderRadius": 5,
+        "padding": 10,
+      }
+    }
   />
   <Text
     accessible={true}
     allowFontScaling={true}
     ellipsizeMode="tail"
-    style={
-      Object {
-        "color": "#ffffff",
-        "marginBottom": 10,
-        "marginTop": 10,
-      }
-    }
-  />
+  >
+     Reported Cases - YTD 
+  </Text>
+   
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+  >
+     Loading Chart Data 
+  </Text>
   <Image
     resizeMode="contain"
     source={
@@ -49,7 +52,7 @@ exports[`DiseaseDisplay should match the snapshot 1`] = `
     style={
       Object {
         "bottom": 0,
-        "height": 200,
+        "height": 300,
         "left": 0,
         "position": "relative",
         "right": 0,
@@ -57,87 +60,44 @@ exports[`DiseaseDisplay should match the snapshot 1`] = `
       }
     }
   />
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
-    style={
-      Object {
-        "color": "#ffffff",
-        "marginBottom": 10,
-        "marginTop": 10,
-      }
+  <Accordion
+    activeSection={false}
+    disabled={false}
+    expandFromBottom={false}
+    onChange={[Function]}
+    renderContent={[Function]}
+    renderHeader={[Function]}
+    renderSectionTitle={[Function]}
+    sections={
+      Array [
+        Object {
+          "content": undefined,
+          "title": "Description",
+        },
+        Object {
+          "content": undefined,
+          "title": "Treatment:",
+        },
+        Object {
+          "content": undefined,
+          "title": "Preventative Measures",
+        },
+        Object {
+          "content": undefined,
+          "title": "Transmission",
+        },
+        Object {
+          "content": undefined,
+          "title": "Testing Procedures",
+        },
+        Object {
+          "content": undefined,
+          "title": "Signs/ Symptoms",
+        },
+      ]
     }
+    touchableComponent={[Function]}
+    underlayColor="black"
   />
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
-    style={
-      Object {
-        "color": "#ffffff",
-        "marginBottom": 10,
-        "marginTop": 10,
-      }
-    }
-  >
-    Treatment: 
-  </Text>
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
-    style={
-      Object {
-        "color": "#ffffff",
-        "marginBottom": 10,
-        "marginTop": 10,
-      }
-    }
-  >
-    Preventative Measures: 
-  </Text>
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
-    style={
-      Object {
-        "color": "#ffffff",
-        "marginBottom": 10,
-        "marginTop": 10,
-      }
-    }
-  >
-    Transmission: 
-  </Text>
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
-    style={
-      Object {
-        "color": "#ffffff",
-        "marginBottom": 10,
-        "marginTop": 10,
-      }
-    }
-  >
-    Testing Procedures: 
-  </Text>
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
-    style={
-      Object {
-        "color": "#ffffff",
-        "marginBottom": 10,
-        "marginTop": 10,
-      }
-    }
-  >
-    Signs/ Symptoms: 
-  </Text>
 </ScrollView>
 `;
