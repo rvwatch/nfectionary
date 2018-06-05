@@ -13,5 +13,5 @@ export const buttonCleaner = (names, count) => {
     });
     return accu;
   }, []);
-  return buttonData
+  return buttonData;
 };

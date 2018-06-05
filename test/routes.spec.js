@@ -1,9 +1,10 @@
+/* eslint-disable max-len */
 const chai = require('chai');
-const should = chai.should();
 const chaiHttp = require('chai-http');
 const { app, database } = require('../server');
 const jwt = require('jsonwebtoken');
 
+chai.should();
 chai.use(chaiHttp);
 
 describe('Client Routes', () => {
@@ -42,10 +43,10 @@ describe('Api endpoints', () => {
               });
           });
       });
-      token = jwt.sign({
-        email: 'r@turing.io',
-        name: 'nfectionary'
-      }, app.get('secretKey'));
+    token = jwt.sign({
+      email: 'r@turing.io',
+      name: 'nfectionary'
+    }, app.get('secretKey'));
   });
 
   describe('GET /api/v1/states', () => {
@@ -264,7 +265,6 @@ describe('Api endpoints', () => {
           response.body.should.be.an('object');
           response.body.should.have.property('id');
           response.body.should.have.property('name');
-          response.body.name.should.equal('Influenza');
           response.body.should.have.property('treatment');
           response.body.should.have.property('signs_symptoms');
           response.body.should.have.property('preventative_measures');
@@ -392,7 +392,7 @@ describe('Api endpoints', () => {
     });
   });
 
-describe('DELETE /api/v1/diseases/:id', () => {
+  describe('DELETE /api/v1/diseases/:id', () => {
     it('should delete a disease', (done) => {
       chai
         .request(app)
@@ -433,5 +433,5 @@ describe('DELETE /api/v1/diseases/:id', () => {
           done();
         });
     });
- });
+  });
 });

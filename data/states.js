@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const Nightmare = require('nightmare');
 const nightmare = Nightmare({
   show: true,
@@ -18,10 +19,10 @@ nightmare
       .map(element => element.innerText);
 
     const stateData = states.map(state => {
-        return {
-          name: state
-        }
-      });
+      return {
+        name: state
+      };
+    });
     return stateData;
   })
   .end()
@@ -32,7 +33,7 @@ nightmare
       if (err) {
         return console.log(err);
       }
-    })
+    });
     console.log('Data saved to file.');
   })
   .catch(err => {

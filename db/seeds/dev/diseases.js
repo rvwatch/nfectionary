@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const diseases = require('../../../data/disease-data.json');
 const influenza = require('../../../data/influenza-data.json');
 const salmonella = require('../../../data/salmonellosis-data.json');
@@ -115,7 +116,8 @@ exports.seed = (knex, Promise) => {
 };
 
 const createDiseases = (knex, disease) => {
-  const { name, treatment, signs_symptoms, preventative_measures, testing_procedures, images, transmission, summary } = disease;
+  const { name, treatment, signs_symptoms, preventative_measures,
+    testing_procedures, images, transmission, summary } = disease;
 
   return knex('diseases').insert({
     name,
@@ -127,23 +129,23 @@ const createDiseases = (knex, disease) => {
     transmission,
     summary
   });
-}
+};
 
 const createStates = (knex, state) => {
   return knex('states').insert({
     name: state.name
   });
-}
+};
 
 const createIllness = (knex, disease, id) => {
-  const { disease_id, state_id, case_count } = disease;
+  const { state_id, case_count } = disease;
 
   return knex('diseases').where('id', id).first()
     .then((record) => {
-        return knex('state_diseases').insert({
-          diseases_id: record.id,
-          states_id: state_id,
-          case_count
-        });
+      return knex('state_diseases').insert({
+        diseases_id: record.id,
+        states_id: state_id,
+        case_count
+      });
     });
-}
+};

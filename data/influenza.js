@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const Nightmare = require('nightmare');
 const nightmare = Nightmare({
   show: true,
@@ -14,17 +15,18 @@ nightmare
   .select('select#map-selector', 'Haemophilus_Influenza')
   .wait('tbody td.sorting_1')
   .evaluate(() => {
-    let case_counts  = [...document.querySelectorAll('tbody td.cdcmap-textcenter')]
-      .map(element => element.innerText);
+    let case_counts  = [
+      ...document.querySelectorAll('tbody td.cdcmap-textcenter')
+    ].map(element => element.innerText);
     let stateId = 1;
 
     const influenzaData = case_counts.map(count => {
-        return {
-          state_id: stateId++,
-          case_count: count,
-          disease_id: 1
-        }
-      });
+      return {
+        state_id: stateId++,
+        case_count: count,
+        disease_id: 1
+      };
+    });
 
     return influenzaData;
   })
@@ -36,7 +38,7 @@ nightmare
       if (err) {
         return console.log(err);
       }
-    })
+    });
     console.log('Data saved to file.');
   })
   .catch(err => {
