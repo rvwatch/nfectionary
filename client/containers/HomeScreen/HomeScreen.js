@@ -124,14 +124,17 @@ export default class HomeScreen extends Component {
             accessibilityLabel="Use your current location">
             <Text style={styles.blueFont}> Get Started </Text>
           </TouchableOpacity>
-          <ModalDropdown
-            defaultValue={'select a state'} 
-            options={states} 
-            style={styles.dropDown}
-            textStyle={{ color: '#3E79CA', fontSize: 20, textAlign: 'center' }}
-            dropdownTextStyle={ {color: '#3E79CA', fontSize: 16} }
-            onSelect={(event) => navigation.navigate('StateDisplay', {state: states[event], id: event, statesList: states})} 
-          />
+          <View style = {styles.dropDownWrap}>
+            <ModalDropdown
+              defaultValue={'select a state'} 
+              options={states} 
+              style={styles.dropDown}
+              textStyle={{ color: '#3E79CA', fontSize: 20, textAlign: 'left', width: 160 }}
+              dropdownTextStyle={ {color: '#3E79CA', fontSize: 16} }
+              onSelect={(event) => navigation.navigate('StateDisplay', {state: states[event], id: event, statesList: states})} 
+            />
+            <View style={styles.arrWrap}><Text style={styles.arrColor}>▼</Text></View>
+          </View>
         </View>
         <TouchableOpacity 
           onPress={() => { this.setModalVisible(true); }}
@@ -153,23 +156,44 @@ const styles = StyleSheet.create({
   },
   button: {
     alignItems: 'center',
-    backgroundColor: '#ffffff',
+    backgroundColor: 'rgba(255,255,255,.3)',
     paddingTop: 10,
     paddingRight: 20,
     paddingBottom: 10,
     paddingLeft: 20,
-    borderRadius: 25,
     marginTop: 200,
-    marginBottom: 40
+    marginBottom: 40,
+    borderRadius: 25,
+    borderWidth: 1,
+    borderColor: '#ffffff',
+    shadowOffset:{  width: 1,  height: 1,  },
+    shadowColor: 'black',
+    shadowOpacity: .5
   },
   blueFont: {
-    color: '#3E79CA',
+    color: '#ffffff',
     fontSize: 25
+  },
+  dropDownWrap: {
+    alignItems:'center', 
+    flexDirection:'row'
   },
   dropDown: {
     backgroundColor: '#ffffff',
     padding: 10,
-    borderRadius: 3
+    width: 190,
+    borderRadius: 3,
+    shadowOffset:{  width: 1,  height: 1,  },
+    shadowColor: 'black',
+    shadowOpacity: .5
+  },
+  arrWrap: {
+    position: "absolute", 
+    right: 15, 
+    top: 15
+  },
+  arrColor: {
+    color: '#3E79CA'
   },
   info: {
     color: '#ffffff',
