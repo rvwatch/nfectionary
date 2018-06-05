@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const diseases = require('../../../data/disease-data.json');
 const influenza = require('../../../data/influenza-data.json');
 const salmonella = require('../../../data/salmonellosis-data.json');
@@ -17,9 +18,9 @@ exports.seed = (knex, Promise) => {
     .then(() => {
       const diseasePromises = [];
 
-        diseases.forEach(disease => {
-          diseasePromises.push(createDiseases(knex, disease));
-        });
+      diseases.forEach(disease => {
+        diseasePromises.push(createDiseases(knex, disease));
+      });
       return Promise.all(diseasePromises);
     })
     .then(() => {
@@ -95,7 +96,7 @@ const createStates = (knex, state) => {
 };
 
 const createIllness = (knex, disease, id) => {
-  const { disease_id, state_id, case_count } = disease;
+  const { state_id, case_count } = disease;
 
   return knex('diseases')
     .where('id', id)

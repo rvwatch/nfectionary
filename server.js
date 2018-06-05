@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const express = require('express');
 const app = express();
 const environment = process.env.NODE_ENV || 'development';
@@ -23,17 +24,17 @@ const checkAdmin = (req, res, next) => {
   const key = app.get('secretKey');
 
   if (!token) {
-    res.status(403).json({ message: 'You must be authorized to hit this endpoint'})
+    res.status(403).json({ message: 'You must be authorized to hit this endpoint'});
   } else {
     try {
       const decoded = jwt.verify(token, key);
       const turingEmail = decoded.email.includes('turing.io');
 
-      turingEmail ? next() : res.status(403).json({ message: 'Not authorized'})
+      turingEmail ? next() : res.status(403).json({ message: 'Not authorized'});
     } catch (error) {
-      res.status(403).json({ message: 'Invalid token' })
-    };
-  };
+      res.status(403).json({ message: 'Invalid token' });
+    }
+  }
 };
 
 app.post('/authenticate', (req, res) => {
@@ -46,9 +47,9 @@ app.post('/authenticate', (req, res) => {
   if (email && name) {
     const token = jwt.sign({ email, name }, key, options);
 
-    res.status(201).json({ token })
+    res.status(201).json({ token });
   } else {
-    res.status(422).json({ message: 'Invalid request, must supply email and name' })
+    res.status(422).json({ message: 'Invalid request, must supply email and name' });
   }
 });
 
@@ -56,7 +57,7 @@ app.post('/authenticate', (req, res) => {
 app.get('/api/v1/states', (req, res) => {
   database('states').select()
     .then(state => {
-        return res.status(200).json(state);
+      return res.status(200).json(state);
     })
     .catch(err => {
       return res.status(500).json({err});
@@ -84,9 +85,7 @@ app.put('/api/v1/states/:state_id/diseases/:disease_id', checkAdmin, (req, res) 
   database('state_diseases').where({
     states_id: req.params.state_id,
     diseases_id: req.params.disease_id
-  }).update({
-    ...req.body
-  })
+  }).update(req.body)
     .then(() => {
       res.status(200).json({
         message: 'state case count updated'
@@ -181,8 +180,7 @@ app.post('/api/v1/diseases', checkAdmin, (req, res) => {
 });
 
 app.put('/api/v1/diseases/:id', checkAdmin, (req, res) => {
-  database('diseases').where('id', req.params.id).update({ ...req.body
-    })
+  database('diseases').where('id', req.params.id).update(req.body)
     .then(() => {
       res.status(200).json({
         message: 'disease updated'
@@ -209,7 +207,7 @@ app.delete('/api/v1/diseases/:id', checkAdmin, (req, res) => {
     })
     .catch((error) => {
       if (error.code === '23503') {
-        res.status(500).json({ error: 'Please delete associated case count data first'})
+        res.status(500).json({ error: 'Please delete associated case count data first'});
       } else {
         res.status(500).json({ error: error });
       }

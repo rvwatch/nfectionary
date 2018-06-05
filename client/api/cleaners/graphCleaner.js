@@ -17,7 +17,7 @@ export const graphCleaner = (rawData, shortNames) => {
     });
     return accu;
   }, []);
-  return graphData
+  return graphData;
 };
 
 

@@ -1,7 +1,7 @@
 $('#submit').on('click', getToken);
 
-async function getToken(e) {
-  e.preventDefault();
+async function getToken(event) {
+  event.preventDefault();
   const name = $('#name').val();
   const email = $('#email').val();
   const token = await fetchToken(name, email);
@@ -19,14 +19,14 @@ async function fetchToken(name, email) {
     headers: {
       'content-type': 'application/json'
     }
-  }
+  };
 
   try {
     const response = await fetch(url, options);
     const body = await response.json();
 
-    return body.token
+    return body.token;
   } catch (error) {
-    return error
+    return error;
   }
 }
