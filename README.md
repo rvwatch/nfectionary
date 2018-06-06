@@ -18,26 +18,23 @@ To inform the public of disease rates within their states and to give them descr
 
 ## Getting Started
 
-git clone https://github.com/rvwatch/nfectionary
+Clone down the repo `git clone https://github.com/rvwatch/nfectionary`
 
 ### Installing
 
 To run the project
 
-cd client
+Change into client directory `cd client`
 
-```
-npm install   
-```
-then
-```
-npm start 
-```
+Run Install `npm install` 
+
+Start the project `npm start` 
+
 Then run the simulator of your choice
 
 
 ## Example Use
-![nfectinary](https://cl.ly/1y2N3M2T173f/Screen%20Recording%202018-06-06%20at%2009.15%20AM.gif)
+![nfectionary](https://cl.ly/00330n001G3N/Screen%20Recording%202018-06-06%20at%2010.10%20AM.gif)
 
 ## Data Source
 Data was web scraped from the CDC website. 
@@ -45,12 +42,9 @@ Data was web scraped from the CDC website.
 
 ## Running the tests
 
-```
-cd client
-```
-```
-npm run test
-```
+From the client directory 
+
+Run - `npm test` 
 
 ### Testing Libraries
 Front End:   
