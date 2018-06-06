@@ -37,7 +37,7 @@ Then run the simulator of your choice
 
 
 ## Example Use
-![nfectinary](https://drh2acu5z204m.cloudfront.net/items/132v2x0Q0B1k0z3G1b0y/Screen%20Recording%202018-06-06%20at%2009.15%20AM.gif)
+![nfectinary](https://cl.ly/1y2N3M2T173f/Screen%20Recording%202018-06-06%20at%2009.15%20AM.gif)
 
 ## Data Source
 Data was web scraped from the CDC website. 
